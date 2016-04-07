@@ -42,36 +42,68 @@
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 
-		<div id="container">
+        <nav class="navbar" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo home_url(); ?>" itemscope itemtype="http://schema.org/Organization"><img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.png" class="img-responsive logo" alt="<?php bloginfo( 'name' ); ?>"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donate <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Mailed Check</a></li>
+                                <li><a href="#">Online</a></li>
+                                <li><a href="#">Cars For Homes</a></li>
+                                <li><a href="#">ReStore</a></li>
+                                <li><a href="#">Payroll Deductions/Matching Gifts</a></li>
+                                <li><a href="#">Third-Party Event Fundraising</a></li>
+                                <li><a href="#">Bequests and Estate Planning</a></li>
+                                <li><a href="#">Gift-in-kind</a></li>
+                                <li><a href="#">Donor Stories</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volunteer <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Volunteer Calendar</a></li>
+                                <li><a href="#">Get Invloved</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">ReStore</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Us <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">History and Our Future</a></li>
+                                <li><a href="#">Vision</a></li>
+                                <li><a href="#">Mission</a></li>
+                                <li><a href="#">Executive Director Message</a></li>
+                                <li><a href="#">Where We Work</a></li>
+                                <li><a href="#">General Explanation</a></li>
+                                <li><a href="#">Board of Directors</a></li>
+                                <li><a href="#">Staff</a></li>
+                                <li><a href="#">Employment</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Homeownership &amp; Home Repair <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Homeownership Program</a></li>
+                                <li><a href="#">Critical Home Repair Program</a></li>
+                                <li><a href="#">Partnerships</a></li>
+                                <li><a href="#">Partner Homeowner Stories</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
 
-			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-
-				<div id="inner-header" class="wrap cf">
-
-					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-					<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-
-					<?php // if you'd like to use the site description you can un-comment it below ?>
-					<?php // bloginfo('description'); ?>
-
-
-					<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<?php wp_nav_menu(array(
-    					         'container' => false,                           // remove nav container
-    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-    					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main-nav',                 // where it's located in the theme
-    					         'before' => '',                                 // before the menu
-        			               'after' => '',                                  // after the menu
-        			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
-						)); ?>
-
-					</nav>
-
-				</div>
-
-			</header>
+        <div class="container-fluid page-content">

@@ -16,11 +16,11 @@ GENERAL STYLES
 *********************/
 
 body {
-	font-family: $lato;
-	font-size: 100%;
-	line-height: 1.5;
-	color: $text-color;
-	background-color: $gray;
+	font-family: $roboto;
+	//font-size: 100%;
+	//line-height: 1.5;
+	//color: $text-color;
+	//background-color: $gray;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -252,7 +252,7 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 1.5em;
+	//margin-top: 1.5em;
 }
 
 		.hentry {
@@ -862,8 +862,8 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-	background-color: $black;
-	color: $light-gray;
+	//background-color: $black;
+	//color: $light-gray;
 }
 
 	/*

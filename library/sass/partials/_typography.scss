@@ -40,6 +40,9 @@ FONT FACE (IN YOUR FACE)
   }
 */
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,100,100italic,300,300italic);
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text:400,600);
+
 
 /*
 The following is based of Typebase:
@@ -49,14 +52,14 @@ I've edited it a bit, but it's a nice starting point.
 
 
 // font stacks
-$sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
+$sans-serif:        'Roboto', Arial, Helvetica, sans-serif;
+$serif:             'Crimson Text', "Times New Roman", Times, serif;
 
 /*
  i imported this one in the functions file so bones would look sweet.
  don't forget to remove it for your site.
 */
-$lato:              'Lato', $sans-serif;
+$roboto:              $sans-serif;
 
 /*
 some nice typographical defaults

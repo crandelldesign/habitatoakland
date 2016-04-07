@@ -244,4 +244,58 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+// Add Social Media Shortcode
+function social_media_shortcode() {
+  // Code
+  return '<ul class="list-inline margin-bottom-25">
+          <li><a href="#"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+          <li><a href="#"><i class="fa fa-flickr fa-2x"></i></a></li>
+      </ul>';
+}
+add_shortcode( 'social_media', 'social_media_shortcode' );
+
+// Custom Excerpt
+function my_excerpt($excerpt_length = 55, $id = false, $echo = true) {
+    
+    $text = '';
+        
+    if($id) {
+        $the_post = & get_post( $my_id = $id );
+        $text = ($the_post->post_excerpt) ? $the_post->post_excerpt : $the_post->post_content;
+    } else {
+        global $post;
+        $text = ($post->post_excerpt) ? $post->post_excerpt : get_the_content('');
+    }
+        
+    $text = strip_shortcodes( $text );
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]&gt;', $text);
+    $text = strip_tags($text);
+      
+    $excerpt_more = ' ' . '...';
+    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+    if ( count($words) > $excerpt_length ) {
+        array_pop($words);
+        $text = implode(' ', $words);
+        $text = $text . $excerpt_more;
+    } else {
+        $text = implode(' ', $words);
+    }
+    if($echo)
+        echo apply_filters('the_content', $text);
+    else
+        return $text;
+}
+
+function get_my_excerpt($excerpt_length = 55, $id = false, $echo = false) {
+    return my_excerpt($excerpt_length, $id, $echo);
+}
+
+// Register custom navigation walker
+require_once('wp_bootstrap_navwalker.php');
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

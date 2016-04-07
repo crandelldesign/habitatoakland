@@ -18,6 +18,36 @@ gulp.task('sass', function() {
          .pipe(gulp.dest('library/css/')); 
 });
 
+gulp.task('editor-sass', function() {
+    return gulp.src('library/sass/editor-style.scss')
+        .pipe(sourcemaps.init())
+         .pipe(sass({
+             outputStyle: 'compressed'
+         }) .on('error', sass.logError))
+        .pipe(sourcemaps.write())
+         .pipe(gulp.dest('library/css/')); 
+});
+
+gulp.task('ie-sass', function() {
+    return gulp.src('library/sass/ie.scss')
+        .pipe(sourcemaps.init())
+         .pipe(sass({
+             outputStyle: 'compressed'
+         }) .on('error', sass.logError))
+        .pipe(sourcemaps.write())
+         .pipe(gulp.dest('library/css/')); 
+});
+
+gulp.task('login-sass', function() {
+    return gulp.src('library/sass/login.scss')
+        .pipe(sourcemaps.init())
+         .pipe(sass({
+             outputStyle: 'compressed'
+         }) .on('error', sass.logError))
+        .pipe(sourcemaps.write())
+         .pipe(gulp.dest('library/css/')); 
+});
+
 gulp.task('js', function(){
     return gulp.src(['library/js/jquery-1.12.2.js', 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'])
         .pipe(concat('scripts.js'))
@@ -42,7 +72,8 @@ gulp.task('copy-bootstrap', function () {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('library/sass/*.scss', ['sass']);
+    gulp.watch('library/sass/**/.scss', ['sass']);
     gulp.watch('library/js/*.js', ['js']);
 });
 
-gulp.task('default', ['sass', 'js', 'copy-font-awesome', 'copy-bootstrap'], function(){});
+gulp.task('default', ['sass', 'editor-sass', 'ie-sass', 'login-sass', 'js', 'copy-font-awesome', 'copy-bootstrap'], function(){});

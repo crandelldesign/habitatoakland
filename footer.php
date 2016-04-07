@@ -1,30 +1,43 @@
-			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
-
-				<div id="inner-footer" class="wrap cf">
-
-					<nav role="navigation">
-						<?php wp_nav_menu(array(
-    					'container' => 'div',                           // enter '' to remove nav container (just make sure .footer-links in _base.scss isn't wrapping)
-    					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-    					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-    					'theme_location' => 'footer-links',             // where it's located in the theme
-    					'before' => '',                                 // before the menu
-    					'after' => '',                                  // after the menu
-    					'link_before' => '',                            // before each link
-    					'link_after' => '',                             // after each link
-    					'depth' => 0,                                   // limit the depth of the nav
-    					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
-						)); ?>
-					</nav>
-
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
-
-				</div>
-
-			</footer>
-
 		</div>
+
+    	<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        150 Osmun<br>
+                        Pontiac, MI 48342<br>
+                        (248) 338-1843
+                    </div>
+                    <div class="col-sm-4">
+                        Office Hours:<br>
+                        Mon. - Fri.<br>
+                        9:00 AM- 5:00 PM
+                    </div>
+                    <div class="col-sm-4">
+                        ReStore Hours:<br>
+                        Tue. - Sat.<br>
+                        9:00 AM - 5:00 PM<br>
+                        (248) 338-8392
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-muted">&copy; 2016 <?php bloginfo( 'name' ); ?>.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-inline pull-right">
+                            <li><a href="#"><i class="fa fa-facebook-square fa-lg"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter-square fa-lg"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus-square fa-lg"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+                            <li><a href="#"><i class="fa fa-flickr fa-lg"></i></a></li>
+                        </ul>
+                    </div>
+            </div>
+        </footer>
+		
 
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>

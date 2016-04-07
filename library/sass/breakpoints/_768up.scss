@@ -42,11 +42,11 @@ NAVIGATION STYLES
 .nav {
 	border: 0;
 	ul {
-		background:$black;
-		margin-top:0;
+		//background:$black;
+		//margin-top:0;
 	}
 	li {
-		float: left;
+		//float: left;
 		position: relative;
 
 		a {
@@ -70,21 +70,21 @@ NAVIGATION STYLES
 		*/
 		ul.sub-menu,
 		ul.children {
-			margin-top: 0;
+			/*margin-top: 0;
 			border: 1px solid #ccc;
 			border-top: 0;
 			position: absolute;
 			visibility: hidden;
-			z-index: 8999;
+			z-index: 8999;*/
 
 			li {
 
 				a {
-					padding-left: 10px;
+					/*padding-left: 10px;
 					border-right: 0;
 					display: block;
 					width: 180px;
-					border-bottom: 1px solid #ccc;
+					border-bottom: 1px solid #ccc;*/
 
 					&:hover,
 					&:focus {}
@@ -107,8 +107,8 @@ NAVIGATION STYLES
 				for usability. k, bai.
 				*/
 				ul {
-					top:0;
-					left:100%;
+					/*top:0;
+					left:100%;*/
 				}
 			}
 
@@ -122,8 +122,8 @@ NAVIGATION STYLES
 
 		/* showing sub-menus */
 		&:hover > ul {
-			top: auto;
-			visibility:visible;
+			/*top: auto;
+			visibility:visible;*/
 		}
 
 	} /* end .menu ul li */
@@ -142,7 +142,7 @@ SIDEBARS & ASIDES
 *********************/
 
 .sidebar {
-	margin-top: 2.2em;
+	//margin-top: 2.2em;
 }
 
 	.widgettitle {
@@ -152,8 +152,8 @@ SIDEBARS & ASIDES
 
 	.widget {
 		padding: 0 10px;
-		margin: 2.2em 0;
-
+		//margin: 2.2em 0;
+		margin-bottom: 2.2em;
 		ul {
 			li {
 				margin-bottom: 0.75em;
