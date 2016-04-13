@@ -298,4 +298,8 @@ function get_my_excerpt($excerpt_length = 55, $id = false, $echo = false) {
 // Register custom navigation walker
 require_once('wp_bootstrap_navwalker.php');
 
+register_nav_menus( array(
+    'primary' => __( 'Primary Menu', 'bones' ),
+) );
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

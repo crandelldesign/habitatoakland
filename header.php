@@ -53,56 +53,19 @@
                     </button>
                     <a class="navbar-brand" href="<?php echo home_url(); ?>" itemscope itemtype="http://schema.org/Organization"><img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.png" class="img-responsive logo" alt="<?php bloginfo( 'name' ); ?>"></a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donate <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Mailed Check</a></li>
-                                <li><a href="#">Online</a></li>
-                                <li><a href="#">Cars For Homes</a></li>
-                                <li><a href="#">ReStore</a></li>
-                                <li><a href="#">Payroll Deductions/Matching Gifts</a></li>
-                                <li><a href="#">Third-Party Event Fundraising</a></li>
-                                <li><a href="#">Bequests and Estate Planning</a></li>
-                                <li><a href="#">Gift-in-kind</a></li>
-                                <li><a href="#">Donor Stories</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volunteer <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Volunteer Calendar</a></li>
-                                <li><a href="#">Get Invloved</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">ReStore</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Us <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">History and Our Future</a></li>
-                                <li><a href="#">Vision</a></li>
-                                <li><a href="#">Mission</a></li>
-                                <li><a href="#">Executive Director Message</a></li>
-                                <li><a href="#">Where We Work</a></li>
-                                <li><a href="#">General Explanation</a></li>
-                                <li><a href="#">Board of Directors</a></li>
-                                <li><a href="#">Staff</a></li>
-                                <li><a href="#">Employment</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Homeownership &amp; Home Repair <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Homeownership Program</a></li>
-                                <li><a href="#">Critical Home Repair Program</a></li>
-                                <li><a href="#">Partnerships</a></li>
-                                <li><a href="#">Partner Homeowner Stories</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <?php
+                    wp_nav_menu( array(
+                        'menu'              => 'primary',
+                        'theme_location'    => 'primary',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => 'collapse navbar-collapse',
+                        'container_id'      => 'navbar',
+                        'menu_class'        => 'nav navbar-nav',
+                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                        'walker'            => new wp_bootstrap_navwalker())
+                    );
+                ?>
             </div>
         </nav>
 
