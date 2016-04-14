@@ -347,6 +347,12 @@ hr {
             }
         }
     }
+    .dropdown-menu > li > a {
+        padding: 4px 25px;
+        @media (min-width: $screen-lg-min) {
+            font-size: 16px;
+        }
+    }
 }
 
 /* Page */
