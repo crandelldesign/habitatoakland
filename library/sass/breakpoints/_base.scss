@@ -80,11 +80,11 @@ LINK STYLES
 *********************/
 
 a, a:visited {
-	color: $link-color;
+	//color: $link-color;
 
 	/* on hover */
 	&:hover, &:focus {
-		color: $link-hover;
+		//color: $link-hover;
 	}
 
 	/* on click */
@@ -99,7 +99,7 @@ a, a:visited {
 		so it basically works like the :hover selector
 		for mobile devices.
 		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+		//-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
 	}
 }
 
