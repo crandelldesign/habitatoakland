@@ -329,13 +329,13 @@ hr {
     }
     .navbar-nav > li > a {
         @media (min-width: $screen-sm-min) {
+            padding: 45px 14px;
             padding-top: 45px;
             padding-bottom: 45px;
         }
         @media (min-width: $screen-lg-min) {
+            padding: 45px 15px;
             font-size: 18px;
-            padding-top: 45px;
-            padding-bottom: 45px;
         }
     }
     .navbar-nav > li {
