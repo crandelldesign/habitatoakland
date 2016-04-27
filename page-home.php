@@ -17,9 +17,9 @@
 
 
     		<div class="main-buttons-desktop visible-xs-block">
-                    <a href="#" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
-                    <a href="#" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
-                    <a href="#" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
+                    <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
+                    <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
+                    <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
                 </div>
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -90,9 +90,9 @@
     		</div>
     		<div class="col-sm-4">
     			<div class="main-buttons-desktop hidden-xs">
-                    <a href="#" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
-                    <a href="#" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
-                    <a href="#" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
+                    <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
+                    <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
+                    <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
                 </div>
 
                 <div class="recent-news margin-bottom-35">
