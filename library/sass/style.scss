@@ -358,6 +358,12 @@ hr {
             font-size: 16px;
         }
     }
+    @media (min-width: $screen-sm-min) {
+    .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; // remove the gap so it doesn't close
+        }
+    }
 }
 /* Display SVG Logo */
 html.svg .navbar .navbar-brand {
