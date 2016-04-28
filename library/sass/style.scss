@@ -311,7 +311,7 @@ hr {
     .navbar-toggle {
         border-radius: 2px;
         border-color: $blue;
-        margin-top: 40px;
+        margin-top: 20px;
         .icon-bar {
             background-color: $blue;
         }
@@ -335,6 +335,10 @@ hr {
             padding: 28px 14px;
         }
         @media (min-width: $screen-lg-min) {
+            padding: 28px 10px;
+            font-size: 18px;
+        }
+        @media (min-width: 1300px) {
             padding: 28px 15px;
             font-size: 18px;
         }
