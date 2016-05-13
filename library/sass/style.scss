@@ -177,7 +177,7 @@ h1, .h1 {
         font-size: 40px;
     }
 }
-h2, .h2 {
+h2, .h2, .gform_wrapper h2.gsection_title {
     color: $green;
     font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 25px;
@@ -186,7 +186,7 @@ h2, .h2 {
         font-size: 30px;
     }
 }
-h3, .h3 {
+h3, .h3, .gform_wrapper .subsection h2.gsection_title {
     color: $blue;
     font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 20px;
@@ -195,10 +195,13 @@ h3, .h3 {
         font-size: 24px;
     }
 }
-h4, .h4 {
+h4, .h4, .gform_wrapper .h4 h2.gsection_title {
 	color: $blue;
     font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-weight: 600;
+}
+.gform_wrapper .h4 h2.gsection_title {
+    font-size: 18px;
 }
 a {
     color: $darkblue;
@@ -272,6 +275,12 @@ hr {
 .margin-bottom-10 {
     margin-bottom: 10px;
 }
+.margin-right-10 {
+    margin-right: 10px;
+}
+.margin-bottom-15 {
+    margin-bottom: 15px;
+}
 .margin-bottom-25 {
     margin-bottom: 25px;
 }
@@ -295,8 +304,13 @@ hr {
     border-radius: 0;
     margin-bottom: 30px;
     .navbar-brand {
-        padding: 10px 15px;
-        height: 75px;
+        padding: 10px 15px 10px 15px;
+        max-width: 75%;
+        min-height: 75px;
+        @media (min-width: $screen-sm-min) {
+            padding: 10px 15px;
+            height: 75px;
+        }
         img {
             height: 100%;
             width: auto;
@@ -312,6 +326,7 @@ hr {
         border-radius: 2px;
         border-color: $blue;
         margin-top: 20px;
+        margin-bottom: 20px;
         .icon-bar {
             background-color: $blue;
         }
@@ -352,10 +367,31 @@ hr {
             }
         }
     }
-    .dropdown-menu > li > a {
-        padding: 4px 25px;
-        @media (min-width: $screen-lg-min) {
-            font-size: 16px;
+    .navbar-nav > li.active, .navbar-nav > li.current-menu-ancestor, .nav li.open, .navbar-nav > li:hover {
+        > a {
+            background-color: $green;
+            color: #FFF;
+        }
+    }
+    .dropdown-menu {
+        @media (min-width: $screen-sm-min) {
+            width: 275px;
+            border-color: $green;
+            border-bottom-right-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        > li > a {
+            padding: 4px 25px;
+            white-space: normal;
+            @media (min-width: $screen-lg-min) {
+                font-size: 16px;
+            }
+        }
+        > li.active, > li:hover {
+            a {
+                background-color: $darkblue;
+                color: #FFF;
+            }
         }
     }
     @media (min-width: $screen-sm-min) {
@@ -380,7 +416,7 @@ html.svg .navbar .navbar-brand {
     @include page-width();
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     > .row {
         margin-left: -20px;
         margin-right: -20px;
@@ -389,12 +425,36 @@ html.svg .navbar .navbar-brand {
             padding-right: 20px;
         }
     }
+    p {
+        @media (min-width: $screen-sm-min) {
+            margin: 0 0 15px;
+        }
+    }
 }
 .partner-heading {
     font-size: 16px;
 }
-.main-img {
+.main-img, .slideshow_container .slideshow_content, .page-content article img, .page-content article .embed-responsive {
     box-shadow: $z1-shadow;
+    &.no-shadow {
+        box-shadow: none;
+    }
+}
+.page-content {
+    .img-left {
+        margin-bottom: 15px;
+        @media (min-width: $screen-sm-min) {
+            float: left;
+            margin-right: 15px;
+        }
+    }
+    .img-right {
+        margin-bottom: 15px;
+        @media (min-width: $screen-sm-min) {
+            float: right;
+            margin-left: 15px;
+        }
+    }
 }
 .events-carousel {
     .carousel-caption {
@@ -449,4 +509,16 @@ html.svg .navbar .navbar-brand {
 /* Total Donations */
 .mg_giving-text-perk {
     display: none;
+}
+
+/* Staff Page */
+.img-staff {
+    border: 3px solid $gray;
+    margin: 0 10px;
+    box-shadow: $z1-shadow;
+    max-width: 140px;
+}
+.img-staff-full {
+    border: 3px solid $gray;
+    box-shadow: $z1-shadow;
 }

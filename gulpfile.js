@@ -22,7 +22,11 @@ gulp.task('editor-sass', function() {
     return gulp.src('library/sass/editor-style.scss')
         .pipe(sourcemaps.init())
          .pipe(sass({
-             outputStyle: 'compressed'
+             outputStyle: 'compressed',
+             includePaths: [
+                 'node_modules/bootstrap-sass/assets/stylesheets/',
+                'node_modules/font-awesome/scss/'
+             ]
          }) .on('error', sass.logError))
         .pipe(sourcemaps.write())
          .pipe(gulp.dest('library/css/')); 

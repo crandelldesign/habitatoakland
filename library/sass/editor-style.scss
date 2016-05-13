@@ -31,6 +31,9 @@ body#tinymce.wp-editor {
 	// import mixins
 	@import "partials/mixins";
 
+	@import 'bootstrap';
+	@import 'font-awesome';
+
 	width: 731px;
 	font-family: $roboto;
 	font-size: 100%;

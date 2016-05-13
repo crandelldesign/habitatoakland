@@ -3,17 +3,20 @@
     	<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-2 col-md-1 hidden-xs">
+                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" class="EHL">
+                    </div>
+                    <div class="col-sm-3 margin-bottom-10">
                         150 Osmun<br>
                         Pontiac, MI 48342<br>
                         (248) 338-1843
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3 margin-bottom-10">
                         Office Hours:<br>
                         Mon. - Fri.<br>
                         9:00 AM- 5:00 PM
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3 margin-bottom-10">
                         ReStore Hours:<br>
                         Tue. - Sat.<br>
                         9:00 AM - 5:00 PM<br>
@@ -35,6 +38,10 @@
                             <li><a href="#"><i class="fa fa-flickr fa-lg"></i></a></li>
                         </ul>
                     </div>
+                </div>
+                <div class="visible-xs-block row">
+                    <div class="col-xs-6 col-xs-offset-3"><img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" class="EHL"></div>
+                </div>
             </div>
         </footer>
 		
