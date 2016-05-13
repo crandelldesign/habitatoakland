@@ -380,6 +380,9 @@ hr {
             border-bottom-right-radius: 2px;
             border-bottom-left-radius: 2px;
         }
+        @media (min-width: $screen-sm-min) {
+            width: 325px;
+        }
         > li > a {
             padding: 4px 25px;
             white-space: normal;
