@@ -75,13 +75,13 @@
 
 				<!-- Get Events -->
 				<?php query_posts('cat='.$eventsId.'&posts_per_page=3'); ?>
-				<h2>Events</h2>
-        		<div class="row">
+				<h2>Events &nbsp;&nbsp;&nbsp;<a href="<?php echo home_url(); ?>/category/event/" class="btn btn-gray">View All Events &raquo;</a></h2>
+        		<div class="row margin-bottom-10">
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="col-md-4">
-						<h3><?php the_title() ;?></h3>
+						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title() ;?></a></h3>
 					   	<p><?php my_excerpt(30); ?></p>
-					   	<p><a class="btn btn-sm btn-gray" href="<?php echo wp_get_shortlink(); ?>" role="button">View details &raquo;</a></p>
+					   	<p><a class="btn btn-sm btn-gray" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 				   	</div>
 				<?php endwhile; endif; ?>
 				<?php wp_reset_query(); ?>
@@ -99,11 +99,12 @@
             		<h2>Recent News</h2>
                 	<?php query_posts(array('category__not_in' => array($eventsId))); ?>
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-						<h3><?php the_title(); ?></h3>
+						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h3>
 						<p><?php my_excerpt(30); ?></p>
-					   	<p><a class="btn btn-sm btn-lightblue" href="<?php echo wp_get_shortlink(); ?>" role="button">View details &raquo;</a></p>
+					   	<p><a class="btn btn-sm btn-lightblue" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 					<?php endwhile; endif; ?>
 					<?php wp_reset_query(); ?>
+                    <p class="text-center"><a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ) ?>" class="btn btn-blue">View All News</a></p>
 				</div>
     		</div>
     	</div>

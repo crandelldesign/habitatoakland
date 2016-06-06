@@ -219,6 +219,7 @@ a {
     box-shadow: $z2-shadow;
 }
 .btn-blue {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $blue;
     color: #FFF;
     &:hover {
@@ -227,6 +228,7 @@ a {
     }
 }
 .btn-green {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $green;
     color: #FFF;
     &:hover {
@@ -235,6 +237,7 @@ a {
     }
 }
 .btn-gray {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $gray;
     color: #FFF;
     &:hover {
@@ -243,6 +246,7 @@ a {
     }
 }
 .btn-darkblue {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $darkblue;
     color: #FFF;
     &:hover {
@@ -251,6 +255,7 @@ a {
     }
 }
 .btn-lightblue {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $lightblue;
     color: #FFF;
     &:hover {
@@ -367,7 +372,7 @@ hr {
             }
         }
     }
-    .navbar-nav > li.active, .navbar-nav > li.current-menu-ancestor, .nav li.open, .navbar-nav > li:hover {
+    .navbar-nav > li.active, .navbar-nav > li.current-page-ancestor, .nav li.open, .navbar-nav > li:hover {
         > a {
             background-color: $green;
             color: #FFF;
@@ -402,6 +407,10 @@ hr {
             display: block;
             margin-top: 0; // remove the gap so it doesn't close
         }
+    }
+    .navbar-nav > li:last-child .dropdown-menu {
+        left: auto;
+        right: 0;
     }
 }
 /* Display SVG Logo */

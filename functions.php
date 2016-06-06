@@ -248,12 +248,12 @@ add_action('wp_enqueue_scripts', 'bones_fonts');
 function social_media_shortcode() {
   // Code
   return '<ul class="list-inline margin-bottom-25">
-          <li><a href="#"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-          <li><a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-          <li><a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-          <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
-          <li><a href="#"><i class="fa fa-flickr fa-2x"></i></a></li>
+          <li><a href="https://www.facebook.com/HabitatforHumanityOC?ref=ts&fref=ts" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+          <li><a href="https://twitter.com/@buildhabitatoc" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+          <li><a href="https://www.linkedin.com/company/habitat-for-humanity-oakland-county" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+          <!--<li><a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a></li>-->
+          <li><a href="https://www.instagram.com/habitatoakland/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+          <li><a href="https://www.flickr.com/photos/132443299@N02/" target="_blank"><i class="fa fa-flickr fa-2x"></i></a></li>
       </ul>';
 }
 add_shortcode( 'social_media', 'social_media_shortcode' );
