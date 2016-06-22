@@ -218,6 +218,9 @@ a {
 .btn-lg {
     box-shadow: $z2-shadow;
 }
+.btn-xl {
+    font-size: 22px;
+}
 .btn-blue {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $blue;
@@ -276,22 +279,24 @@ hr {
         margin-bottom: 35px;
     }
 }
-/* Spacing */
-.margin-bottom-10 {
-    margin-bottom: 10px;
+/* Spacing Elements */
+@mixin generate-spacing-classes(
+    $default-space-amounts-with-direction: (5 left left, 10 left left, 15 left left, 25 left left, 30 left left, 35 left left)
+) {
+    @each $space in $default-space-amounts-with-direction {
+        .margin-#{nth($space, 3)}-#{nth($space, 1)} {
+            margin-#{nth($space, 2)}: #{nth($space, 1)}px;
+        }
+    }
 }
-.margin-right-10 {
-    margin-right: 10px;
-}
-.margin-bottom-15 {
-    margin-bottom: 15px;
-}
-.margin-bottom-25 {
-    margin-bottom: 25px;
-}
-.margin-bottom-35 {
-    margin-bottom: 35px;
-}
+$right-space-vars: (5 right right, 10 right right, 15 right right, 25 right right, 30 right right, 35 right right);
+$bottom-space-vars: (5 bottom bottom, 10 bottom bottom, 15 bottom bottom, 25 bottom bottom, 30 bottom bottom, 35 bottom bottom);
+$top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 top top);
+
+@include generate-spacing-classes(); // left comes by default
+@include generate-spacing-classes($right-space-vars);
+@include generate-spacing-classes($bottom-space-vars);
+@include generate-spacing-classes($top-space-vars);
 
 /* Header and Navigation */
 .header {
@@ -443,6 +448,10 @@ html.svg .navbar .navbar-brand {
         }
     }
 }
+h1.page-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 .partner-heading {
     font-size: 16px;
 }
@@ -516,6 +525,18 @@ html.svg .navbar .navbar-brand {
 			}
 		}
 	}
+}
+.vertical-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    > li {
+        > a {
+            padding: 8px 15px 8px 0;
+            display: block;
+            font-size: 18px;
+        }
+    }
 }
 
 /* Total Donations */
@@ -614,5 +635,21 @@ html.svg .navbar .navbar-brand {
         }
 
         // [converter] extracted textarea& to textarea.form-control
+    }
+}
+
+/* ReStore Page */
+body.page-restore {
+    h1.page-title {
+        background-image: url("../images/HFHOC-ReStore-logo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 75px;
+        @include text-hide();
+    }
+    .btn-donate-today {
+        @media (min-width: $screen-sm-min) {
+            margin-top: -69px;
+        }
     }
 }
