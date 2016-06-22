@@ -7,49 +7,49 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('sass', function() {
 	return gulp.src('library/sass/style.scss')
         .pipe(sourcemaps.init())
-         .pipe(sass({
-             outputStyle: 'compressed',
-             includePaths: [
-                 'node_modules/bootstrap-sass/assets/stylesheets/',
+        .pipe(sass({
+            outputStyle: 'compressed',
+            includePaths: [
+                'node_modules/bootstrap-sass/assets/stylesheets/',
                 'node_modules/font-awesome/scss/'
-             ]
-         }) .on('error', sass.logError))
-        .pipe(sourcemaps.write())
-         .pipe(gulp.dest('library/css/')); 
+            ]
+        }) .on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('library/css/')); 
 });
 
 gulp.task('editor-sass', function() {
     return gulp.src('library/sass/editor-style.scss')
         .pipe(sourcemaps.init())
-         .pipe(sass({
-             outputStyle: 'compressed',
-             includePaths: [
-                 'node_modules/bootstrap-sass/assets/stylesheets/',
+        .pipe(sass({
+            outputStyle: 'compressed',
+            includePaths: [
+                'node_modules/bootstrap-sass/assets/stylesheets/',
                 'node_modules/font-awesome/scss/'
-             ]
-         }) .on('error', sass.logError))
-        .pipe(sourcemaps.write())
-         .pipe(gulp.dest('library/css/')); 
+            ]
+        }) .on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('library/css/')); 
 });
 
 gulp.task('ie-sass', function() {
     return gulp.src('library/sass/ie.scss')
         .pipe(sourcemaps.init())
-         .pipe(sass({
-             outputStyle: 'compressed'
-         }) .on('error', sass.logError))
-        .pipe(sourcemaps.write())
-         .pipe(gulp.dest('library/css/')); 
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }) .on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('library/css/')); 
 });
 
 gulp.task('login-sass', function() {
     return gulp.src('library/sass/login.scss')
         .pipe(sourcemaps.init())
-         .pipe(sass({
-             outputStyle: 'compressed'
-         }) .on('error', sass.logError))
-        .pipe(sourcemaps.write())
-         .pipe(gulp.dest('library/css/')); 
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('library/css/')); 
 });
 
 gulp.task('js', function(){
