@@ -637,6 +637,54 @@ h1.page-title {
         // [converter] extracted textarea& to textarea.form-control
     }
 }
+.newsletter-signup {
+    input, input[type="email"] {
+        border-radius: 0;
+        position: relative;
+    }
+    input[type="email"] {
+        z-index: 10;
+    }
+    .top_label input.large {
+        width: 100%;
+    }
+    label.gfield_label+div.ginput_container {
+        margin-top: 0 !important;
+    }
+    .top_label .gfield_label {
+        display: none;
+    }
+    .gform_body, .gform_footer {
+        float: left;
+        clear: none;
+    }
+    .gform_footer.top_label {
+        margin: 0;
+        padding: 0;
+        .gform_button.button {
+            margin-left: -1px;
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            background-color: $darkblue;
+            color: #FFF;
+            border-radius: 2px;
+            padding: 6px 12px 7px 12px;
+            font-size: 14px;
+            line-height: 1.42857;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            background-image: none;
+            border: 1px solid rgba(0, 0, 0, 0);
+            white-space: nowrap;
+            &:hover {
+                background-color: lighten($blue, 5);
+                color: #FFF;
+            }
+        }
+    }
+}
 
 /* ReStore Page */
 body.page-restore {

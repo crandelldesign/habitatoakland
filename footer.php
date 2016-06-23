@@ -1,10 +1,10 @@
 		</div>
 
-    	<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+    	<footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-2 col-md-1 hidden-xs">
-                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" class="EHL">
+                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" alt="EHL">
                     </div>
                     <div class="col-sm-2 margin-bottom-10">
                         150 Osmun<br>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="visible-xs-block row">
-                    <div class="col-xs-6 col-xs-offset-3"><img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" class="EHL"></div>
+                    <div class="col-xs-6 col-xs-offset-3"><img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" alt="EHL"></div>
                 </div>
             </div>
         </footer>

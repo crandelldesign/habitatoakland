@@ -80,7 +80,7 @@
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="col-md-4">
 						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title() ;?></a></h3>
-					   	<p><?php my_excerpt(30); ?></p>
+					   	<?php my_excerpt(30); ?>
 					   	<p><a class="btn btn-sm btn-gray" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 				   	</div>
 				<?php endwhile; endif; ?>
@@ -100,7 +100,7 @@
                 	<?php query_posts(array('category__not_in' => array($eventsId))); ?>
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h3>
-						<p><?php my_excerpt(30); ?></p>
+						<?php my_excerpt(30); ?>
 					   	<p><a class="btn btn-sm btn-lightblue" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 					<?php endwhile; endif; ?>
 					<?php wp_reset_query(); ?>
