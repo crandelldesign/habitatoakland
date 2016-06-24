@@ -266,6 +266,12 @@ a {
         color: #FFF;
     }
 }
+.large-green-btn {
+    padding: 15px 25px;
+    white-space: normal;
+    font-size: 18px;
+    font-weight: bold;
+}
 .input-group {
     .btn, .form-control {
         box-shadow: none;
@@ -681,6 +687,24 @@ h1.page-title {
             &:hover {
                 background-color: lighten($blue, 5);
                 color: #FFF;
+            }
+        }
+    }
+}
+
+/* Panel */
+.panel-default {
+    box-shadow: $z1-shadow;
+    > .panel-heading {
+        background-color: $blue;
+        &:hover {
+            background-color: lighten($blue, 5);
+            color: #FFF;
+        }
+        a {
+            color: #FFF;
+            &:focus {
+                text-decoration: none;
             }
         }
     }
