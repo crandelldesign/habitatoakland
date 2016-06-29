@@ -272,6 +272,30 @@ a {
     font-size: 18px;
     font-weight: bold;
 }
+.btn-img {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    background-color: $green;
+    color: #FFF;
+    border: 0;
+    box-shadow: $z2-shadow;
+    white-space: normal;
+    max-width: 219px;
+    &:hover {
+        background-color: lighten($green, 5);
+        color: #FFF;
+    }
+    span {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 18px;
+    }
+    img {
+        box-shadow: none !important;
+    }
+}
 .input-group {
     .btn, .form-control {
         box-shadow: none;
