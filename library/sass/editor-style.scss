@@ -19,6 +19,10 @@ body#tinymce.wp-editor {
 	// normalize: http://necolas.github.io/normalize.css/
 	//@import "partials/normalize";
 
+	/* Habitat for Humanity Imports and Parials */
+	@import 'mixins';
+	@import 'variables';
+
 	// Sass variables
 	@import "partials/variables";
 
@@ -35,7 +39,7 @@ body#tinymce.wp-editor {
 	@import 'font-awesome';
 
 	width: 731px;
-	font-family: $roboto;
+	font-family: $crimson-text;
 	font-size: 100%;
 	line-height: 1.5;
 	color: $text-color;

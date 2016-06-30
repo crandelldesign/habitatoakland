@@ -20,6 +20,10 @@ understand (what's inside the media queries). We also need to
 import the mixins file so SASS can understand the variables.
 ******************************************************************/
 
+/* Habitat for Humanity Imports and Parials */
+@import 'mixins';
+@import 'variables';
+
 @import "partials/variables"; // import variables
 @import "partials/typography"; // import typography
 @import "partials/mixins"; // import mixins

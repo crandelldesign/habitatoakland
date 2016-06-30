@@ -23,6 +23,10 @@ our mixins, functions, and variables that we'll be using across
 the whole project.
 *********************/
 
+/* Habitat for Humanity Imports and Parials */
+@import 'mixins';
+@import 'variables';
+
 // normalize: http://necolas.github.io/normalize.css/
 //@import "partials/normalize";
 
@@ -146,12 +150,9 @@ be set to display none.
 
 }
 
-/* Habitat for Humanity of Oakland County 2016 */
-
+/* Import Third Part Sass Files */
 @import 'bootstrap';
 @import 'font-awesome';
-@import 'mixins';
-@import 'variables';
 
 /* Body Styles */
 html {
@@ -165,12 +166,15 @@ body {
 
 /* Typography and Colors */
 body {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: $black;
+    @media (min-width: $screen-sm-min) {
+        font-size: 17px;
+    }
 }
 h1, .h1 {
     color: $blue;
-    font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 30px;
     font-weight: 400;
     @media (min-width: $screen-sm-min) {
@@ -179,7 +183,7 @@ h1, .h1 {
 }
 h2, .h2, .gform_wrapper h2.gsection_title {
     color: $green;
-    font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 25px;
     font-weight: 600;
     @media (min-width: $screen-sm-min) {
@@ -188,7 +192,7 @@ h2, .h2, .gform_wrapper h2.gsection_title {
 }
 h3, .h3, .gform_wrapper .subsection h2.gsection_title {
     color: $blue;
-    font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 20px;
     font-weight: 600;
     @media (min-width: $screen-sm-min) {
@@ -197,7 +201,7 @@ h3, .h3, .gform_wrapper .subsection h2.gsection_title {
 }
 h4, .h4, .gform_wrapper .h4 h2.gsection_title {
 	color: $blue;
-    font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-weight: 600;
 }
 .gform_wrapper .h4 h2.gsection_title {
@@ -214,6 +218,7 @@ a {
 .btn, .form-control {
     border-radius: 2px;
     box-shadow: $z1-shadow;
+    font-family: $sans-serif;
 }
 .btn-lg {
     box-shadow: $z2-shadow;
@@ -222,7 +227,7 @@ a {
     font-size: 22px;
 }
 .btn-blue {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $blue;
     color: #FFF;
     &:hover {
@@ -231,7 +236,7 @@ a {
     }
 }
 .btn-green {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $green;
     color: #FFF;
     &:hover {
@@ -240,7 +245,7 @@ a {
     }
 }
 .btn-gray {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $gray;
     color: #FFF;
     &:hover {
@@ -249,7 +254,7 @@ a {
     }
 }
 .btn-darkblue {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $darkblue;
     color: #FFF;
     &:hover {
@@ -258,7 +263,7 @@ a {
     }
 }
 .btn-lightblue {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     background-color: $lightblue;
     color: #FFF;
     &:hover {
@@ -343,6 +348,7 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
     box-shadow: $z3-shadow;
     border-radius: 0;
     margin-bottom: 30px;
+    font-family: $sans-serif;
     .navbar-brand {
         padding: 10px 15px 10px 15px;
         max-width: 75%;
@@ -693,7 +699,7 @@ h1.page-title {
         padding: 0;
         .gform_button.button {
             margin-left: -1px;
-            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            //font-family: 'Roboto', Arial, Helvetica, sans-serif;
             background-color: $darkblue;
             color: #FFF;
             border-radius: 2px;

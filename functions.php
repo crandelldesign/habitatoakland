@@ -239,9 +239,8 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_enqueue_style('googleFonts', 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+  wp_enqueue_style('googleFonts', 'https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Crimson+Text:400,400italic,600,600italic,700italic,700');
 }
-
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
 // Add Social Media Shortcode
