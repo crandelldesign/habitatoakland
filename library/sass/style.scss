@@ -296,6 +296,9 @@ a {
         width: 100%;
         padding: 5px;
         font-size: 18px;
+        &:first-child {
+            min-height: 60px;
+        }
     }
     img {
         box-shadow: none !important;
@@ -526,6 +529,17 @@ h1.page-title {
         width: 10%;
     }
 }
+.featured-img {
+    &.width-850 {
+        max-width: 850px;
+    }
+    &.width-750 {
+        max-width: 750px;
+    }
+    &.width-640 {
+        max-width: 640px;
+    }
+}
 
 /* Footer */
 .footer {
@@ -593,7 +607,7 @@ h1.page-title {
 }
 
 /* Form */
-.page-content article .gform_footer input[type=submit].gform_button.button {
+.gform_footer input[type=submit].gform_button.button {
     background-color: #007cb1;
     color: #FFF;
     border-radius: 2px;
@@ -672,54 +686,115 @@ h1.page-title {
 
         // [converter] extracted textarea& to textarea.form-control
     }
+    .gfield_checkbox li input, .gfield_checkbox li input[type=checkbox], .gfield_radio li input[type=radio] {
+        margin-top: -4px !important;
+        margin-right: 5px;
+    }
+    li.gsection {
+        border: 0;
+        h2 {
+            padding-bottom: 10px !important;
+            border-bottom: 1px solid $gray;
+        }
+    }
 }
-.newsletter-signup {
-    input, input[type="email"] {
-        border-radius: 0;
-        position: relative;
-    }
-    input[type="email"] {
-        z-index: 10;
-    }
-    .top_label input.large {
-        width: 100%;
-    }
-    label.gfield_label+div.ginput_container {
-        margin-top: 0 !important;
-    }
-    .top_label .gfield_label {
-        display: none;
-    }
-    .gform_body, .gform_footer {
-        float: left;
-        clear: none;
-    }
-    .gform_footer.top_label {
-        margin: 0;
-        padding: 0;
-        .gform_button.button {
-            margin-left: -1px;
-            //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-            background-color: $darkblue;
-            color: #FFF;
-            border-radius: 2px;
-            padding: 6px 12px 7px 12px;
-            font-size: 14px;
-            line-height: 1.42857;
-            margin-bottom: 0;
-            font-weight: normal;
-            text-align: center;
-            vertical-align: middle;
-            touch-action: manipulation;
-            background-image: none;
-            border: 1px solid rgba(0, 0, 0, 0);
-            white-space: nowrap;
-            &:hover {
-                background-color: lighten($blue, 5);
+.newsletter-signup_wrapper {
+    margin: 10px 0;
+    .newsletter-signup {
+        overflow: hidden;
+        .gform_heading {
+            display: none;
+        }
+        input, input[type="email"] {
+            border-radius: 0;
+            position: relative;
+        }
+        input[type="email"] {
+            z-index: 10;
+        }
+        .top_label input.large {
+            width: 100%;
+        }
+        label.gfield_label+div.ginput_container {
+            margin-top: 0 !important;
+        }
+        .top_label .gfield_label {
+            display: none;
+        }
+        .gform_body, .gform_footer {
+            float: left;
+            clear: none;
+        }
+        .gform_body {
+            ul li.gfield {
+                margin-top: 0;
+                margin-right: 0;
+                padding-right: 0;
+            }
+        }
+        .gform_footer.top_label {
+            margin: 0;
+            padding: 0;
+            .gform_button.button {
+                margin-left: -1px;
+                //font-family: 'Roboto', Arial, Helvetica, sans-serif;
+                background-color: $darkblue;
                 color: #FFF;
+                border-radius: 2px;
+                padding: 7px 12px 7px 12px;
+                font-size: 14px;
+                line-height: 1.42857;
+                margin-bottom: 0;
+                font-weight: normal;
+                text-align: center;
+                vertical-align: middle;
+                touch-action: manipulation;
+                background-image: none;
+                border: 1px solid rgba(0, 0, 0, 0);
+                white-space: nowrap;
+                box-shadow: none;
+                &:hover {
+                    background-color: lighten($blue, 5);
+                    color: #FFF;
+                }
             }
         }
     }
+}
+@media (min-width: $screen-sm-min) {
+    .gform_wrapper.two-column_wrapper ul.gform_fields.gform-column {
+        display: block;
+        float: left;
+        width: 50%;
+        //margin-left: -15px !important;
+        //margin-right: -15px !important;
+        li {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+    .gform_wrapper.two-column_wrapper ul.gform_fields.gform-column-full {
+        display: block;
+        clear: both;
+        width: 100%;
+        overflow: hidden;
+        li {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+}
+.gform_wrapper.two-column_wrapper ul.gform_fields {
+    display: none;
+}
+.gform_wrapper.two-column_wrapper li.gsection.empty, 
+.gform_wrapper.two-column_wrapper li.gform-column-full, 
+.gform_wrapper.two-column_wrapper li.gform-column {
+    display: none;
 }
 
 /* Panel */
@@ -753,5 +828,16 @@ body.page-restore {
         @media (min-width: $screen-sm-min) {
             margin-top: -69px;
         }
+    }
+}
+
+/* Women Build Page */
+body.page-women-build {
+    h1.page-title {
+        background-image: url("../images/HFHOC-women-build-logo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 109px;
+        @include text-hide();
     }
 }

@@ -96,15 +96,14 @@
                 </div>
 
                 <div class="recent-news margin-bottom-35">
-            		<h2>Recent News</h2>
-                	<?php query_posts(array('category__not_in' => array($eventsId))); ?>
+            		<h2>Recent News &nbsp;&nbsp;&nbsp;<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ) ?>" class="btn btn-blue">View All News &raquo;</a></h2>
+                	<?php query_posts(array('category__not_in' => array($eventsId),'posts_per_page' => 4)); ?>
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h3>
 						<?php my_excerpt(30); ?>
 					   	<p><a class="btn btn-sm btn-lightblue" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 					<?php endwhile; endif; ?>
 					<?php wp_reset_query(); ?>
-                    <p class="text-center"><a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ) ?>" class="btn btn-blue">View All News</a></p>
 				</div>
     		</div>
     	</div>

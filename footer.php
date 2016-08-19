@@ -18,20 +18,21 @@
                     </div>
                     <div class="col-sm-2 margin-bottom-10">
                         <p><strong>Pontiac ReStore</strong><br>
-                        Hours: Tues. - Sat. <br>9 a.m. to 5 p.m.</p>
+                        Hours: Thurs. - Sat. <br>10 a.m. to 5:30 p.m.</p>
 
-                        <address>150 Osmun Street<br>
-                        Pontiac, MI 48342<br>
-                        Phone: 248-338-8392</address>
+                        <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">150 Osmun Street</span><br>
+                        <span itemprop="addressLocality">Pontiac</span>, <span itemprop="addressRegion">MI</span> <span itemprop="postalCode">48342</span><br>
+                        Donate/Pick-Up Call <a href="tel:1-248-338-8392" itemprop="telephone">248-338-8392</a></address>
                     </div>
                     <div class="col-sm-2 margin-bottom-10">
                         <p><strong>Farmington ReStore</strong><br>
-                        Hours: Mon. - Sat. <br>9 a.m. to 5 p.m.</p>
+                        Hours: Wed. - Sat. <br>10 a.m. to 5:30 p.m.</p>
 
-                        <address>28575 Grand River Ave.<br>
-                        Farmington, MI 48336<br>
-                        Phone: 248-442-2267</address>
+                        <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">28575 Grand River Ave.</span><br>
+                        <span itemprop="addressLocality">Farmington</span>, <span itemprop="addressRegion">MI</span> <span itemprop="postalCode">48336</span><br>
+                        Donate/Pick-Up Call <a href="tel:1-248-442-2267" itemprop="telephone">248-442-2267</a></address>
                     </div>
+
                 </div>
 
                 <div class="row">
