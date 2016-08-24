@@ -22,7 +22,8 @@
 
                         <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">150 Osmun Street</span><br>
                         <span itemprop="addressLocality">Pontiac</span>, <span itemprop="addressRegion">MI</span> <span itemprop="postalCode">48342</span><br>
-                        Donate/Pick-Up Call <a href="tel:1-248-338-8392" itemprop="telephone">248-338-8392</a></address>
+                        <a href="tel:1-248-338-8392" itemprop="telephone">248-338-8392</a><br>
+                        Donate/Pick-Up Call <a href="tel:1-248-365-4090" itemprop="telephone">248-365-4090</a></address>
                     </div>
                     <div class="col-sm-2 margin-bottom-10">
                         <p><strong>Farmington ReStore</strong><br>
@@ -30,7 +31,8 @@
 
                         <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">28575 Grand River Ave.</span><br>
                         <span itemprop="addressLocality">Farmington</span>, <span itemprop="addressRegion">MI</span> <span itemprop="postalCode">48336</span><br>
-                        Donate/Pick-Up Call <a href="tel:1-248-442-2267" itemprop="telephone">248-442-2267</a></address>
+                        <a href="tel:1-248-442-2267" itemprop="telephone">248-442-2267</a><br>
+                        Donate/Pick-Up Call <a href="tel:1-248-365-4090" itemprop="telephone">248-365-4090</a></address>
                     </div>
 
                 </div>

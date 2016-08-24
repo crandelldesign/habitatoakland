@@ -395,15 +395,30 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
         }
     }
     .navbar-nav > li > a {
+        @media (max-width: $screen-sm-min) {
+            small {
+                display: none;
+            }
+        }
         @media (min-width: $screen-sm-min) {
-            padding: 28px 10px;
+            padding: 25px 10px;
+            text-align: center;
+            small {
+                display: none;
+            }
         }
         @media (min-width: $screen-lg-min) {
-            padding: 28px 10px;
+            padding: 25px 10px 0 10px;
             font-size: 16px;
+            height: 80px;
+            small {
+                display: block;
+                font-size: 10px;
+                line-height: normal;
+            }
         }
         @media (min-width: 1300px) {
-            padding: 28px 15px;
+            padding: 25px 12px 0 12px;
             font-size: 17px;
         }
     }
@@ -773,6 +788,15 @@ h1.page-title {
             padding-right: 15px;
             margin-left: 0 !important;
             margin-right: 0 !important;
+            &.gform-column-third {
+                display: block;
+                float: left;
+                width: 30%;
+                clear: none;
+                &:nth-child(3n) {
+                    clear: both;
+                }
+            }
         }
     }
     .gform_wrapper.two-column_wrapper ul.gform_fields.gform-column-full {
