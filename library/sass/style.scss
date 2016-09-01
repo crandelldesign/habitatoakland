@@ -793,7 +793,7 @@ h1.page-title {
                 float: left;
                 width: 30%;
                 clear: none;
-                &:nth-child(3n) {
+                &:nth-child(3n+1) {
                     clear: both;
                 }
             }
@@ -809,6 +809,15 @@ h1.page-title {
             padding-right: 15px;
             margin-left: 0 !important;
             margin-right: 0 !important;
+            &.gform-column-third {
+                display: block;
+                float: left;
+                width: 30%;
+                clear: none;
+                &:nth-child(3n+1) {
+                    clear: both;
+                }
+            }
         }
     }
 }
