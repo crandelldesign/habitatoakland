@@ -287,6 +287,9 @@ a {
     box-shadow: $z2-shadow;
     white-space: normal;
     max-width: 219px;
+    &.btn-block {
+        max-width: none;
+    }
     &:hover {
         background-color: lighten($green, 5);
         color: #FFF;
@@ -302,6 +305,13 @@ a {
     }
     img {
         box-shadow: none !important;
+    }
+    .img-holder {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100px;
+        background-position: center center;
     }
 }
 .input-group {

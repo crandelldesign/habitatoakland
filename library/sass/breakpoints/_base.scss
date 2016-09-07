@@ -759,7 +759,7 @@ COMMENT FORM STYLES
 ******************************************************************/
 
 .comment-respond {
-	@extend .cf;
+	//@extend .cf;
 	padding: 1.5em;
 	border-top: 1px solid $light-gray;
 }
