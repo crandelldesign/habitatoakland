@@ -294,6 +294,14 @@ a {
         background-color: lighten($green, 5);
         color: #FFF;
     }
+    &.btn-blue {
+        background-color: $blue;
+        color: #FFF;
+        &:hover {
+            background-color: lighten($blue, 5);
+            color: #FFF;
+        }
+    }
     span {
         display: block;
         width: 100%;
@@ -564,6 +572,9 @@ h1.page-title {
     &.width-640 {
         max-width: 640px;
     }
+    &.width-400 {
+        max-width: 400px;
+    }
 }
 
 /* Footer */
@@ -749,6 +760,7 @@ h1.page-title {
         .gform_body, .gform_footer {
             float: left;
             clear: none;
+            width: auto;
         }
         .gform_body {
             ul li.gfield {
@@ -832,10 +844,10 @@ h1.page-title {
     }
 }
 .gform_wrapper.two-column_wrapper ul.gform_fields {
-    display: none;
+    /*display: none;*/
 }
-.gform_wrapper.two-column_wrapper li.gsection.empty, 
-.gform_wrapper.two-column_wrapper li.gform-column-full, 
+.gform_wrapper.two-column_wrapper li.gsection.empty,
+.gform_wrapper.two-column_wrapper li.gform-column-full,
 .gform_wrapper.two-column_wrapper li.gform-column {
     display: none;
 }

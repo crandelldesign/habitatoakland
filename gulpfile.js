@@ -53,10 +53,11 @@ gulp.task('login-sass', function() {
 });
 
 gulp.task('js', function(){
-    return gulp.src(['library/js/jquery-1.12.2.js', 'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'])
-        .pipe(concat('scripts.js'))
+    return gulp.src(['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js','library/js/default.js'])
+    //return gulp.src(['node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'])
+        .pipe(concat('default.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('library/js'));
+        .pipe(gulp.dest('library/js/min'));
 });
 
 // Copy Font Awesome Fonts

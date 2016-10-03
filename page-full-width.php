@@ -19,18 +19,7 @@
 
 							<article id="post-<?php the_ID(); ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-								<?php if( get_field('header') ): ?>
-									<div class="row">
-										<div class="col-sm-6">
-											<h1 class="page-title"><?php the_title(); ?></h1>
-										</div>
-										<div class="col-sm-6">
-											<?php the_field('header'); ?>
-										</div>
-									</div>
-								<?php else: ?>
-									<h1 class="page-title"><?php the_title(); ?></h1>
-								<?php endif; ?>
+								<h1 class="page-title"><?php the_title(); ?></h1>
 
 								<section itemprop="articleBody">
 									<?php
