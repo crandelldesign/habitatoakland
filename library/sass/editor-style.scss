@@ -115,7 +115,7 @@ body#tinymce.wp-editor {
 
 		table {
 			width: 100%;
-			border: 1px solid $gray;
+			border: 1px solid $jumbogray;
 			margin-bottom: 1.5em;
 
 			caption {
@@ -128,7 +128,7 @@ body#tinymce.wp-editor {
 		}
 
 		tr {
-			border-bottom: 1px solid $gray;
+			border-bottom: 1px solid $jumbogray;
 			&:nth-child(even) {
 				background-color: $light-gray;
 			}
@@ -136,7 +136,7 @@ body#tinymce.wp-editor {
 
 		td {
 			padding: 7px;
-			border-right: 1px solid $gray;
+			border-right: 1px solid $jumbogray;
 
 			&:last-child {
 				border-right: 0;
@@ -145,8 +145,8 @@ body#tinymce.wp-editor {
 
 		th {
 			background-color: $light-gray;
-			border-bottom: 1px solid $gray;
-			border-right: 1px solid $gray;
+			border-bottom: 1px solid $jumbogray;
+			border-right: 1px solid $jumbogray;
 
 			&:last-child {
 				border-right: 0;
@@ -156,7 +156,7 @@ body#tinymce.wp-editor {
 		blockquote {
 			margin: 0 0 1.5em 0.75em;
 			padding: 0 0 0 0.75em;
-			border-left: 3px solid $blue;
+			border-left: 3px solid $bahamablue;
 			font-style: italic;
 			color: $meta-gray;
 

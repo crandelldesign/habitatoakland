@@ -115,14 +115,14 @@ new image size.
 
 /************* THEME CUSTOMIZE *********************/
 
-/* 
+/*
   A good tutorial for creating your own Sections, Controls and Settings:
   http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
-  
+
   Good articles on modifying the default options:
   http://natko.com/changing-default-wordpress-theme-customization-api-sections/
   http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
-  
+
   To do:
   - Create a js for the postmessage transport method
   - Create some sanitize functions to sanitize inputs
@@ -132,7 +132,7 @@ new image size.
 function bones_theme_customizer($wp_customize) {
   // $wp_customize calls go here.
   //
-  // Uncomment the below lines to remove the default customize sections 
+  // Uncomment the below lines to remove the default customize sections
 
   // $wp_customize->remove_section('title_tagline');
   // $wp_customize->remove_section('colors');
@@ -142,7 +142,7 @@ function bones_theme_customizer($wp_customize) {
 
   // Uncomment the below lines to remove the default controls
   // $wp_customize->remove_control('blogdescription');
-  
+
   // Uncomment the following to change the default section titles
   // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
   // $wp_customize->get_section('background_image')->title = __( 'Images' );
@@ -245,23 +245,50 @@ add_action('wp_enqueue_scripts', 'bones_fonts');
 
 // Add Social Media Shortcode
 function social_media_shortcode() {
-  // Code
-  return '<ul class="list-inline margin-bottom-25">
-          <li><a href="https://www.facebook.com/HabitatforHumanityOC?ref=ts&fref=ts" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-          <li><a href="https://twitter.com/@buildhabitatoc" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-          <li><a href="https://www.linkedin.com/company/habitat-for-humanity-oakland-county" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-          <!--<li><a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a></li>-->
-          <li><a href="https://www.instagram.com/habitatoakland/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
-          <li><a href="https://www.flickr.com/photos/132443299@N02/" target="_blank"><i class="fa fa-flickr fa-2x"></i></a></li>
-      </ul>';
+    // Code
+    return '<ul class="list-inline margin-bottom-25">
+            <li><a href="https://www.facebook.com/HabitatforHumanityOC?ref=ts&fref=ts" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href="https://twitter.com/@buildhabitatoc" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/habitat-for-humanity-oakland-county" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+            <li><a href="https://plus.google.com/u/0/b/103131641179733973708/?pageId=103131641179733973708" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href="https://www.instagram.com/habitatoakland/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+            <li><a href="https://www.flickr.com/photos/132443299@N02/" target="_blank"><i class="fa fa-flickr fa-2x"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCushl9LrGy6mFhPjbEcXbpA" target="_blank"><i class="fa fa-youtube-square fa-2x" aria-hidden="true"></i></a></li>
+        </ul>';
 }
 add_shortcode( 'social_media', 'social_media_shortcode' );
 
+// Add Pontiac Restore Social Media Shortcode
+function pontiac_restore_social_media_shortcode() {
+    // Code
+    return '<ul class="list-inline margin-bottom-25">
+            <li><a href="https://www.facebook.com/restorepontiac/?fref=ts" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="https://twitter.com/RestorePontiac" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="http://www.linkedin.com/company/12903889?trk=tyah&trkInfo=clickedVertical%3Ashowcase%2CclickedEntityId%3A12903889%2Cidx%3A2-1-2%2CtarId%3A1475516898676%2Ctas%3AReStore%20Pontiac" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="https://plus.google.com/u/0/b/112175553785285138336/?pageId=112175553785285138336" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCvRhWxE0j7Sw_JcCoucPZiw" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+        </ul>';
+}
+add_shortcode( 'pontiac_restore_social_media', 'pontiac_restore_social_media_shortcode' );
+
+// Add Farmington Restore Social Media Shortcode
+function farmington_restore_social_media_shortcode() {
+    // Code
+    return '<ul class="list-inline margin-bottom-25">
+            <li><a href="https://www.facebook.com/restorefarmington/?fref=ts" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="https://twitter.com/ReStoreFrmgton" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="http://www.linkedin.com/company/restore-farmington?trk=biz-brand-tree-co-name" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="https://plus.google.com/u/0/b/103537744017941926285/" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCvRhWxE0j7Sw_JcCoucPZiw" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+        </ul>';
+}
+add_shortcode( 'farmington_restore_social_media', 'farmington_restore_social_media_shortcode' );
+
 // Custom Excerpt
 function my_excerpt($excerpt_length = 55, $id = false, $echo = true) {
-    
+
     $text = '';
-        
+
     if($id) {
         $the_post = & get_post( $my_id = $id );
         $text = ($the_post->post_excerpt) ? $the_post->post_excerpt : $the_post->post_content;
@@ -269,12 +296,12 @@ function my_excerpt($excerpt_length = 55, $id = false, $echo = true) {
         global $post;
         $text = ($post->post_excerpt) ? $post->post_excerpt : get_the_content('');
     }
-        
+
     $text = strip_shortcodes( $text );
     $text = apply_filters('the_content', $text);
     $text = str_replace(']]>', ']]&gt;', $text);
     $text = strip_tags($text);
-      
+
     $excerpt_more = ' ' . '...';
     $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
     if ( count($words) > $excerpt_length ) {

@@ -156,12 +156,6 @@ be set to display none.
 
 /* Body Styles */
 html {
-    position: relative;
-    min-height: 100%;
-}
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: $footer-height;
 }
 
 /* Typography and Colors */
@@ -169,11 +163,11 @@ body {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: $black;
     @media (min-width: $screen-sm-min) {
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 h1, .h1 {
-    color: $blue;
+    color: $bahamablue;
     //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 30px;
     font-weight: 400;
@@ -182,25 +176,25 @@ h1, .h1 {
     }
 }
 h2, .h2, .gform_wrapper h2.gsection_title {
-    color: $green;
+    color: $apple;
     //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 700;
     @media (min-width: $screen-sm-min) {
         font-size: 30px;
     }
 }
 h3, .h3, .gform_wrapper .subsection h2.gsection_title {
-    color: $blue;
+    color: $bahamablue;
     //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     @media (min-width: $screen-sm-min) {
         font-size: 24px;
     }
 }
 h4, .h4, .gform_wrapper .h4 h2.gsection_title {
-	color: $blue;
+	color: $bahamablue;
     //font-family: 'Crimson Text', "Times New Roman", Times, serif;
     font-weight: 600;
 }
@@ -208,9 +202,9 @@ h4, .h4, .gform_wrapper .h4 h2.gsection_title {
     font-size: 18px;
 }
 a {
-    color: $darkblue;
-    &:hover {
-        color: $lightblue;
+    color: $deepcerulean;
+    &:hover, &.hover {
+        color: $cornflower;
         text-decoration: none;
     }
 }
@@ -228,46 +222,46 @@ a {
 }
 .btn-blue {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: $blue;
+    background-color: $bahamablue;
     color: #FFF;
     &:hover {
-        background-color: lighten($blue, 5);
+        background-color: lighten($bahamablue, 5);
         color: #FFF;
     }
 }
 .btn-green {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: $green;
+    background-color: $apple;
     color: #FFF;
     &:hover {
-        background-color: lighten($green, 5);
+        background-color: lighten($apple, 5);
         color: #FFF;
     }
 }
 .btn-gray {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: $gray;
+    background-color: $jumbogray;
     color: #FFF;
     &:hover {
-        background-color: lighten($gray, 5);
+        background-color: lighten($jumbogray, 5);
         color: #FFF;
     }
 }
 .btn-darkblue {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: $darkblue;
+    background-color: $deepcerulean;
     color: #FFF;
     &:hover {
-        background-color: lighten($darkblue, 5);
+        background-color: lighten($deepcerulean, 5);
         color: #FFF;
     }
 }
 .btn-lightblue {
     //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-color: $lightblue;
+    background-color: $cornflower;
     color: #FFF;
     &:hover {
-        background-color: lighten($lightblue, 5);
+        background-color: lighten($cornflower, 5);
         color: #FFF;
     }
 }
@@ -281,7 +275,7 @@ a {
     padding-left: 0;
     padding-right: 0;
     position: relative;
-    background-color: $green;
+    background-color: $apple;
     color: #FFF;
     border: 0;
     box-shadow: $z2-shadow;
@@ -291,14 +285,14 @@ a {
         max-width: none;
     }
     &:hover {
-        background-color: lighten($green, 5);
+        background-color: lighten($apple, 5);
         color: #FFF;
     }
     &.btn-blue {
-        background-color: $blue;
+        background-color: $bahamablue;
         color: #FFF;
         &:hover {
-            background-color: lighten($blue, 5);
+            background-color: lighten($bahamablue, 5);
             color: #FFF;
         }
     }
@@ -329,7 +323,7 @@ a {
     }
 }
 hr {
-    border-top: 1px solid $gray;
+    border-top: 1px solid $jumbogray;
     @media (min-width: $screen-md-min) {
         margin-top: 35px;
         margin-bottom: 35px;
@@ -365,7 +359,7 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
 .navbar {
     background-color: #FFF;
     border: 0;
-    border-bottom: 1px solid $green;
+    border-bottom: 1px solid $apple;
     box-shadow: $z3-shadow;
     border-radius: 0;
     margin-bottom: 30px;
@@ -391,14 +385,14 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
     }
     .navbar-toggle {
         border-radius: 2px;
-        border-color: $blue;
+        border-color: $bahamablue;
         margin-top: 20px;
         margin-bottom: 20px;
         .icon-bar {
-            background-color: $blue;
+            background-color: $bahamablue;
         }
         &:hover, &:focus {
-            background-color: $blue;
+            background-color: $bahamablue;
             .icon-bar {
                 background-color: #FFF;
             }
@@ -413,52 +407,35 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
         }
     }
     .navbar-nav > li > a {
-        @media (max-width: $screen-sm-min) {
-            small {
-                display: none;
-            }
-        }
+        font-size: 16px;
         @media (min-width: $screen-sm-min) {
-            padding: 25px 10px;
+            padding: 27px 10px;
             text-align: center;
-            small {
-                display: none;
-            }
-        }
-        @media (min-width: $screen-lg-min) {
-            padding: 25px 10px 0 10px;
-            font-size: 16px;
-            height: 80px;
-            small {
-                display: block;
-                font-size: 10px;
-                line-height: normal;
-            }
         }
         @media (min-width: 1300px) {
-            padding: 25px 12px 0 12px;
+            /*padding: 25px 12px 0 12px;*/
             font-size: 17px;
         }
     }
     .navbar-nav > li {
         > a {
-            color: $darkblue;
+            color: $deepcerulean;
             &:hover {
-                background-color: $green;
+                background-color: $apple;
                 color: #FFF;
             }
         }
     }
     .navbar-nav > li.active, .navbar-nav > li.current-page-ancestor, .nav li.open, .navbar-nav > li:hover {
         > a {
-            background-color: $green;
+            background-color: $apple;
             color: #FFF;
         }
     }
     .dropdown-menu {
         @media (min-width: $screen-sm-min) {
             width: 275px;
-            border-color: $green;
+            border-color: $apple;
             border-bottom-right-radius: 2px;
             border-bottom-left-radius: 2px;
         }
@@ -474,7 +451,7 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
         }
         > li.active, > li:hover {
             a {
-                background-color: $darkblue;
+                background-color: $deepcerulean;
                 color: #FFF;
             }
         }
@@ -579,12 +556,9 @@ h1.page-title {
 
 /* Footer */
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    height: $footer-height;
     box-shadow: $top-z2-shadow;
-    border-top: 1px solid $green;
+    border-top: 1px solid $apple;
     font-size: 12px;
     > .container-fluid {
         @include page-width();
@@ -592,6 +566,9 @@ h1.page-title {
     }
     p {
         margin-bottom: 2px;
+    }
+    @media (min-width: $screen-sm-min) {
+        font-size: 14px;
     }
 }
 
@@ -625,6 +602,35 @@ h1.page-title {
     }
 }
 
+/* Color Swatches */
+.color-swatch {
+    height: 100px;
+    @include shadow-3();
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 5px solid #FFF;
+    color: #FFF;
+    background-color: #eee;
+    &.swatch1 {
+        background-color: $bahamablue;
+    }
+    &.swatch2 {
+        background-color: $apple;
+    }
+    &.swatch3 {
+        background-color: $jumbogray;
+    }
+    &.swatch4 {
+        background-color: $cornflower;
+    }
+    &.swatch5 {
+        background-color: $deepcerulean;
+    }
+}
+.details {
+    color: $text-muted;
+}
+
 /* Total Donations */
 .mg_giving-text-perk {
     display: none;
@@ -632,13 +638,13 @@ h1.page-title {
 
 /* Staff Page */
 .img-staff {
-    border: 3px solid $gray;
+    border: 3px solid $jumbogray;
     margin: 0 10px;
     box-shadow: $z1-shadow;
     max-width: 140px;
 }
 .img-staff-full {
-    border: 3px solid $gray;
+    border: 3px solid $jumbogray;
     box-shadow: $z1-shadow;
 }
 
@@ -730,7 +736,7 @@ h1.page-title {
         border: 0;
         h2 {
             padding-bottom: 10px !important;
-            border-bottom: 1px solid $gray;
+            border-bottom: 1px solid $jumbogray;
         }
     }
 }
@@ -775,7 +781,7 @@ h1.page-title {
             .gform_button.button {
                 margin-left: -1px;
                 //font-family: 'Roboto', Arial, Helvetica, sans-serif;
-                background-color: $darkblue;
+                background-color: $deepcerulean;
                 color: #FFF;
                 border-radius: 2px;
                 padding: 7px 12px 7px 12px;
@@ -791,7 +797,7 @@ h1.page-title {
                 white-space: nowrap;
                 box-shadow: none;
                 &:hover {
-                    background-color: lighten($blue, 5);
+                    background-color: lighten($bahamablue, 5);
                     color: #FFF;
                 }
             }
@@ -856,9 +862,9 @@ h1.page-title {
 .panel-default {
     box-shadow: $z1-shadow;
     > .panel-heading {
-        background-color: $blue;
+        background-color: $bahamablue;
         &:hover {
-            background-color: lighten($blue, 5);
+            background-color: lighten($bahamablue, 5);
             color: #FFF;
         }
         a {
@@ -881,7 +887,7 @@ body.page-restore {
     }
     .btn-donate-today {
         @media (min-width: $screen-sm-min) {
-            margin-top: -69px;
+            //margin-top: -69px;
         }
     }
 }

@@ -20,7 +20,7 @@ body {
 	//font-size: 100%;
 	//line-height: 1.5;
 	//color: $text-color;
-	//background-color: $gray;
+	//background-color: $jumbogray;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -341,7 +341,7 @@ POSTS & CONTENT STYLES
 
 			table {
 				width: 100%;
-				border: 1px solid $gray;
+				border: 1px solid $jumbogray;
 				margin-bottom: 1.5em;
 
 				caption {
@@ -354,7 +354,7 @@ POSTS & CONTENT STYLES
 			}
 
 			tr {
-				border-bottom: 1px solid $gray;
+				border-bottom: 1px solid $jumbogray;
 
 				&:nth-child(even) {
 					background-color: $light-gray;
@@ -363,7 +363,7 @@ POSTS & CONTENT STYLES
 
 			td {
 				padding: 7px;
-				border-right: 1px solid $gray;
+				border-right: 1px solid $jumbogray;
 
 				&:last-child {
 					border-right: 0;
@@ -372,8 +372,8 @@ POSTS & CONTENT STYLES
 
 			th {
 				background-color: $light-gray;
-				border-bottom: 1px solid $gray;
-				border-right: 1px solid $gray;
+				border-bottom: 1px solid $jumbogray;
+				border-right: 1px solid $jumbogray;
 
 				&:last-child {
 					border-right: 0;
@@ -383,7 +383,7 @@ POSTS & CONTENT STYLES
 			blockquote {
 				margin: 0 0 1.5em 0.75em;
 				padding: 0 0 0 0.75em;
-				border-left: 3px solid $blue;
+				border-left: 3px solid $bahamablue;
 				font-style: italic;
 				color: $meta-gray;
 
@@ -514,7 +514,7 @@ PAGE NAVI STYLES
       float: left;
       display: inline;
       overflow: hidden;
-      border-right: 1px solid $gray;
+      border-right: 1px solid $jumbogray;
     }
 
     a, span {
@@ -527,10 +527,10 @@ PAGE NAVI STYLES
       padding: 0.75em;
       min-width: 1em;
       display: block;
-      color: $blue;
+      color: $bahamablue;
 
       &:hover, &:focus {
-      	background-color: $blue;
+      	background-color: $bahamablue;
       	color: $white;
       }
     }
