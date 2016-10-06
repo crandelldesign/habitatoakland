@@ -407,10 +407,14 @@ $top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 
         }
     }
     .navbar-nav > li > a {
-        font-size: 16px;
+        font-size: 15px;
         @media (min-width: $screen-sm-min) {
-            padding: 27px 10px;
+            padding: 15px 5px;
             text-align: center;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: 16px;
+            padding: 27px 10px;
         }
         @media (min-width: 1300px) {
             /*padding: 25px 12px 0 12px;*/
