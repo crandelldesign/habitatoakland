@@ -16,7 +16,7 @@
     		<div class="col-sm-8">
 
 
-    		<div class="main-buttons-desktop visible-xs-block">
+    		<div class="main-buttons-mobile visible-xs-block">
                     <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
                     <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
                     <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
@@ -65,8 +65,8 @@
 
 				<?php endif; ?>
 
-    			
-				<?php 
+
+				<?php
 					$eventsIdObj = get_category_by_slug('event');
 					$eventsId = $eventsIdObj->term_id;
 				?>
@@ -90,9 +90,9 @@
     		</div>
     		<div class="col-sm-4">
     			<div class="main-buttons-desktop hidden-xs">
-                    <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
-                    <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
-                    <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore<br><small>Donate/Pick-Up Call: 248-365-4090</small></a>
+                    <a href="<?php echo home_url(); ?>/donate/" class="btn btn-block btn-lightblue margin-bottom-10">Donate</a>
+                    <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-block btn-darkblue margin-bottom-10">Volunteer</a>
+                    <a href="<?php echo home_url(); ?>/restore/" class="btn btn-block btn-green margin-bottom-10">ReStore<br><small>Donate/Pick-Up Call: 248-365-4090</small></a>
                 </div>
 
                 <div class="recent-news margin-bottom-35">

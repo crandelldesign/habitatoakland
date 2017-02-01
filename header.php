@@ -53,8 +53,8 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo home_url(); ?>" itemscope itemtype="http://schema.org/Organization">
-                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.png" class="img-responsive logo" alt="<?php bloginfo( 'name' ); ?>">
-                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.svg" class="img-responsive logo svg" alt="<?php bloginfo( 'name' ); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.png" class="logo" alt="<?php bloginfo( 'name' ); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/habitatoakland-logo.svg" class="logo svg" alt="<?php bloginfo( 'name' ); ?>">
                     </a>
                 </div>
                 <?php
