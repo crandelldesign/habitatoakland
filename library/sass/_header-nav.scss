@@ -1,0 +1,160 @@
+/* Header and Navigation */
+.header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    > .container-fluid {
+        @include page-width();
+    }
+}
+.navbar {
+    background-color: #FFF;
+    border: 0;
+    border-bottom: 1px solid $apple;
+    box-shadow: $z3-shadow;
+    border-radius: 0;
+    margin-bottom: 30px;
+    font-family: $sans-serif;
+    .navbar-brand {
+        //padding: 10px 15px 10px 15px;
+        //max-width: 75%;
+        //min-height: 75px;
+        //padding: 0px;
+        @media (min-width: $screen-sm-min) {
+            //padding: 10px 15px;
+            //height: 75px;
+        }
+
+    }
+    > .container-fluid {
+        @include page-width();
+    }
+    .navbar-toggle {
+        border-radius: 2px;
+        border-color: $bahamablue;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .icon-bar {
+            background-color: $bahamablue;
+        }
+        &:hover, &:focus {
+            background-color: $bahamablue;
+            .icon-bar {
+                background-color: #FFF;
+            }
+        }
+    }
+    .navbar-header {
+        .logo {
+            margin: 0 auto;
+            max-width: 275px;
+        }
+        .logo {
+            /*height: 100%;
+            padding: 15px;
+            width: auto;*/
+        }
+        img.svg {
+            display: none;
+        }
+        @media (min-width: $screen-sm-min) {
+            float: none;
+            .navbar-brand {
+                display: block;
+                float: none;
+                height: auto;
+                margin-left: 0px;
+            }
+        }
+        @media (min-width: 1100px) {
+            float: left;
+            .navbar-brand {
+                float: left;
+                margin-left: -15px;
+            }
+        }
+    }
+    .navbar-nav {
+        margin-left: -15px;
+        @media (min-width: $screen-md-min) {
+            //float: right !important;
+            margin-left: 0;
+            margin-right: -15px;
+        }
+        @media (min-width: 1100px) {
+            float: right;
+        }
+    }
+    .navbar-nav > li > a {
+        font-size: 15px;
+        @media (min-width: $screen-sm-min) {
+            padding: 15px 5px;
+            text-align: center;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: 15px;
+            padding: 29px 10px;
+        }
+        @media (min-width: 1100px) {
+            /*padding: 25px 12px 0 12px;*/
+            font-size: 17px;
+        }
+    }
+    .navbar-nav > li {
+        > a {
+            color: $deepcerulean;
+            &:hover {
+                background-color: $apple;
+                color: #FFF;
+            }
+        }
+    }
+    .navbar-nav > li.active, .navbar-nav > li.current-page-ancestor, .nav li.open, .navbar-nav > li:hover {
+        > a {
+            background-color: $apple;
+            color: #FFF;
+        }
+    }
+    .dropdown-menu {
+        @media (min-width: $screen-sm-min) {
+            width: 275px;
+            border-color: $apple;
+            border-bottom-right-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        @media (min-width: $screen-sm-min) {
+            width: 325px;
+        }
+        > li > a {
+            padding: 4px 25px;
+            white-space: normal;
+            @media (min-width: $screen-lg-min) {
+                font-size: 16px;
+            }
+        }
+        > li.active, > li:hover {
+            a {
+                background-color: $deepcerulean;
+                color: #FFF;
+            }
+        }
+    }
+    @media (min-width: $screen-sm-min) {
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; // remove the gap so it doesn't close
+        }
+    }
+    .navbar-nav > li:last-child .dropdown-menu {
+        //left: auto;
+        //right: 0;
+    }
+}
+/* Display SVG Logo */
+html.svg .navbar .navbar-brand {
+    img {
+        display: none;
+    }
+    img.svg {
+        display: block;
+    }
+}
