@@ -16,10 +16,13 @@
     		<div class="col-sm-8">
 
 
-    		<div class="main-buttons-mobile visible-xs-block">
+                <div class="main-buttons-mobile visible-xs-block">
                     <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
                     <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
                     <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
+                </div>
+                <div class="main-search-mobile margin-bottom-10 visible-xs-block">
+                    <?php get_search_form(); ?>
                 </div>
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -89,6 +92,9 @@
 
     		</div>
     		<div class="col-sm-4">
+                <div class="main-search-desktop margin-bottom-10 hidden-xs">
+                    <?php get_search_form(); ?>
+                </div>
     			<div class="main-buttons-desktop hidden-xs">
                     <a href="<?php echo home_url(); ?>/donate/" class="btn btn-block btn-lightblue margin-bottom-10">Donate</a>
                     <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-block btn-darkblue margin-bottom-10">Volunteer</a>
