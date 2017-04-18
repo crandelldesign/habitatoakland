@@ -853,6 +853,14 @@ h1.page-title {
     }
 }
 
+// Newsletter Signup
+.newsletter-form {
+    max-width: 300px;
+    .btn {
+        padding: 6px 12px 6px 12px;
+    }
+}
+
 /* Home */
 .main-buttons-desktop .btn {
     @media (min-width: $screen-md-min) {

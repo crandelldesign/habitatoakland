@@ -58,3 +58,5 @@ temp/
 *.scssc
 
 /node_modules
+/vendor
+.env

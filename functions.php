@@ -8,6 +8,17 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, etc.
 */
 
+// Load Vendor
+require __DIR__.'/vendor/autoload.php';
+// Load Dotenv
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+// Load Contact Contact
+require_once __DIR__.'/vendor/constantcontact/constantcontact/src/Ctct/autoload.php';
+use Ctct\Components\Contacts\Contact;
+use Ctct\ConstantContact;
+use Ctct\Exceptions\CtctException;
+
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
 
@@ -337,5 +348,11 @@ function add_slug_body_class( $classes ) {
   return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+// Form Database Instert
+require get_template_directory() . '/inc/form-insert.php';
+
+// Newsletter Sign Up
+require get_template_directory() . '/inc/shortcode-newsletter-signup.php';
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
