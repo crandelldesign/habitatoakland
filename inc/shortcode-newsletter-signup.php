@@ -1,7 +1,10 @@
 <?php
 // Shortcode for Newsletter Signup
-function newsletter_signup_shortcode($newsletter_list)
+function newsletter_signup_shortcode($atts = array())
 {
+    extract( shortcode_atts( array(
+        'list' => 'master'
+    ), $atts ));
     $error   = false;
     $result  = '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,7 +36,12 @@ function newsletter_signup_shortcode($newsletter_list)
         if ($error == false) {
 
             // Add Data to Database
-            insertuser('Newsletter', $form_data);
+            if(has_action('ftd_insert_data')) {
+                do_action('ftd_insert_data','Newsletter', $form_data);
+            }
+
+            // Add Function to Add user to Constant Contact
+            // use $list
 
             //Success
             $result = '<p>Thanks for signing up for our newsletter. You\'re now subscribed to receive regular updates.</p>
@@ -54,6 +62,11 @@ function newsletter_signup_shortcode($newsletter_list)
     if ($error == false && $result != '') {
         $info = '<div class="alert alert-success">' . $result . '</div>';
     }
+
+    ob_start();
+        do_action('ftd_test');
+        $test = ob_get_contents();
+    ob_end_clean();
 
     $email_form = '<form class="newsletter-form" action="' . get_permalink() . '#newsletter" method="post">
         <div class="form-group' . ((isset($has_error['email']) && $has_error['email']) ? ' has-error' : '') . '">

@@ -349,10 +349,16 @@ function add_slug_body_class( $classes ) {
 }
 add_filter( 'body_class', 'add_slug_body_class' );
 
+// Recaptcha Verification
+require get_template_directory() . '/inc/recaptcha-verification.php';
+
 // Form Database Instert
 require get_template_directory() . '/inc/form-insert.php';
 
 // Newsletter Sign Up
 require get_template_directory() . '/inc/shortcode-newsletter-signup.php';
+
+// Homeownership Form
+require get_template_directory() . '/inc/shortcode-homeownership-form.php';
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
