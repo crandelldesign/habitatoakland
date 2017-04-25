@@ -14,7 +14,7 @@ function homeownership_form_shortcode()
         $required_fields = array(
             'fname', 'lname', 'address1', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'home_locations', 'current_housing_needs', 'affordability', 'willingness_to_partner', 'g-recaptcha-response'
         );
-        $result = var_dump($_POST);
+
         // Fetches everything that has been POSTed, sanitizes them and lets us use them as $form_data['field']
         foreach ($_POST as $field => $value) {
             if (is_array($value)) {
@@ -24,7 +24,65 @@ function homeownership_form_shortcode()
                 $value = stripslashes($value);
             }
             $form_data[$field] = strip_tags($value);
+
+            // Create Columns
+            switch ($field) {
+                case 'fname':
+                    $form_columns[$field] = 'First Name';
+                    break;
+                case 'lname':
+                    $form_columns[$field] = 'Last Name';
+                    break;
+                case 'address1':
+                    $form_columns[$field] = 'Address';
+                    break;
+                case 'address2':
+                    $form_columns[$field] = 'Address 2';
+                    break;
+                case 'city':
+                    $form_columns[$field] = 'City';
+                    break;
+                case 'state':
+                    $form_columns[$field] = 'State';
+                    break;
+                case 'zip':
+                    $form_columns[$field] = 'Zip Code';
+                    break;
+                case 'phone':
+                    $form_columns[$field] = 'Phone';
+                    break;
+                case 'email':
+                    $form_columns[$field] = 'Email';
+                    break;
+                case 'military_service':
+                    $form_columns[$field] = 'Military Service';
+                    break;
+                case 'how_did_you_hear':
+                    $form_columns[$field] = 'How did you hear about Habitat Oakland?';
+                    break;
+                case 'referrer_name':
+                    $form_columns[$field] = 'Referring Homeowner Name';
+                    break;
+                case 'receive_updates':
+                    $form_columns[$field] = 'I would like to receive updates';
+                    break;
+                case 'home_locations':
+                    $form_columns[$field] = 'Possible Home Locations';
+                    break;
+                case 'current_housing_needs':
+                    $form_columns[$field] = 'Current Housing Needs';
+                    break;
+                case 'affordability':
+                    $form_columns[$field] = 'Affordability';
+                    break;
+                case 'willingness_to_partner':
+                    $form_columns[$field] = 'Willingness to Partner';
+                    break;
+                default:
+                    $form_columns[$field] = '';
+            }
         }
+        //$result .= var_dump($form_columns);
         // Check for required fields
         foreach ($required_fields as $required_field) {
             $value = trim($form_data[$required_field]);
@@ -49,7 +107,7 @@ function homeownership_form_shortcode()
 
             // Add Data to Database
             if(has_action('ftd_insert_data')) {
-                do_action('ftd_insert_data','Homeownership Form', $form_data);
+                do_action('ftd_insert_data','Homeownership Form', $form_data, $form_columns);
             }
 
             // Build the Email
@@ -405,7 +463,7 @@ function homeownership_form_shortcode()
                 </label>
             </div>
         </div>
-        <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '>
+        <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
             <div class="g-recaptcha" data-sitekey="'.getenv('RECAPTCHA_SITEKEY').'"></div>
             ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">PCaptcha validation has failed.</span>' : '') . '
         </div>
