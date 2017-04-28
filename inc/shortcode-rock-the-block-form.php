@@ -205,7 +205,7 @@ function rock_the_block_form_shortcode()
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Matt Crandell <matt@crandelldesign.com>', // Use comma for 2nd email
+                'to'      => 'Matt Crandell <matt@crandelldesign.com>', 'Stephanie Osterland <stephanieo@habitatoakland.org>', 'Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
                 'subject' => 'New Form Entry: Rock the Block Form',
                 'text'    => 'Your mail does not support HTML',
                 'html'    => $htmlEmail
