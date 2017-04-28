@@ -353,12 +353,21 @@ add_filter( 'body_class', 'add_slug_body_class' );
 require get_template_directory() . '/inc/recaptcha-verification.php';
 
 // Form Database Instert
-require get_template_directory() . '/inc/form-insert.php';
+//require get_template_directory() . '/inc/form-insert.php';
 
 // Newsletter Sign Up
 require get_template_directory() . '/inc/shortcode-newsletter-signup.php';
 
 // Homeownership Form
 require get_template_directory() . '/inc/shortcode-homeownership-form.php';
+
+// Company Team Building Form
+require get_template_directory() . '/inc/shortcode-company-team-building-form.php';
+
+// Golf Signup Form
+require get_template_directory() . '/inc/shortcode-golf-signup-form.php';
+
+// Rock the Block Form
+require get_template_directory() . '/inc/shortcode-rock-the-block-form.php';
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

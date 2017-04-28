@@ -1,5 +1,5 @@
 <?php
-// Shortcode for Newsletter Signup
+// Shortcode for Homewonership Form
 use Mailgun\Mailgun;
 function homeownership_form_shortcode()
 {
@@ -79,7 +79,7 @@ function homeownership_form_shortcode()
                     $form_columns[$field] = 'Willingness to Partner';
                     break;
                 default:
-                    $form_columns[$field] = '';
+                    $form_columns[$field] = $field;
             }
         }
         //$result .= var_dump($form_columns);

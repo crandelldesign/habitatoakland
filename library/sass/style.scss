@@ -533,6 +533,13 @@ h1.page-title {
 }
 
 /* Form */
+label {
+    margin-bottom: 0;
+    &.sub-label {
+        font-size: 80%;
+    }
+}
+label
 .bootstrap-form {
     select,
     textarea,
@@ -834,6 +841,29 @@ h1.page-title {
 .gform_wrapper.two-column_wrapper li.gform-column {
     display: none;
 }
+
+/* Tables */
+.table.no-border {
+    >thead>tr>th,
+    >thead>tr>td,
+    >tbody>tr>th,
+    >tbody>tr>td,
+    >tfoot>tr>th,
+    >tfoot>tr>td {
+        border-top: 0;
+    }
+}
+.table.vertical-align-middle {
+    >thead>tr>th,
+    >thead>tr>td,
+    >tbody>tr>th,
+    >tbody>tr>td,
+    >tfoot>tr>th,
+    >tfoot>tr>td {
+        vertical-align: middle;
+    }
+}
+
 
 /* Panel */
 .panel-default {
