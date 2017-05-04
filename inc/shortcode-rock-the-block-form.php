@@ -12,7 +12,7 @@ function rock_the_block_form_shortcode()
     $result  = '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $required_fields = array(
-            'fname', 'lname', 'address1', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response'
+            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature'
         );
 
         //error_log( print_r( $_POST, true ) );
@@ -85,7 +85,7 @@ function rock_the_block_form_shortcode()
                     </tr>
                     <tr>
                         <th valign="top" align="left">Address: </th>
-                        <td>' . $form_data['address1'] . '<br>' . $form_data['address2'] . '</td>
+                        <td>' . $form_data['street_number'] . ' ' . $form_data['street'] . '<br>' . $form_data['address2'] . '</td>
                     </tr>
                     <tr>
                         <th valign="top" align="left">City: </th>
@@ -106,24 +106,48 @@ function rock_the_block_form_shortcode()
                     <tr>
                         <th valign="top" align="left">Email: </th>
                         <td>' . $form_data['email'] . '</td>
-                    </tr>';
-                    $dependent_count = count($form_data['dependent_name']);
-                    if ($dependent_count > 0) {
-                        $formDataEmail .= '<tr>
-                            <th valign="top" colspan="2">Dependents</th>
-                        </tr>';
-                    }
-                    for ($i=0; $i < $dependent_count; $i++) {
-                        $formDataEmail .= '<tr>
-                            <td>'.$form_data['dependent_name'][$i].'</td>
-                            <td>'.$form_data['dependent_dob'][$i].'</td>
-                        </tr>';
-                    }
-                $formDataEmail .= '<tr>
-                        <th valign="top">Military Service: </th>
-                        <td>' . $form_data['military_service'] . '<br><br></td>
                     </tr>
                     <tr>
+                        <th valign="top" align="left">Date of Birth: </th>
+                        <td>' . $form_data['dob'] . '</td>
+                    </tr>
+                    <tr>
+                        <th valign="top" colspan="2">Do you rent or own your home?</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">' . $form_data['rent_or_own'] . '<br><br></td>
+                    </tr>
+                    <tr>
+                        <th valign="top" colspan="2">How Long Have You Lived in Your Home?</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">' . $form_data['years_in_home'] . '<br><br></td>
+                    </tr>
+                    <tr>
+                        <th valign="top">Military Service: </th>
+                        <td>' . $form_data['military_service'] . '<br><br></td>
+                    </tr>';
+            if ($form_data['military_branch'] != '') {
+                $formDataEmail .= '<tr>
+                    <th valign="top" colspan="2">Which Branch of the Military?</th>
+                </tr>
+                <tr>
+                    <td colspan="2">' . $form_data['military_branch'] . '<br><br></td>
+                </tr>';
+            }
+                $dependent_count = count($form_data['dependent_name']);
+                if ($dependent_count > 0) {
+                    $formDataEmail .= '<tr>
+                        <th valign="top" colspan="2">Dependents</th>
+                    </tr>';
+                }
+                for ($i=0; $i < $dependent_count; $i++) {
+                    $formDataEmail .= '<tr>
+                        <td>'.$form_data['dependent_name'][$i].'</td>
+                        <td>'.$form_data['dependent_dob'][$i].'</td>
+                    </tr>';
+                }
+            $formDataEmail .= '<tr>
                         <th valign="top" colspan="2">Household Disability Status: </th>
                     </tr>
                     <tr>
@@ -135,15 +159,15 @@ function rock_the_block_form_shortcode()
                     <tr>
                         <td colspan="2">' . $form_data['how_did_you_hear'] . '<br><br></td>
                     </tr>';
-                if (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) {
-                    $formDataEmail .= '<tr>
+            if (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) {
+                $formDataEmail .= '<tr>
                         <th valign="top" colspan="2">Referring Homeowner Name</th>
                     </tr>
                     <tr>
                         <td colspan="2">' . $form_data['referrer_name'] . '<br><br></td>
                     </tr>';
-                }
-                $formDataEmail .= '<tr>
+            }
+            $formDataEmail .= '<tr>
                         <th valign="top" colspan="2">I would like to receive updates from Habitat Oakland</th>
                     </tr>
                     <tr>
@@ -160,8 +184,16 @@ function rock_the_block_form_shortcode()
                     </tr>
                     <tr>
                         <td colspan="2">' . $form_data['homeownership'] . '<br><br></td>
+                    </tr>';
+            if ($form_data['date_home_purchased'] != '') {
+                $formDataEmail .= '<tr>
+                        <th valign="top" colspan="2">What Date Did You Purchased Your Home?</th>
                     </tr>
                     <tr>
+                        <td colspan="2">' . $form_data['date_home_purchased'] . '<br><br></td>
+                    </tr>';
+            }
+            $formDataEmail .= '<tr>
                         <th valign="top" colspan="2">Ability to Pay</th>
                     </tr>
                     <tr>
@@ -254,7 +286,7 @@ function rock_the_block_form_shortcode()
     }
 
     $email_form = '<form class="golf-signup-form" action="' . get_permalink() . '" method="post">
-        <h2>Contact Info</h2>
+        <h2>Contact Information</h2>
         <div class="form-section">
             <label>Name</label>
             <div class="row">
@@ -276,34 +308,50 @@ function rock_the_block_form_shortcode()
         </div>
         <div class="form-section">
             <label>Address</label>
-            <div class="form-group' . ((isset($has_error['address1']) && $has_error['address1']) ? ' has-error' : '') . '">
-                <label class="sub-label control-label">Street Address*</label>
-                <input type="text" name="address1" class="form-control" placeholder="Street Address" value="' . (isset($form_data) ? $form_data['address1'] : '') . '">
-                ' . ((isset($has_error['address1']) && $has_error['address1']) ? '<span class="help-block">Please fill out your street address.</span>' : '') . '
-                <label class="sub-label control-label">Address Line 2</label>
-                <input type="text" name="address2" class="form-control" placeholder="Address Line 2" value="' . (isset($form_data) ? $form_data['address2'] : '') . '">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group' . ((isset($has_error['street_number']) && $has_error['street_number']) ? ' has-error' : '') . '">
+                        <label class="sub-label control-label">Street Number</label>
+                        <input type="text" name="street_number" class="form-control" placeholder="Street Number" value="' . (isset($form_data) ? $form_data['street_number'] : '') . '">
+                        ' . ((isset($has_error['street_number']) && $has_error['street_number']) ? '<span class="help-block">Please fill out your street number.</span>' : '') . '
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group' . ((isset($has_error['street']) && $has_error['street']) ? ' has-error' : '') . '">
+                        <label class="sub-label control-label">Street Name</label>
+                        <select type="text" name="street" class="form-control">
+                            <option value="Ferry" '.(isset($form_data) && ($form_data['street'] == 'Ferry') ? 'selected' : '').'>Ferry</option>
+                            <option value="Midway" '.(isset($form_data) && ($form_data['street'] == 'Midway') ? 'selected' : '').'>Midway</option>
+                            <option value="Wilson" '.(isset($form_data) && ($form_data['street'] == 'Wilson') ? 'selected' : '').'>Wilson</option>
+                            <option value="Central" '.(isset($form_data) && ($form_data['street'] == 'Central') ? 'selected' : '').'>Central</option>
+                        </select>
+                        ' . ((isset($has_error['street']) && $has_error['street']) ? '<span class="help-block">Please select out your street name.</span>' : '') . '
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label class="sub-label control-label">Address Line 2</label>
+                    <input type="text" name="address2" class="form-control" placeholder="Address Line 2" value="' . (isset($form_data) ? $form_data['address2'] : '') . '">
+                </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group' . ((isset($has_error['city']) && $has_error['city']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">City*</label>
-                        <input type="text" name="city" class="form-control" placeholder="City" value="' . (isset($form_data) ? $form_data['city'] : '') . '">
+                        <input type="text" name="city" class="form-control" placeholder="City" value="Pontiac" readonly>
                         ' . ((isset($has_error['city']) && $has_error['city']) ? '<span class="help-block">Please fill out your city.</span>' : '') . '
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group' . ((isset($has_error['state']) && $has_error['state']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">State*</label>
-                        <input type="text" name="state" class="form-control" placeholder="State" value="' . (isset($form_data) ? $form_data['state'] : '') . '">
+                        <input type="text" name="state" class="form-control" placeholder="State" value="MI" readonly>
                         ' . ((isset($has_error['state']) && $has_error['state']) ? '<span class="help-block">Please fill out your state.</span>' : '') . '
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group' . ((isset($has_error['zip']) && $has_error['zip']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Zip Code*</label>
-                        <input type="text" name="zip" class="form-control" placeholder="Zip Code" value="' . (isset($form_data) ? $form_data['zip'] : '') . '">
+                        <input type="text" name="zip" class="form-control" placeholder="Zip Code" value="48341" readonly>
                         ' . ((isset($has_error['zip']) && $has_error['zip']) ? '<span class="help-block">Please fill out your zip code.</span>' : '') . '
                     </div>
                 </div>
@@ -325,8 +373,70 @@ function rock_the_block_form_shortcode()
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group' . ((isset($has_error['dob']) && $has_error['dob']) ? ' has-error' : '') . '">
+                    <label class="control-label">Date of Birth</label>
+                    <input type="text" name="dob" class="form-control" placeholder="mm/dd/yyyy" value="' . (isset($form_data) ? $form_data['dob'] : '') . '">
+                    ' . ((isset($has_error['dob']) && $has_error['dob']) ? '<span class="help-block">Please fill out date of birth.</span>' : '') . '
+                </div>
+            </div>
+        </div>
+        <div class="form-group' . ((isset($has_error['military_service']) && $has_error['military_service']) ? ' has-error' : '') . '">
+            <label class="control-label">Military Service*</label>
+            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the military.</span>' : '') . '
+            <div class="radio military-service">
+                <label>
+                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
+                    I am a military veteran
+                </label>
+            </div>
+            <div class="radio military-service">
+                <label>
+                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
+                    I am the surviving spouse of a military veteran
+                </label>
+            </div>
+            <div class="radio military-service">
+                <label>
+                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
+                    I am NOT a military veteran
+                </label>
+            </div>
+        </div>
+        <div class="form-group military-branch-form-group" style="display:none">
+            <label class="control-label">Which Branch of Military?</label>
+            <input type="text" name="military_branch" class="form-control" placeholder="Which Branch of Military?" value="' . (isset($form_data) ? $form_data['military_branch'] : '') . '">
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group' . ((isset($has_error['rent_or_own']) && $has_error['rent_or_own']) ? ' has-error' : '') . '">
+                    <label class="control-label">Do you rent or own your home?</label>
+                    ' . ((isset($has_error['rent_or_own']) && $has_error['rent_or_own']) ? '<span class="help-block">Please select if you rent or own your home.</span>' : '') . '
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rent_or_own" value="Rent" '.(isset($form_data) && ($form_data['rent_or_own'] == 'Rent') ? 'checked' : '').'>
+                            Rent
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rent_or_own" value="Own" '.(isset($form_data) && ($form_data['rent_or_own'] == 'Own') ? 'checked' : '').'>
+                            Own
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group' . ((isset($has_error['years_in_home']) && $has_error['years_in_home']) ? ' has-error' : '') . '">
+                    <label class="control-label">How Long Have You Lived in Your Home?</label>
+                    <input type="text" name="years_in_home" class="form-control" placeholder="How Long Have Your Lived in Your Home?" value="' . (isset($form_data) ? $form_data['years_in_home'] : '') . '">
+                    ' . ((isset($has_error['years_in_home']) && $has_error['years_in_home']) ? '<span class="help-block">Please fill out a how long you lived in your home.</span>' : '') . '
+                </div>
+            </div>
+        </div>
         <div class="form-section form-group margin-top-20">
-            <label>Please list the name and date of birth for any additional household members/dependents</label>
+            <label>Please list the name and date of birth for any additional household members/dependents<br><small>Click the plus button to add more.</small></label>
             <table class="table no-border dependent-table">
                 <thead>
                     <tr>
@@ -341,33 +451,27 @@ function rock_the_block_form_shortcode()
                         <td><input type="text" name="dependent_dob[]" class="form-control"></td>
                         <td><div class="btn-group" role="group"><button type="button" class="btn btn-darkblue btn-sm btn-dependent-add"><i class="fa fa-plus" aria-hidden="true"></i></button><button type="button" class="btn btn-darkblue btn-sm btn-dependent-remove"><i class="fa fa-minus" aria-hidden="true"></i></button></div></td>
                     </tr>
+                    <tr class="dependent-row">
+                        <td><input type="text" name="dependent_name[]" class="form-control" value=""></td>
+                        <td><input type="text" name="dependent_dob[]" class="form-control"></td>
+                        <td><div class="btn-group" role="group"><button type="button" class="btn btn-darkblue btn-sm btn-dependent-add"><i class="fa fa-plus" aria-hidden="true"></i></button><button type="button" class="btn btn-darkblue btn-sm btn-dependent-remove"><i class="fa fa-minus" aria-hidden="true"></i></button></div></td>
+                    </tr>
+                    <tr class="dependent-row">
+                        <td><input type="text" name="dependent_name[]" class="form-control" value=""></td>
+                        <td><input type="text" name="dependent_dob[]" class="form-control"></td>
+                        <td><div class="btn-group" role="group"><button type="button" class="btn btn-darkblue btn-sm btn-dependent-add"><i class="fa fa-plus" aria-hidden="true"></i></button><button type="button" class="btn btn-darkblue btn-sm btn-dependent-remove"><i class="fa fa-minus" aria-hidden="true"></i></button></div></td>
+                    </tr>
+                    <tr class="dependent-row">
+                        <td><input type="text" name="dependent_name[]" class="form-control" value=""></td>
+                        <td><input type="text" name="dependent_dob[]" class="form-control"></td>
+                        <td><div class="btn-group" role="group"><button type="button" class="btn btn-darkblue btn-sm btn-dependent-add"><i class="fa fa-plus" aria-hidden="true"></i></button><button type="button" class="btn btn-darkblue btn-sm btn-dependent-remove"><i class="fa fa-minus" aria-hidden="true"></i></button></div></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="form-group' . ((isset($has_error['military_service']) && $has_error['military_service']) ? ' has-error' : '') . '">
-            <label class="control-label">Military Service*</label>
-            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the military.</span>' : '') . '
-            <div class="radio">
-                <label>
-                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
-                    I am a military veteran
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
-                    I am the surviving spouse of a military veteran
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
-                    I am NOT a military veteran
-                </label>
-            </div>
-        </div>
+
         <div class="form-group' . ((isset($has_error['household_disablility_service']) && $has_error['household_disablility_service']) ? ' has-error' : '') . '">
-            <label class="control-label">Household Disability Status</label>
+            <label class="control-label">Household Disability Status <small>(optional)</small></label>
             <div class="radio">
                 <label>
                     <input type="radio" name="household_disablility_service" value="One or more household members has a disability" '.(isset($form_data) && ($form_data['household_disablility_service'] == 'One or more household members has a disability') ? 'checked' : '').'>
@@ -385,26 +489,33 @@ function rock_the_block_form_shortcode()
             <label class="control-label">How did you hear about Habitat Oakland?</label>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="A sign in front of a home to be built or renovated" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'A sign in front of a home to be built or renovated') !== false) ? 'checked' : '').'>
-                    A sign in front of a home to be built or renovated
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="A real estate website or agent" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'A real estate website or agent') !== false) ? 'checked' : '').'>
-                    A real estate website or agent
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
                     <input type="checkbox" name="how_did_you_hear[]" class="habitat-homeowner-checkbox" value="Habitat Homeowner" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) ? 'checked' : '').'>
                     Habitat Homeowner
                 </label>
             </div>
             <div class="checkbox">
                 <label>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Neighbor" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Neighbor') !== false) ? 'checked' : '').'>
+                    Neighbor
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
                     <input type="checkbox" name="how_did_you_hear[]" value="Friend or family" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Friend or family') !== false) ? 'checked' : '').'>
                     Friend or family
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Lawn sign in the Neighborhood" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Lawn sign in the Neighborhood') !== false) ? 'checked' : '').'>
+                    Lawn sign in the Neighborhood
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Online" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Online') !== false) ? 'checked' : '').'>
+                    Online
                 </label>
             </div>
             <div class="checkbox">
@@ -439,58 +550,12 @@ function rock_the_block_form_shortcode()
                 </label>
             </div>
         </div>
-        <h2>Rock the Block - Home Repair Service Available</h2>
-        <div class="form-group' . ((isset($has_error['services_requested']) && $has_error['services_requested']) ? ' has-error' : '') . '">
-            <label class="control-label">My home is in NEED of one or more of the following services*<br><small>* Services also available to renters</br></label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Energy Audit to identify savings" '.(isset($form_data) && (strpos($form_data['services_requested'],'Energy Audit to identify savings') !== false) ? 'checked' : '').'>
-                    Energy Audit to identify savings
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Landscape: Rake, edge, trim hedges, level landscape blocks" '.(isset($form_data) && (strpos($form_data['services_requested'],'Landscape: Rake, edge, trim hedges, level landscape blocks') !== false) ? 'checked' : '').'>
-                    Landscape: Rake, edge, trim hedges, level landscape blocks
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Gutter Cleaning, install Gutter Guards" '.(isset($form_data) && (strpos($form_data['services_requested'],'Gutter Cleaning, install Gutter Guards') !== false) ? 'checked' : '').'>
-                    Gutter Cleaning, install Gutter Guards
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Exterior of Home Painting" '.(isset($form_data) && (strpos($form_data['services_requested'],'Exterior of Home Painting') !== false) ? 'checked' : '').'>
-                    Exterior of Home Painting
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Wood porch, steps or fence repair (does not include paint/stain)" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch, steps or fence repair (does not include paint/stain)') !== false) ? 'checked' : '').'>
-                    Wood porch, steps or fence repair (does not include paint/stain)
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Wood porch or fence painting/stain" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch or fence painting/stain') !== false) ? 'checked' : '').'>
-                    Wood porch or fence painting/stain
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="services_requested[]" value="Dumpster Ditch Day" '.(isset($form_data) && (strpos($form_data['services_requested'],'Dumpster Ditch Day') !== false) ? 'checked' : '').'>
-                    Dumpster Ditch Day
-                </label>
-            </div>
-        </div>
-        <h2>Please Check All That Apply</h2>
+        <h2>Program Eligibility</h2>
         <p>Please answer the questions below to provide Habitat with information about your current housing needs, your ability to pay for a future home, credit history and your willingness to partner with our organization.</p>
         <div class="form-group' . ((isset($has_error['homeownership']) && $has_error['homeownership']) ? ' has-error' : '') . '">
             <label class="control-label">Homeownership*</label>
             ' . ((isset($has_error['homeownership']) && $has_error['homeownership']) ? '<span class="help-block">Please answer about your homeownership.</span>' : '') . '
-            <div class="checkbox">
+            <div class="checkbox i-am-homeowner">
                 <label>
                     <input type="checkbox" name="homeownership[]" value="I am the legal owner of my home (my name is listed on the property deed)" '.(isset($form_data) && (strpos($form_data['homeownership'],'I am the legal owner of my home (my name is listed on the property deed)') !== false) ? 'checked' : '').'>
                     I am the legal owner of my home (my name is listed on the property deed)
@@ -508,6 +573,10 @@ function rock_the_block_form_shortcode()
                     This home is my primary residence
                 </label>
             </div>
+        </div>
+        <div class="form-group date-home-purchased-form-group" style="display:none">
+            <label class="control-label">What Date Did You Purchased Your Home?</label>
+            <input type="text" name="date_home_purchased" class="form-control" placeholder="What Date Did You Purchased Your Home?" value="' . (isset($form_data) ? $form_data['date_home_purchased'] : '') . '">
         </div>
         <div class="form-group' . ((isset($has_error['ability_to_pay']) && $has_error['ability_to_pay']) ? ' has-error' : '') . '">
             <label class="control-label">Ability to Pay*</label>
@@ -553,6 +622,60 @@ function rock_the_block_form_shortcode()
                 </label>
             </div>
         </div>
+        <h2>Rock the Block - Home Repair Service Available</h2>
+        <div class="form-group' . ((isset($has_error['services_requested']) && $has_error['services_requested']) ? ' has-error' : '') . '">
+            <label class="control-label">My home is in NEED of one or more of the following services*<br><small>* Services also available to renters</br></label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Energy Audit to identify savings" '.(isset($form_data) && (strpos($form_data['services_requested'],'Energy Audit to identify savings') !== false) ? 'checked' : '').'>
+                    Energy Audit to identify savings<sup>1</sup><br>
+                    Free
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Landscape: Rake, edge, trim hedges, level landscape blocks" '.(isset($form_data) && (strpos($form_data['services_requested'],'Landscape: Rake, edge, trim hedges, level landscape blocks') !== false) ? 'checked' : '').'>
+                    Landscape: Rake, edge, trim hedges, level landscape blocks<br>
+                    $10 - $25
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Gutter Cleaning, install Gutter Guards" '.(isset($form_data) && (strpos($form_data['services_requested'],'Gutter Cleaning, install Gutter Guards') !== false) ? 'checked' : '').'>
+                    Gutter Cleaning, install Gutter Guards<br>
+                    $10 - $100 (subject to assessment)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Exterior of Home Painting" '.(isset($form_data) && (strpos($form_data['services_requested'],'Exterior of Home Painting') !== false) ? 'checked' : '').'>
+                    Exterior of Home Painting<br>
+                    $200 - $500 (subject to testing & assessment)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Wood porch, steps or fence repair (does not include paint/stain)" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch, steps or fence repair (does not include paint/stain)') !== false) ? 'checked' : '').'>
+                    Wood porch, steps or fence repair (does not include paint/stain)<br>
+                    $75 - $125 (subject to testing & assessment)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Wood porch or fence painting/stain" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch or fence painting/stain') !== false) ? 'checked' : '').'>
+                    Wood porch or fence painting/stain<br>
+                    $25 - $100 (subject to survey & testing)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Dumpster Ditch Day" '.(isset($form_data) && (strpos($form_data['services_requested'],'Dumpster Ditch Day') !== false) ? 'checked' : '').'>
+                    Dumpster Ditch Day<sup>1</sup><br>
+                    Free
+                </label>
+            </div>
+            <span class="help-block"><sup>1</sup>Available to Renters</span>
+        </div>
         <h2>Financial Information</h2>
         <p>Please select the sources of income for your household. Ex: Job, Social Security, Child Support, etc. Please list the amounts BEFORE taxes.</p>
         <div class="row">
@@ -571,19 +694,12 @@ function rock_the_block_form_shortcode()
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label class="control-label">How Often Are You Paid?</label><br>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_1" value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Weekly') ? 'checked' : '').'>
-                        Weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_1" value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Bi-weekly') ? 'checked' : '').'>
-                        Bi-weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_1" value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Monthly') ? 'checked' : '').'>
-                        Monthly
-                    </label>
+                    <label class="control-label">How Often Are You Paid?</label>
+                    <select name="income_frequency_1" class="form-control">
+                        <option value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Weekly') ? 'selected' : '').'>Weekly</option>
+                        <option value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Bi-weekly') ? 'selected' : '').'>Bi-weekly</option>
+                        <option value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_1'] == 'Monthly') ? 'selected' : '').'>Monthly</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -593,6 +709,7 @@ function rock_the_block_form_shortcode()
                 </div>
             </div>
         </div>
+        <hr class="margin-top-5 margin-bottom-5">
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
@@ -609,19 +726,12 @@ function rock_the_block_form_shortcode()
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label class="control-label">How Often Are You Paid?</label><br>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_2" value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Weekly') ? 'checked' : '').'>
-                        Weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_2" value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Bi-weekly') ? 'checked' : '').'>
-                        Bi-weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_2" value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Monthly') ? 'checked' : '').'>
-                        Monthly
-                    </label>
+                    <label class="control-label">How Often Are You Paid?</label>
+                    <select name="income_frequency_2" class="form-control">
+                        <option value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Weekly') ? 'selected' : '').'>Weekly</option>
+                        <option value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Bi-weekly') ? 'selected' : '').'>Bi-weekly</option>
+                        <option value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_2'] == 'Monthly') ? 'selected' : '').'>Monthly</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -631,6 +741,7 @@ function rock_the_block_form_shortcode()
                 </div>
             </div>
         </div>
+        <hr class="margin-top-5 margin-bottom-5">
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
@@ -647,19 +758,12 @@ function rock_the_block_form_shortcode()
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label class="control-label">How Often Are You Paid?</label><br>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_3" value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Weekly') ? 'checked' : '').'>
-                        Weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_3" value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Bi-weekly') ? 'checked' : '').'>
-                        Bi-weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_3" value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Monthly') ? 'checked' : '').'>
-                        Monthly
-                    </label>
+                    <label class="control-label">How Often Are You Paid?</label>
+                    <select name="income_frequency_3" class="form-control">
+                        <option value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Weekly') ? 'selected' : '').'>Weekly</option>
+                        <option value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Bi-weekly') ? 'selected' : '').'>Bi-weekly</option>
+                        <option value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_3'] == 'Monthly') ? 'selected' : '').'>Monthly</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -669,6 +773,7 @@ function rock_the_block_form_shortcode()
                 </div>
             </div>
         </div>
+        <hr class="margin-top-5 margin-bottom-5">
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
@@ -685,19 +790,12 @@ function rock_the_block_form_shortcode()
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label class="control-label">How Often Are You Paid?</label><br>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_4" value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Weekly') ? 'checked' : '').'>
-                        Weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_4" value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Bi-weekly') ? 'checked' : '').'>
-                        Bi-weekly
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="income_frequency_4" value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Monthly') ? 'checked' : '').'>
-                        Monthly
-                    </label>
+                    <label class="control-label">How Often Are You Paid?</label>
+                    <select name="income_frequency_4" class="form-control">
+                        <option value="Weekly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Weekly') ? 'selected' : '').'>Weekly</option>
+                        <option value="Bi-weekly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Bi-weekly') ? 'selected' : '').'>Bi-weekly</option>
+                        <option value="Monthly" '.(isset($form_data) && ($form_data['income_frequency_4'] == 'Monthly') ? 'selected' : '').'>Monthly</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -709,7 +807,7 @@ function rock_the_block_form_shortcode()
         </div>
         <div class="form-group' . ((isset($has_error['authorization_and_release']) && $has_error['authorization_and_release']) ? ' has-error' : '') . '">
             <label class="control-label">Authorization & Release*</label>
-            <span class="help-block">I understand that by submitting this pre-screening form, I am authorizing Habitat for Humanity of Oakland County (HFHOC) to evaluate my eligibility for home preservation services. I also understand that an evaluation will include a criminal background and sexual offender check. I have answered all the questions on this form truthfully. The original or a copy of this form will be retained by HFHOC even if the application is not approved. HFHOC will not share the information on this application form with any outside agency and your name(s) will not be put on any mailing lists outside this agency.</span>
+            <span class="help-block">I understand that by submitting this application form, I am authorizing Habitat for Humanity of Oakland County (HFHOC) to evaluate my eligibility for home preservation services which includes a criminal background and sexual offender check. I have answered all the questions on this form truthfully. The original or a copy of this form will be retained by HFHOC even if the application is not approved. HFHOC will not share the information on this application form with any outside agency except as needed to provide preservation services I select.</span>
             ' . ((isset($has_error['authorization_and_release']) && $has_error['authorization_and_release']) ? '<span class="help-block">Please accept the agreement.</span>' : '') . '
             <div class="checkbox">
                 <label>
@@ -718,12 +816,17 @@ function rock_the_block_form_shortcode()
                 </label>
             </div>
         </div>
+        <div class="form-group' . ((isset($has_error['signature']) && $has_error['signature']) ? ' has-error' : '') . '">
+            <label class="control-label">Please Fill Out Your Name as a Signature*</label>
+            <input type="text" name="signature" class="form-control" placeholder="Your Full Name" value="' . (isset($form_data) ? $form_data['sinature'] : '') . '">
+            ' . ((isset($has_error['signature']) && $has_error['signature']) ? '<span class="help-block">Please fill out your name.</span>' : '') . '
+        </div>
         <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
             <div class="g-recaptcha" data-sitekey="'.getenv('RECAPTCHA_SITEKEY').'"></div>
             ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">ReCaptcha validation has failed.</span>' : '') . '
         </div>
         <div class="form-group">
-            <button class="btn btn-lg btn-darkblue" type="submit">Next</button>
+            <button class="btn btn-lg btn-darkblue" type="submit">Submit</button>
         </div>
     </form>';
     $close_div = '</div>';
