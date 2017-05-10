@@ -85,7 +85,7 @@ function rock_the_block_form_shortcode()
                     </tr>
                     <tr>
                         <th valign="top" align="left">Address: </th>
-                        <td>' . $form_data['street_number'] . ' ' . $form_data['street'] . '<br>' . $form_data['address2'] . '</td>
+                        <td>' . $form_data['street_number'] . ' ' . $form_data['street'] . '</td>
                     </tr>
                     <tr>
                         <th valign="top" align="left">City: </th>
@@ -309,14 +309,14 @@ function rock_the_block_form_shortcode()
         <div class="form-section">
             <label>Address</label>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['street_number']) && $has_error['street_number']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Street Number</label>
                         <input type="text" name="street_number" class="form-control" placeholder="Street Number" value="' . (isset($form_data) ? $form_data['street_number'] : '') . '">
                         ' . ((isset($has_error['street_number']) && $has_error['street_number']) ? '<span class="help-block">Please fill out your street number.</span>' : '') . '
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['street']) && $has_error['street']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Street Name</label>
                         <select type="text" name="street" class="form-control">
@@ -328,27 +328,25 @@ function rock_the_block_form_shortcode()
                         ' . ((isset($has_error['street']) && $has_error['street']) ? '<span class="help-block">Please select out your street name.</span>' : '') . '
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <label class="sub-label control-label">Address Line 2</label>
-                    <input type="text" name="address2" class="form-control" placeholder="Address Line 2" value="' . (isset($form_data) ? $form_data['address2'] : '') . '">
-                </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['city']) && $has_error['city']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">City*</label>
                         <input type="text" name="city" class="form-control" placeholder="City" value="Pontiac" readonly>
                         ' . ((isset($has_error['city']) && $has_error['city']) ? '<span class="help-block">Please fill out your city.</span>' : '') . '
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['state']) && $has_error['state']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">State*</label>
                         <input type="text" name="state" class="form-control" placeholder="State" value="MI" readonly>
                         ' . ((isset($has_error['state']) && $has_error['state']) ? '<span class="help-block">Please fill out your state.</span>' : '') . '
                     </div>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['zip']) && $has_error['zip']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Zip Code*</label>
                         <input type="text" name="zip" class="form-control" placeholder="Zip Code" value="48341" readonly>
