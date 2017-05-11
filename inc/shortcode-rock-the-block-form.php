@@ -12,7 +12,7 @@ function rock_the_block_form_shortcode()
     $result  = '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $required_fields = array(
-            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature'
+            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'rent_or_own', 'years_in_home', 'how_did_you_hear'
         );
 
         //error_log( print_r( $_POST, true ) );
@@ -237,7 +237,7 @@ function rock_the_block_form_shortcode()
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Matt Crandell <matt@crandelldesign.com>', 'Stephanie Osterland <stephanieo@habitatoakland.org>', 'Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Matt Crandell <matt@crandelldesign.com>, Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
                 'subject' => 'New Form Entry: Rock the Block Form',
                 'text'    => 'Your mail does not support HTML',
                 'html'    => $htmlEmail
@@ -311,14 +311,14 @@ function rock_the_block_form_shortcode()
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['street_number']) && $has_error['street_number']) ? ' has-error' : '') . '">
-                        <label class="sub-label control-label">Street Number</label>
+                        <label class="sub-label control-label">Street Number*</label>
                         <input type="text" name="street_number" class="form-control" placeholder="Street Number" value="' . (isset($form_data) ? $form_data['street_number'] : '') . '">
                         ' . ((isset($has_error['street_number']) && $has_error['street_number']) ? '<span class="help-block">Please fill out your street number.</span>' : '') . '
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['street']) && $has_error['street']) ? ' has-error' : '') . '">
-                        <label class="sub-label control-label">Street Name</label>
+                        <label class="sub-label control-label">Street Name*</label>
                         <select type="text" name="street" class="form-control">
                             <option value="Ferry" '.(isset($form_data) && ($form_data['street'] == 'Ferry') ? 'selected' : '').'>Ferry</option>
                             <option value="Midway" '.(isset($form_data) && ($form_data['street'] == 'Midway') ? 'selected' : '').'>Midway</option>
@@ -374,7 +374,7 @@ function rock_the_block_form_shortcode()
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group' . ((isset($has_error['dob']) && $has_error['dob']) ? ' has-error' : '') . '">
-                    <label class="control-label">Date of Birth</label>
+                    <label class="control-label">Date of Birth*</label>
                     <input type="text" name="dob" class="form-control" placeholder="mm/dd/yyyy" value="' . (isset($form_data) ? $form_data['dob'] : '') . '">
                     ' . ((isset($has_error['dob']) && $has_error['dob']) ? '<span class="help-block">Please fill out date of birth.</span>' : '') . '
                 </div>
@@ -427,7 +427,7 @@ function rock_the_block_form_shortcode()
             </div>
             <div class="col-sm-6">
                 <div class="form-group' . ((isset($has_error['years_in_home']) && $has_error['years_in_home']) ? ' has-error' : '') . '">
-                    <label class="control-label">How Long Have You Lived in Your Home?</label>
+                    <label class="control-label">How Long Have You Lived in Your Home?*</label>
                     <input type="text" name="years_in_home" class="form-control" placeholder="How Long Have Your Lived in Your Home?" value="' . (isset($form_data) ? $form_data['years_in_home'] : '') . '">
                     ' . ((isset($has_error['years_in_home']) && $has_error['years_in_home']) ? '<span class="help-block">Please fill out a how long you lived in your home.</span>' : '') . '
                 </div>
@@ -484,7 +484,8 @@ function rock_the_block_form_shortcode()
             </div>
         </div>
         <div class="form-group' . ((isset($has_error['how_did_you_hear']) && $has_error['how_did_you_hear']) ? ' has-error' : '') . '">
-            <label class="control-label">How did you hear about Habitat Oakland?</label>
+            <label class="control-label">How did you hear about Habitat Oakland?*</label>
+            ' . ((isset($has_error['how_did_you_hear']) && $has_error['how_did_you_hear']) ? '<span class="help-block">Please answer how you heard about Habitat Oakland.</span>' : '') . '
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="how_did_you_hear[]" class="habitat-homeowner-checkbox" value="Habitat Homeowner" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) ? 'checked' : '').'>
