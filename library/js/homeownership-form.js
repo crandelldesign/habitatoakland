@@ -35,4 +35,12 @@ jQuery(document).ready(function ($) {
             $('.date-home-purchased-form-group').hide();
         }
     });
+    $('.energy-audit').on('click', function(event)
+    {
+        if ($(this).find('input').val() == 'Energy Audit to identify savings' && $(this).find('input').is(':checked')) {
+            $('.consumers-energy-account-number-form-group').show();
+        } else {
+            $('.consumers-energy-account-number-form-group').hide();
+        }
+    });
 });

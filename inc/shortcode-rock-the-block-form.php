@@ -178,8 +178,15 @@ function rock_the_block_form_shortcode()
                     </tr>
                     <tr>
                         <td colspan="2">' . $form_data['services_requested'] . '<br><br></td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            if ($form_data['consumers_energy_account_number'] != '') {
+                $formDataEmail .= '<tr>
+                        <th valign="top colspan="2">What is Your Consumer Energy Account Number?</th>
+                    </tr><tr>
+                        <td colspan="2">' . $form_data['consumers_energy_account_number'] . '<br><br></td>
+                    </tr>';
+            }
+            $formDataEmail .= '<tr>
                         <th valign="top" colspan="2">Homeownership</th>
                     </tr>
                     <tr>
@@ -624,7 +631,7 @@ function rock_the_block_form_shortcode()
         <h2>Rock the Block - Home Repair Service Available</h2>
         <div class="form-group' . ((isset($has_error['services_requested']) && $has_error['services_requested']) ? ' has-error' : '') . '">
             <label class="control-label">My home is in NEED of one or more of the following services*<br><small>* Services also available to renters</br></label>
-            <div class="checkbox">
+            <div class="checkbox energy-audit">
                 <label>
                     <input type="checkbox" name="services_requested[]" value="Energy Audit to identify savings" '.(isset($form_data) && (strpos($form_data['services_requested'],'Energy Audit to identify savings') !== false) ? 'checked' : '').'>
                     Energy Audit to identify savings<sup>1</sup><br>
@@ -674,6 +681,10 @@ function rock_the_block_form_shortcode()
                 </label>
             </div>
             <span class="help-block"><sup>1</sup>Available to Renters</span>
+        </div>
+        <div class="form-group consumers-energy-account-number-form-group" style="display:none">
+            <label class="control-label">What is Your Consumers Energy Account Number?</label>
+            <input type="text" name="consumers_energy_account_number" class="form-control" placeholder="What is Your Consumers Energy Account Number?" value="' . (isset($form_data) ? $form_data['consumers_energy_account_number'] : '') . '">
         </div>
         <h2>Financial Information</h2>
         <p>Please select the sources of income for your household. Ex: Job, Social Security, Child Support, etc. Please list the amounts BEFORE taxes.</p>
