@@ -370,4 +370,33 @@ require get_template_directory() . '/inc/shortcode-golf-signup-form.php';
 // Rock the Block Form
 require get_template_directory() . '/inc/shortcode-rock-the-block-form.php';
 
+// Comment Customization
+function wpb_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+
+// Recaptcha on Comments
+function frontend_recaptcha_script() {
+    wp_register_script("recaptcha", "https://www.google.com/recaptcha/api.js");
+    wp_enqueue_script("recaptcha");
+}
+add_action("wp_enqueue_scripts", "frontend_recaptcha_script");
+function verify_comment_captcha( $commentdata ) {
+    if (isset($_POST['g-recaptcha-response'])) {
+        $response = verifyCaptcha($_POST['g-recaptcha-response']);
+        if ($response->success) {
+            return $commentdata;
+        } else {
+            wp_die("<strong>ERROR</strong>: Please check the recaptcha box.", 'Recaptcha Error', array('response' => 200, 'back_link' => true));
+        }
+    } else {
+        wp_die("<strong>ERROR</strong>: Please check the recaptcha box.", 'Recaptcha Error', array('response' => 200, 'back_link' => true));
+    }
+}
+add_filter("preprocess_comment", "verify_comment_captcha", 10, 2 );
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>
