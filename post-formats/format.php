@@ -21,15 +21,64 @@
                   <h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
 
                   <p class="byline entry-meta vcard">
+                        <?php
+                            if (in_category('event') || in_category('class')) {
+                                // First, check if date fields are present.
+                                // This will return an array with formatted dates.
+                                $mem_date = mem_date_processing(
+                                    get_post_meta($post->ID, '_mem_start_date', true) ,
+                                    get_post_meta($post->ID, '_mem_end_date', true)
+                                );
 
-                    <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
-                       /* the time the post was published */
-                       '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       /* the author of the post */
-                       '<span class="by">'.__( 'by', 'bonestheme' ).'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    ); ?>
+                                // Second step: display the date
+                                if ($mem_date["start-iso"] !=="") { // show the event date
+                                    echo '<span class="event-date">When: ';
+                                    $date = strtotime($mem_date["date"]);
+                                    echo date('l, F jS, Y h:i a',$date);
+                                    echo '</span>';
+                                }
 
-                  </p>
+                                // Get Repeat Dates
+                                $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
+                                if ($mem_repeats) {
+                                    ?><br><span class="event-date date-repeats">
+                                      &nbsp;&nbsp;&nbsp;<?php
+
+                                      $nr_of_repeats = count($mem_repeats);
+                                      $repeat_counter = 1;
+                                      sort($mem_repeats);
+
+                                      foreach($mem_repeats as $date_repeat) {
+
+                                        if ($nr_of_repeats == 1) {
+                                          //echo 'on: ';
+                                        } else if ($nr_of_repeats > 1) {
+
+                                          if ($repeat_counter == 1) {
+                                            // the first item
+                                            //echo 'on: ';
+                                          } else if ($repeat_counter == $nr_of_repeats ) {
+                                            // the last item
+                                            echo '<br>&nbsp;&nbsp;&nbsp;';
+                                          } else {
+                                            echo '<br>&nbsp;&nbsp;&nbsp;';
+                                          }
+                                        }
+
+                                        $date = strtotime($date_repeat);
+
+                                        echo date('l, F jS, Y h:i a',$date);
+
+                                        $repeat_counter++; // increment by one
+                                        }
+                                      ?></span><?php
+                                }
+                            } else {
+                                echo 'Posted: ';
+                                echo the_time('l, F jS, Y');
+                            }
+                        ?>
+                    </p>
 
                 </header> <?php // end article header ?>
 

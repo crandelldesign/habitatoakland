@@ -71,19 +71,92 @@
 
 				<?php
 					$eventsIdObj = get_category_by_slug('event');
-					$eventsId = $eventsIdObj->term_id;
+                    $eventsId = $eventsIdObj->term_id;
+
+                    // Now, the custom query:
+
+                    $args = array(
+                        'posts_per_page' => 3,
+                        'meta_query' => array(
+                            array(
+                                'key' => '_mem_start_date',
+                                'value' => array( date('Y-m-d', strtotime('-10 years')), date('Y-m-d', strtotime('+2 years')) ),
+                                'compare' => 'BETWEEN'
+                            )
+                        ),
+                        'orderby'  => 'meta_value',
+                        'order'  => 'ASC', // DESC = newest first, ASC = oldest first
+                        'ignore_sticky_posts' => true,
+                        'cat' => $eventsId,
+                        'paged' => $paged
+                    );
+
+                    $the_query = new WP_Query( $args );
 				?>
 
 				<hr>
 
 				<!-- Get Events -->
-				<?php query_posts('cat='.$eventsId.'&posts_per_page=3'); ?>
-				<h2>Events &nbsp;&nbsp;&nbsp;<a href="<?php echo home_url(); ?>/category/event/" class="btn btn-gray">View All Events &raquo;</a></h2>
+				<?php //query_posts('cat='.$eventsId.'&posts_per_page=3'); ?>
+				<h2>Events &nbsp;&nbsp;&nbsp;<a href="<?php echo home_url(); ?>/events/" class="btn btn-gray">View All Events &raquo;</a></h2>
         		<div class="row margin-bottom-10">
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<div class="col-md-4">
+				<?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+					<div class="col-md-4 event">
 						<h3 class="post-title"><a href="<?php echo get_permalink(); ?>"><?php the_title() ;?></a></h3>
-					   	<?php my_excerpt(30); ?>
+					   	<?php //my_excerpt(30); ?>
+                        <p class="event-info">
+                            <?php
+                            // First, check if date fields are present.
+                            // This will return an array with formatted dates.
+                            $mem_date = mem_date_processing(
+                                get_post_meta($post->ID, '_mem_start_date', true) ,
+                                get_post_meta($post->ID, '_mem_end_date', true)
+                            );
+
+                            // Second step: display the date
+                            if ($mem_date["start-iso"] !=="") { // show the event date
+                                echo '<span class="event-date">';
+                                $date = strtotime($mem_date["date"]);
+                                echo date('l, F jS, Y g:i a',$date);
+                                echo '</span>';
+                            }
+                            // Get Repeat Dates
+                            $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
+                            if ($mem_repeats) {
+                                ?><br><span class="event-date date-repeats">
+                                  <?php
+
+                                  $nr_of_repeats = count($mem_repeats);
+                                  $repeat_counter = 1;
+                                  sort($mem_repeats);
+
+                                  foreach($mem_repeats as $date_repeat) {
+
+                                    if ($nr_of_repeats == 1) {
+                                      //echo 'on: ';
+                                    } else if ($nr_of_repeats > 1) {
+
+                                      if ($repeat_counter == 1) {
+                                        // the first item
+                                        //echo 'on: ';
+                                      } else if ($repeat_counter == $nr_of_repeats ) {
+                                        // the last item
+                                        echo '<br>';
+                                      } else {
+                                        echo '<br>';
+                                      }
+                                    }
+
+                                    $date = strtotime($date_repeat);
+
+                                    echo date('l, F jS, Y g:i a',$date);
+
+                                    $repeat_counter++; // increment by one
+                                    }
+                                  ?></span><?php
+                            }
+                            ?>
+                        </p>
 					   	<p><a class="btn btn-sm btn-gray" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 				   	</div>
 				<?php endwhile; endif; ?>

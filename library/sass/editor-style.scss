@@ -20,8 +20,8 @@ body#tinymce.wp-editor {
 	//@import "partials/normalize";
 
 	/* Habitat for Humanity Imports and Parials */
-	@import 'mixins';
-	@import 'variables';
+	@import 'theme/mixins';
+	@import 'theme/variables';
 
 	// Sass variables
 	@import "partials/variables";
@@ -37,6 +37,8 @@ body#tinymce.wp-editor {
 
 	@import 'bootstrap';
 	@import 'font-awesome';
+
+	//@import 'theme/global';
 
 	width: 731px;
 	font-family: $crimson-text;

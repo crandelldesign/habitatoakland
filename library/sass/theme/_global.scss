@@ -1,0 +1,175 @@
+// Global Styles
+
+/* Body Styles */
+html {
+}
+
+/* Typography and Colors */
+body {
+
+    color: $black;
+    @media (min-width: $screen-sm-min) {
+        font-size: 18px;
+    }
+}
+h1, .h1 {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: 400;
+    @media (min-width: $screen-sm-min) {
+        font-size: 40px;
+    }
+}
+h2, .h2, .gform_wrapper h2.gsection_title {
+    color: $apple;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 25px;
+    font-weight: 700;
+    @media (min-width: $screen-sm-min) {
+        font-size: 30px;
+    }
+}
+h3, .h3, .gform_wrapper .subsection h2.gsection_title {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 500;
+    @media (min-width: $screen-sm-min) {
+        font-size: 24px;
+    }
+}
+h4, .h4, .gform_wrapper .h4 h2.gsection_title {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-weight: 600;
+}
+.gform_wrapper .h4 h2.gsection_title {
+    font-size: 18px;
+}
+a {
+    color: $deepcerulean;
+    &:hover, &.hover {
+        color: $cornflower;
+        text-decoration: none;
+    }
+}
+/* Default Styles */
+.btn {
+    border-radius: 2px;
+    box-shadow: $z1-shadow;
+    font-family: $sans-serif;
+}
+.btn-lg {
+    box-shadow: $z2-shadow;
+}
+.btn-xl {
+    font-size: 22px;
+}
+.btn-blue {
+    background-color: $bahamablue;
+    color: #FFF;
+    &:hover {
+        background-color: lighten($bahamablue, 5);
+        color: #FFF;
+    }
+}
+.btn-green {
+    background-color: $apple;
+    color: #FFF;
+    &:hover {
+        background-color: lighten($apple, 5);
+        color: #FFF;
+    }
+}
+.btn-gray {
+    background-color: $jumbogray;
+    color: #FFF;
+    &:hover {
+        background-color: lighten($jumbogray, 5);
+        color: #FFF;
+    }
+}
+.btn-darkblue {
+    background-color: $deepcerulean;
+    color: #FFF;
+    &:hover {
+        background-color: lighten($deepcerulean, 5);
+        color: #FFF;
+    }
+}
+.btn-lightblue {
+    background-color: $cornflower;
+    color: #FFF;
+    &:hover {
+        background-color: lighten($cornflower, 5);
+        color: #FFF;
+    }
+}
+.large-green-btn {
+    padding: 15px 25px;
+    white-space: normal;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btn-img {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    background-color: $apple;
+    color: #FFF;
+    border: 0;
+    box-shadow: $z2-shadow;
+    white-space: normal;
+    max-width: 219px;
+    &.btn-block {
+        max-width: none;
+    }
+    &:hover {
+        background-color: lighten($apple, 5);
+        color: #FFF;
+    }
+    &.btn-blue {
+        background-color: $bahamablue;
+        color: #FFF;
+        &:hover {
+            background-color: lighten($bahamablue, 5);
+            color: #FFF;
+        }
+    }
+    span {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 18px;
+        &:first-child {
+            min-height: 60px;
+        }
+    }
+    img {
+        box-shadow: none !important;
+    }
+    .img-holder {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100px;
+        background-position: center center;
+    }
+}
+.input-group {
+    .btn, .form-control {
+        box-shadow: none;
+        padding: 6px 12px 7px 12px;
+    }
+}
+.searchbar.input-group .btn {
+    padding: 6px 12px 6px 12px;
+}
+hr {
+    border-top: 1px solid $jumbogray;
+    @media (min-width: $screen-md-min) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}

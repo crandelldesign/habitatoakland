@@ -21,8 +21,8 @@ import the mixins file so SASS can understand the variables.
 ******************************************************************/
 
 /* Habitat for Humanity Imports and Parials */
-@import 'mixins';
-@import 'variables';
+@import 'theme/mixins';
+@import 'theme/variables';
 
 @import "partials/variables"; // import variables
 @import "partials/typography"; // import typography

@@ -1,0 +1,18 @@
+/* Spacing Elements */
+@mixin generate-spacing-classes(
+    $default-space-amounts-with-direction: (5 left left, 10 left left, 15 left left, 25 left left, 30 left left, 35 left left)
+) {
+    @each $space in $default-space-amounts-with-direction {
+        .margin-#{nth($space, 3)}-#{nth($space, 1)} {
+            margin-#{nth($space, 2)}: #{nth($space, 1)}px;
+        }
+    }
+}
+$right-space-vars: (5 right right, 10 right right, 15 right right, 25 right right, 30 right right, 35 right right);
+$bottom-space-vars: (5 bottom bottom, 10 bottom bottom, 15 bottom bottom, 25 bottom bottom, 30 bottom bottom, 35 bottom bottom);
+$top-space-vars: (5 top top, 10 top top, 15 top top, 25 top top, 30 top top, 35 top top);
+
+@include generate-spacing-classes(); // left comes by default
+@include generate-spacing-classes($right-space-vars);
+@include generate-spacing-classes($bottom-space-vars);
+@include generate-spacing-classes($top-space-vars);
