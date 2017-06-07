@@ -75,9 +75,17 @@
 
                                 // Second step: display the date
                                 if ($mem_date["start-iso"] !=="") { // show the event date
-                                    echo '<span class="event-date">';
-                                    $date = strtotime($mem_date["date"]);
-                                    echo date('l, F jS, Y h:i a',$date);
+                                    echo '<span class="event-date">When: ';
+                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                    echo date('l, F jS, Y g:i a',$start_date);
+                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                    if ($end_date) {
+                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                        echo ' &mdash; ' . date('g:i a',strtotime($end_date));
+                                      } else {
+                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                      }
+                                    }
                                     echo '</span>';
                                 }
                                 // Get Repeat Dates
@@ -109,7 +117,7 @@
 
                                         $date = strtotime($date_repeat);
 
-                                        echo date('l, F jS, Y h:i a',$date);
+                                        echo date('l, F jS, Y g:i a',$date);
 
                                         $repeat_counter++; // increment by one
                                         }
@@ -157,7 +165,7 @@
 
                     <article id="post-not-found" class="hentry cf">
                         <section class="entry-content">
-                            <p><?php _e( 'There are no upcoming classes posted at this time. Please check back later.', 'bonestheme' ); ?></p>
+                            <p>There are no upcoming events posted at this time. Please check back later.</p>
                         </section>
                     </article>
 
@@ -219,11 +227,19 @@
 
 								// Second step: display the date
 								if ($mem_date["start-iso"] !=="") { // show the event date
-								    echo '<span class="event-date">';
-								    $date = strtotime($mem_date["date"]);
-                                    echo date('l, F jS, Y h:i a',$date);
-								    echo '</span>';
-								}
+                                    echo '<span class="event-date">When: ';
+                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                    echo date('l, F jS, Y g:i a',$start_date);
+                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                    if ($end_date) {
+                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                        echo ' &mdash; ' . date('g:i a',strtotime($end_date));
+                                      } else {
+                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                      }
+                                    }
+                                    echo '</span>';
+                                }
 								// Get Repeat Dates
                                 $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
                                 if ($mem_repeats) {
@@ -253,7 +269,7 @@
 
                                         $date = strtotime($date_repeat);
 
-                                        echo date('l, F jS, Y h:i a',$date);
+                                        echo date('l, F jS, Y g:i a',$date);
 
                                         $repeat_counter++; // increment by one
                                         }
@@ -301,7 +317,7 @@
 
 					<article id="post-not-found" class="hentry cf">
 						<section class="entry-content">
-							<p><?php _e( 'There are not any classes posted. Please check back later.', 'bonestheme' ); ?></p>
+                            <p>There are no past events posted at this time. Please check back later.</p>
 						</section>
 					</article>
 

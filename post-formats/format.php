@@ -33,8 +33,16 @@
                                 // Second step: display the date
                                 if ($mem_date["start-iso"] !=="") { // show the event date
                                     echo '<span class="event-date">When: ';
-                                    $date = strtotime($mem_date["date"]);
-                                    echo date('l, F jS, Y h:i a',$date);
+                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                    echo date('l, F jS, Y g:i a',$start_date);
+                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                    if ($end_date) {
+                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                        echo ' &mdash; ' . date('g:i a',strtotime($end_date));
+                                      } else {
+                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                      }
+                                    }
                                     echo '</span>';
                                 }
 
@@ -67,7 +75,7 @@
 
                                         $date = strtotime($date_repeat);
 
-                                        echo date('l, F jS, Y h:i a',$date);
+                                        echo date('l, F jS, Y g:i a',$date);
 
                                         $repeat_counter++; // increment by one
                                         }

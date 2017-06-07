@@ -85,7 +85,7 @@
                             )
                         ),
                         'orderby'  => 'meta_value',
-                        'order'  => 'ASC', // DESC = newest first, ASC = oldest first
+                        'order'  => 'DESC', // DESC = newest first, ASC = oldest first
                         'ignore_sticky_posts' => true,
                         'cat' => $eventsId,
                         'paged' => $paged
@@ -115,11 +115,19 @@
 
                             // Second step: display the date
                             if ($mem_date["start-iso"] !=="") { // show the event date
-                                echo '<span class="event-date">';
-                                $date = strtotime($mem_date["date"]);
-                                echo date('l, F jS, Y g:i a',$date);
-                                echo '</span>';
-                            }
+                                    echo '<span class="event-date">';
+                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                    echo date('l, F jS, Y g:i a',$start_date);
+                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                    if ($end_date) {
+                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                        echo ' - ' . date('g:i a',strtotime($end_date));
+                                      } else {
+                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                      }
+                                    }
+                                    echo '</span>';
+                                }
                             // Get Repeat Dates
                             $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
                             if ($mem_repeats) {
@@ -159,7 +167,11 @@
                         </p>
 					   	<p><a class="btn btn-sm btn-gray" href="<?php echo get_permalink(); ?>" role="button">View details &raquo;</a></p>
 				   	</div>
-				<?php endwhile; endif; ?>
+				<?php endwhile; else: ?>
+                    <div class="col-xs-12">
+                        <p>There aren't any events planned at this time.</p>
+                    </div>
+                <?php endif; ?>
 				<?php wp_reset_query(); ?>
 				</div>
 

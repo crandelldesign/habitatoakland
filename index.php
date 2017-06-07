@@ -32,7 +32,7 @@
                                                 echo '<span class="event-date">When: ';
                                                 //echo $mem_date["date"];
                                                 $date = strtotime($mem_date["date"]);
-                                                echo date('l, F jS, Y h:i a',$date);
+                                                echo date('l, F jS, Y g:i a',$date);
                                                 echo '</span>';
                                             }
 
@@ -65,7 +65,7 @@
 
                                                     $date = strtotime($date_repeat);
 
-                                                    echo date('l, F jS, Y h:i a',$date);
+                                                    echo date('l, F jS, Y g:i a',$date);
 
                                                     $repeat_counter++; // increment by one
                                                     }
