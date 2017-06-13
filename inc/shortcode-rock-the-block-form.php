@@ -1,9 +1,52 @@
 <?php
 // Shortcode for the Rock the Block Form
 use Mailgun\Mailgun;
-function rock_the_block_form_shortcode()
+function rock_the_block_form_shortcode($atts = array())
 {
-    wp_enqueue_script('googlerecaptcha', 'https://www.google.com/recaptcha/api.js');
+    if ( ! empty( $atts['event'] ) ) {
+        $event = $atts['event'];
+    } elseif (isset($_GET['event'])) {
+        $event = $_GET['event'];
+    } elseif (isset($_POST['event'])) {
+        $event = $_POST['event'];
+    } else {
+        $event = '2017-06-20';
+    }
+
+    /* Notes: Set up day before cut off dates */
+
+    switch ($event) {
+        case '2017-07-25':
+            // Pontiac
+            $event_name = 'Unity Park Neighborhood';
+            $start_date = '2017-07-25';
+            $end_date = '2017-07-26';
+            $street_names = array('Going St', 'S Edith St', 'South Anderson St', 'South Marshall St');
+            $city = 'Pontiac';
+            $zip_code = '48342';
+            break;
+        case '2017-09-11':
+            // Southfield
+            $event_name = 'Bonnie Acres Neighborhood';
+            $start_date = '2017-09-11';
+            $end_date = '2017-09-12';
+            $street_names = array('Brentwood St', 'Marshall St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Santa Rosa Ave', 'Wiltshire Blvd');
+            $city = 'Southfield';
+            $zip_code = '48076';
+            break;
+        default:
+            // Orginal event = 2017-06-20
+            // Pontiac
+            $event_name = 'Ferry Farms Neighborhood';
+            $start_date = '2017-06-20';
+            $end_date = '2017-06-21';
+            $street_names = array('Ferry', 'Wilson', 'Midway', 'Central', 'Prospect', 'Edith Ave', 'Going St');
+            $city = 'Pontiac';
+            $zip_code = '48341';
+            break;
+    }
+
+    //wp_enqueue_script('googlerecaptcha', 'https://www.google.com/recaptcha/api.js');
     wp_enqueue_script('homeownership-form-js', get_stylesheet_directory_uri() . '/library/js/homeownership-form.js');
     // Mailgun Credentials Instantiate the client.
     $mgClient = new Mailgun(getenv('MAILGUN_KEY'));
@@ -14,8 +57,6 @@ function rock_the_block_form_shortcode()
         $required_fields = array(
             'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'email', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'rent_or_own', 'years_in_home', 'how_did_you_hear'
         );
-
-        //error_log( print_r( $_POST, true ) );
 
         // Fetches everything that has been POSTed, sanitizes them and lets us use them as $form_data['field']
         foreach ($_POST as $field => $value) {
@@ -35,9 +76,10 @@ function rock_the_block_form_shortcode()
                     $form_columns[$field] = $field;
             }
         }
+        //error_log( print_r( $form_data['military_service'], true ) );
         // Check for required fields
         foreach ($required_fields as $required_field) {
-            $value = trim($form_data[$required_field]);
+            $value = !empty($form_data[$required_field])?trim($form_data[$required_field]):'';
             if (empty($value)) {
                 $error = true;
                 $has_error[$required_field] = true;
@@ -58,7 +100,12 @@ function rock_the_block_form_shortcode()
 
             // Add Data to Database
             if(has_action('ftd_insert_data')) {
-                do_action('ftd_insert_data','Rock the Block', $form_data, $form_columns);
+                // Remove Unneeded Data
+                unset($form_data['g-recaptcha-response']);
+                unset($form_columns['g-recaptcha-response']);
+                unset($form_data['event']);
+                unset($form_columns['event']);
+                do_action('ftd_insert_data','Rock the Block '.$event, $form_data, $form_columns);
             }
 
             // Build the Email
@@ -285,6 +332,15 @@ function rock_the_block_form_shortcode()
             unset($has_error);
         }
     }
+
+
+
+    $intro = '
+        <p>Please complete the form below if you are interested in participating in our Rock the Block program and having repairs completed on your home. Some services are still available for renters.</p>
+        <p>Applications are currently being accepted for the '.date('F jS',strtotime($start_date)).' and '.date('jS',strtotime($end_date)).' Rock the Block event in the '.$event_name.', '.$city.'. If you live outside of this area and the identified street boundaries of '.join(' or ', array_filter(array_merge(array(join(', ', array_slice($street_names, 0, -1))), array_slice($street_names, -1)), 'strlen')).' you will need to wait to apply at a later time if your neighborhood has been selected for a Rock the Block event.</p>
+        <h2>'.$event_name.'</h2>
+        <h3>'.date('l, F jS, Y',strtotime($start_date)).' - '.date('l, F jS, Y',strtotime($end_date)).'</h3>
+        ';
     $start_div = '<div id="golf-signup-form">';
     $info = '';
 
@@ -326,11 +382,11 @@ function rock_the_block_form_shortcode()
                 <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['street']) && $has_error['street']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Street Name*</label>
-                        <select type="text" name="street" class="form-control">
-                            <option value="Ferry" '.(isset($form_data) && ($form_data['street'] == 'Ferry') ? 'selected' : '').'>Ferry</option>
-                            <option value="Midway" '.(isset($form_data) && ($form_data['street'] == 'Midway') ? 'selected' : '').'>Midway</option>
-                            <option value="Wilson" '.(isset($form_data) && ($form_data['street'] == 'Wilson') ? 'selected' : '').'>Wilson</option>
-                            <option value="Central" '.(isset($form_data) && ($form_data['street'] == 'Central') ? 'selected' : '').'>Central</option>
+                        <select type="text" name="street" class="form-control">';
+    for($i = 0; $i < count($street_names); $i++) {
+         $email_form .= '<option value="'.$street_names[$i].'" '.(isset($form_data) && ($form_data['street'] == $street_names[$i]) ? 'selected' : '').'>'.$street_names[$i].'</option>';
+    }
+    $email_form .= '
                         </select>
                         ' . ((isset($has_error['street']) && $has_error['street']) ? '<span class="help-block">Please select out your street name.</span>' : '') . '
                     </div>
@@ -340,7 +396,7 @@ function rock_the_block_form_shortcode()
                 <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['city']) && $has_error['city']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">City*</label>
-                        <input type="text" name="city" class="form-control" placeholder="City" value="Pontiac" readonly>
+                        <input type="text" name="city" class="form-control" placeholder="City" value="'.$city.'" readonly>
                         ' . ((isset($has_error['city']) && $has_error['city']) ? '<span class="help-block">Please fill out your city.</span>' : '') . '
                     </div>
                 </div>
@@ -392,19 +448,19 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the military.</span>' : '') . '
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
+                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
                     I am a military veteran
                 </label>
             </div>
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
+                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
                     I am the surviving spouse of a military veteran
                 </label>
             </div>
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
+                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
                     I am NOT a military veteran
                 </label>
             </div>
@@ -420,13 +476,13 @@ function rock_the_block_form_shortcode()
                     ' . ((isset($has_error['rent_or_own']) && $has_error['rent_or_own']) ? '<span class="help-block">Please select if you rent or own your home.</span>' : '') . '
                     <div class="radio">
                         <label>
-                            <input type="radio" name="rent_or_own" value="Rent" '.(isset($form_data) && ($form_data['rent_or_own'] == 'Rent') ? 'checked' : '').'>
+                            <input type="radio" name="rent_or_own" value="Rent" '.(isset($form_data) && isset($form_data['rent_or_own']) && ($form_data['rent_or_own'] == 'Rent') ? 'checked' : '').'>
                             Rent
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="rent_or_own" value="Own" '.(isset($form_data) && ($form_data['rent_or_own'] == 'Own') ? 'checked' : '').'>
+                            <input type="radio" name="rent_or_own" value="Own" '.(isset($form_data) && isset($form_data['rent_or_own']) && ($form_data['rent_or_own'] == 'Own') ? 'checked' : '').'>
                             Own
                         </label>
                     </div>
@@ -479,13 +535,13 @@ function rock_the_block_form_shortcode()
             <label class="control-label">Household Disability Status <small>(optional)</small></label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="household_disablility_service" value="One or more household members has a disability" '.(isset($form_data) && ($form_data['household_disablility_service'] == 'One or more household members has a disability') ? 'checked' : '').'>
+                    <input type="radio" name="household_disablility_service" value="One or more household members has a disability" '.(isset($form_data) && isset($form_data['household_disablility_service']) && ($form_data['household_disablility_service'] == 'One or more household members has a disability') ? 'checked' : '').'>
                     One or more household members has a disability
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="household_disablility_service" value="N/A" '.(isset($form_data) && ($form_data['household_disablility_service'] == 'N/A') ? 'checked' : '').'>
+                    <input type="radio" name="household_disablility_service" value="N/A" '.(isset($form_data) && isset($form_data['household_disablility_service']) && ($form_data['household_disablility_service'] == 'N/A') ? 'checked' : '').'>
                     N/A
                 </label>
             </div>
@@ -495,44 +551,44 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['how_did_you_hear']) && $has_error['how_did_you_hear']) ? '<span class="help-block">Please answer how you heard about Habitat Oakland.</span>' : '') . '
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" class="habitat-homeowner-checkbox" value="Habitat Homeowner" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" class="habitat-homeowner-checkbox" value="Habitat Homeowner" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Habitat Homeowner') !== false) ? 'checked' : '').'>
                     Habitat Homeowner
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="Neighbor" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Neighbor') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Neighbor" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Neighbor') !== false) ? 'checked' : '').'>
                     Neighbor
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="Friend or family" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Friend or family') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Friend or family" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Friend or family') !== false) ? 'checked' : '').'>
                     Friend or family
                 </label>
             </div>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="Lawn sign in the Neighborhood" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Lawn sign in the Neighborhood') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Lawn sign in the Neighborhood" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Lawn sign in the Neighborhood') !== false) ? 'checked' : '').'>
                     Lawn sign in the Neighborhood
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="Online" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Online') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Online" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Online') !== false) ? 'checked' : '').'>
                     Online
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="Another organization" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'Another organization') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="Another organization" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'Another organization') !== false) ? 'checked' : '').'>
                     Another organization
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="how_did_you_hear[]" value="None of the above" '.(isset($form_data) && (strpos($form_data['how_did_you_hear'],'None of the above') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="how_did_you_hear[]" value="None of the above" '.(isset($form_data) && isset($form_data['how_did_you_hear']) && (strpos($form_data['how_did_you_hear'],'None of the above') !== false) ? 'checked' : '').'>
                     None of the above
                 </label>
             </div>
@@ -545,13 +601,13 @@ function rock_the_block_form_shortcode()
             <label class="control-label">I would like to receive updates from Habitat Oakland</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="receive_updates" value="Yes" '.(isset($form_data) && ($form_data['receive_updates'] == 'Yes') ? 'checked' : '').'>
+                    <input type="radio" name="receive_updates" value="Yes" '.(isset($form_data) && isset($form_data['receive_updates']) && ($form_data['receive_updates'] == 'Yes') ? 'checked' : '').'>
                     Yes
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="receive_updates" value="No" '.(isset($form_data) && ($form_data['receive_updates'] == 'No') ? 'checked' : '').'>
+                    <input type="radio" name="receive_updates" value="No" '.(isset($form_data) && isset($form_data['receive_updates']) && ($form_data['receive_updates'] == 'No') ? 'checked' : '').'>
                     No
                 </label>
             </div>
@@ -563,19 +619,19 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['homeownership']) && $has_error['homeownership']) ? '<span class="help-block">Please answer about your homeownership.</span>' : '') . '
             <div class="checkbox i-am-homeowner">
                 <label>
-                    <input type="checkbox" name="homeownership[]" value="I am the legal owner of my home (my name is listed on the property deed)" '.(isset($form_data) && (strpos($form_data['homeownership'],'I am the legal owner of my home (my name is listed on the property deed)') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="homeownership[]" value="I am the legal owner of my home (my name is listed on the property deed)" '.(isset($form_data) && isset($form_data['homeownership']) && (strpos($form_data['homeownership'],'I am the legal owner of my home (my name is listed on the property deed)') !== false) ? 'checked' : '').'>
                     I am the legal owner of my home (my name is listed on the property deed)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="homeownership[]" value="I am NOT the homeowner; I am currently renting the home" '.(isset($form_data) && (strpos($form_data['homeownership'],'I am NOT the homeowner; I am currently renting the home') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="homeownership[]" value="I am NOT the homeowner; I am currently renting the home" '.(isset($form_data) && isset($form_data['homeownership']) && (strpos($form_data['homeownership'],'I am NOT the homeowner; I am currently renting the home') !== false) ? 'checked' : '').'>
                     I am NOT the homeowner; I am currently renting the home
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="homeownership[]" value="This home is my primary residence" '.(isset($form_data) && (strpos($form_data['homeownership'],'This home is my primary residence') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="homeownership[]" value="This home is my primary residence" '.(isset($form_data) && isset($form_data['homeownership']) && (strpos($form_data['homeownership'],'This home is my primary residence') !== false) ? 'checked' : '').'>
                     This home is my primary residence
                 </label>
             </div>
@@ -589,19 +645,19 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['ability_to_pay']) && $has_error['ability_to_pay']) ? '<span class="help-block">Please answer concerning your ability to pay.</span>' : '') . '
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="ability_to_pay[]" value="I understand that Habitat will charge a reasonable fee for the services I am approved for" '.(isset($form_data) && (strpos($form_data['ability_to_pay'],'I understand that Habitat will charge a reasonable fee for the services I am approved for') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="ability_to_pay[]" value="I understand that Habitat will charge a reasonable fee for the services I am approved for" '.(isset($form_data) && isset($form_data['ability_to_pay']) && (strpos($form_data['ability_to_pay'],'I understand that Habitat will charge a reasonable fee for the services I am approved for') !== false) ? 'checked' : '').'>
                     I understand that Habitat will charge a reasonable fee for the services I am approved for
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="ability_to_pay[]" value="My fee will be reviewed with me and agreed upon prior to project approval" '.(isset($form_data) && (strpos($form_data['ability_to_pay'],'My fee will be reviewed with me and agreed upon prior to project approval') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="ability_to_pay[]" value="My fee will be reviewed with me and agreed upon prior to project approval" '.(isset($form_data) && isset($form_data['ability_to_pay']) && (strpos($form_data['ability_to_pay'],'My fee will be reviewed with me and agreed upon prior to project approval') !== false) ? 'checked' : '').'>
                     My fee will be reviewed with me and agreed upon prior to project approval
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="ability_to_pay[]" value="My fee is due and shall be paid in full prior to the work day on my home" '.(isset($form_data) && (strpos($form_data['ability_to_pay'],'My fee is due and shall be paid in full prior to the work day on my home') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="ability_to_pay[]" value="My fee is due and shall be paid in full prior to the work day on my home" '.(isset($form_data) && isset($form_data['ability_to_pay']) && (strpos($form_data['ability_to_pay'],'My fee is due and shall be paid in full prior to the work day on my home') !== false) ? 'checked' : '').'>
                     My fee is due and shall be paid in full prior to the work day on my home
                 </label>
             </div>
@@ -611,19 +667,19 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['willingness_to_partner']) && $has_error['willingness_to_partner']) ? '<span class="help-block">Please answer about your willingness to partner.</span>' : '') . '
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="willingness_to_partner[]" value="I will be available and participate in work done at my home alongside Habitat volunteers when scheduled" '.(isset($form_data) && (strpos($form_data['willingness_to_partner'],'I will be available and participate in work done at my home alongside Habitat volunteers when scheduled') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="willingness_to_partner[]" value="I will be available and participate in work done at my home alongside Habitat volunteers when scheduled" '.(isset($form_data) && isset($form_data['willingness_to_partner']) && (strpos($form_data['willingness_to_partner'],'I will be available and participate in work done at my home alongside Habitat volunteers when scheduled') !== false) ? 'checked' : '').'>
                     I will be available and participate in work done at my home alongside Habitat volunteers when scheduled
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="willingness_to_partner[]" value="I will put in the required number of sweat equity hours for my project (4-8 hours)" '.(isset($form_data) && (strpos($form_data['willingness_to_partner'],'I will put in the required number of sweat equity hours for my project (4-8 hours)') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="willingness_to_partner[]" value="I will put in the required number of sweat equity hours for my project (4-8 hours)" '.(isset($form_data) && isset($form_data['willingness_to_partner']) && (strpos($form_data['willingness_to_partner'],'I will put in the required number of sweat equity hours for my project (4-8 hours)') !== false) ? 'checked' : '').'>
                     I will put in the required number of sweat equity hours for my project (4-8 hours)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="willingness_to_partner[]" value="I am willing to display partnership materials (lawn sign, stencil)" '.(isset($form_data) && (strpos($form_data['willingness_to_partner'],'I am willing to display partnership materials (lawn sign, stencil)') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="willingness_to_partner[]" value="I am willing to display partnership materials (lawn sign, stencil)" '.(isset($form_data) && isset($form_data['willingness_to_partner']) && (strpos($form_data['willingness_to_partner'],'I am willing to display partnership materials (lawn sign, stencil)') !== false) ? 'checked' : '').'>
                     I am willing to display partnership materials (lawn sign, stencil)
                 </label>
             </div>
@@ -633,49 +689,49 @@ function rock_the_block_form_shortcode()
             <label class="control-label">My home is in NEED of one or more of the following services*<br><small>* Services also available to renters</br></label>
             <div class="checkbox energy-audit">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Energy Audit to identify savings" '.(isset($form_data) && (strpos($form_data['services_requested'],'Energy Audit to identify savings') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Energy Audit to identify savings" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Energy Audit to identify savings') !== false) ? 'checked' : '').'>
                     Energy Audit to identify savings<sup>1</sup><br>
                     Free
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Landscape: Rake, edge, trim hedges, level landscape blocks" '.(isset($form_data) && (strpos($form_data['services_requested'],'Landscape: Rake, edge, trim hedges, level landscape blocks') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Landscape: Rake, edge, trim hedges, level landscape blocks" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Landscape: Rake, edge, trim hedges, level landscape blocks') !== false) ? 'checked' : '').'>
                     Landscape: Rake, edge, trim hedges, level landscape blocks<br>
                     $10 - $25
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Gutter Cleaning, install Gutter Guards" '.(isset($form_data) && (strpos($form_data['services_requested'],'Gutter Cleaning, install Gutter Guards') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Gutter Cleaning, install Gutter Guards" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Gutter Cleaning, install Gutter Guards') !== false) ? 'checked' : '').'>
                     Gutter Cleaning, install Gutter Guards<br>
                     $10 - $100 (subject to assessment)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Exterior of Home Painting" '.(isset($form_data) && (strpos($form_data['services_requested'],'Exterior of Home Painting') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Exterior of Home Painting" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Exterior of Home Painting') !== false) ? 'checked' : '').'>
                     Exterior of Home Painting<br>
                     $200 - $500 (subject to testing & assessment)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Wood porch, steps or fence repair (does not include paint/stain)" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch, steps or fence repair (does not include paint/stain)') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Wood porch, steps or fence repair (does not include paint/stain)" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Wood porch, steps or fence repair (does not include paint/stain)') !== false) ? 'checked' : '').'>
                     Wood porch, steps or fence repair (does not include paint/stain)<br>
                     $75 - $125 (subject to testing & assessment)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Wood porch or fence painting/stain" '.(isset($form_data) && (strpos($form_data['services_requested'],'Wood porch or fence painting/stain') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Wood porch or fence painting/stain" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Wood porch or fence painting/stain') !== false) ? 'checked' : '').'>
                     Wood porch or fence painting/stain<br>
                     $25 - $100 (subject to survey & testing)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Dumpster Ditch Day" '.(isset($form_data) && (strpos($form_data['services_requested'],'Dumpster Ditch Day') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="services_requested[]" value="Dumpster Ditch Day" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Dumpster Ditch Day') !== false) ? 'checked' : '').'>
                     Dumpster Ditch Day<sup>1</sup><br>
                     Free
                 </label>
@@ -821,14 +877,14 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['authorization_and_release']) && $has_error['authorization_and_release']) ? '<span class="help-block">Please accept the agreement.</span>' : '') . '
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="authorization_and_release" value="Agree" '.(isset($form_data) && (strpos($form_data['authorization_and_release'],'Agree') !== false) ? 'checked' : '').'>
+                    <input type="checkbox" name="authorization_and_release" value="Agree" '.(isset($form_data) && isset($form_data['authorization_and_release']) && (strpos($form_data['authorization_and_release'],'Agree') !== false) ? 'checked' : '').'>
                     Agree
                 </label>
             </div>
         </div>
         <div class="form-group' . ((isset($has_error['signature']) && $has_error['signature']) ? ' has-error' : '') . '">
             <label class="control-label">Please Fill Out Your Name as a Signature*</label>
-            <input type="text" name="signature" class="form-control" placeholder="Your Full Name" value="' . (isset($form_data) ? $form_data['sinature'] : '') . '">
+            <input type="text" name="signature" class="form-control" placeholder="Your Full Name" value="' . (isset($form_data) ? $form_data['signature'] : '') . '">
             ' . ((isset($has_error['signature']) && $has_error['signature']) ? '<span class="help-block">Please fill out your name.</span>' : '') . '
         </div>
         <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
@@ -836,10 +892,11 @@ function rock_the_block_form_shortcode()
             ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">ReCaptcha validation has failed.</span>' : '') . '
         </div>
         <div class="form-group">
+            <input type="hidden" value="'.$event.'" name="event">
             <button class="btn btn-lg btn-darkblue" type="submit">Submit</button>
         </div>
     </form>';
     $close_div = '</div>';
-    return $result . $start_div . $info . $email_form . $close_div;
+    return $result . $start_div . $intro . $info . $email_form . $close_div;
 }
 add_shortcode('rock_the_block_form', 'rock_the_block_form_shortcode');
