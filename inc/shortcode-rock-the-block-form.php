@@ -30,7 +30,7 @@ function rock_the_block_form_shortcode($atts = array())
             $event_name = 'Bonnie Acres Neighborhood';
             $start_date = '2017-09-11';
             $end_date = '2017-09-12';
-            $street_names = array('Brentwood St', 'Marshall St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Santa Rosa Ave', 'Wiltshire Blvd');
+            $street_names = array('Brentwood St', 'Marshall St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Santa Rosa Ave', 'Wiltshire Blvd', 'Stuart', 'Glasgow', 'Pierce', 'Sutherland', 'Aberdeen', 'Catalpa');
             $city = 'Southfield';
             $zip_code = '48076';
             break;
@@ -341,14 +341,14 @@ function rock_the_block_form_shortcode($atts = array())
         <h2>'.$event_name.'</h2>
         <h3>'.date('l, F jS, Y',strtotime($start_date)).' - '.date('l, F jS, Y',strtotime($end_date)).'</h3>
         ';
-    $start_div = '<div id="golf-signup-form">';
+    $start_div = '<div id="rock-the-block-form">';
     $info = '';
 
     if ($error == true) {
         $info = '<div class="alert alert-danger">Please correct the errors in red on the form.</div>';
     }
 
-    $email_form = '<form class="golf-signup-form" action="' . get_permalink() . '" method="post">
+    $email_form = '<form class="rock-the-block-form" action="' . get_permalink() . '" method="post">
         <h2>Contact Information</h2>
         <div class="form-section">
             <label>Name</label>
