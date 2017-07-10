@@ -696,8 +696,15 @@ function rock_the_block_form_shortcode($atts = array())
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Landscape: Rake, edge, trim hedges, level landscape blocks" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Landscape: Rake, edge, trim hedges, level landscape blocks') !== false) ? 'checked' : '').'>
-                    Landscape: Rake, edge, trim hedges, level landscape blocks<br>
+                    <input type="checkbox" name="services_requested[]" value="Landscape Clean Up: rake, edge, trim hedges/trees, brush clearing" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Landscape Clean Up: rake, edge, trim hedges/trees, brush clearing') !== false) ? 'checked' : '').'>
+                    Landscape Clean Up: rake, edge, trim hedges/trees, brush clearing<sup>1</sup><br>
+                    $10 - $50
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Lawn Mowing" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Lawn Mowing') !== false) ? 'checked' : '').'>
+                    Lawn Mowing<sup>1</sup><br>
                     $10 - $25
                 </label>
             </div>
@@ -705,14 +712,21 @@ function rock_the_block_form_shortcode($atts = array())
                 <label>
                     <input type="checkbox" name="services_requested[]" value="Gutter Cleaning, install Gutter Guards" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Gutter Cleaning, install Gutter Guards') !== false) ? 'checked' : '').'>
                     Gutter Cleaning, install Gutter Guards<br>
-                    $10 - $100 (subject to assessment)
+                    $10 - $40 (subject to assessment)
                 </label>
             </div>
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="services_requested[]" value="Exterior of Home Painting" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Exterior of Home Painting') !== false) ? 'checked' : '').'>
-                    Exterior of Home Painting<br>
-                    $200 - $500 (subject to testing & assessment)
+                    Exterior Home Painting, Foundation Painting<br>
+                    $100 - $500 (subject to testing & assessment)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Exterior Home Cleaning & Power Washing" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Exterior Home Cleaning & Power Washing') !== false) ? 'checked' : '').'>
+                    Exterior Home Cleaning & Power Washing<br>
+                    $25 - $100
                 </label>
             </div>
             <div class="checkbox">
@@ -731,8 +745,15 @@ function rock_the_block_form_shortcode($atts = array())
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="services_requested[]" value="Dumpster Ditch Day" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Dumpster Ditch Day') !== false) ? 'checked' : '').'>
-                    Dumpster Ditch Day<sup>1</sup><br>
+                    <input type="checkbox" name="services_requested[]" value="Leaf Raking" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Leaf Raking') !== false) ? 'checked' : '').'>
+                    Leaf Raking (Fall Only)<sup>1</sup><br>
+                    $10 - $25
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="services_requested[]" value="Dumpster Use" '.(isset($form_data) && isset($form_data['services_requested']) && (strpos($form_data['services_requested'],'Dumpster Use') !== false) ? 'checked' : '').'>
+                    Dumpster Use (Trash and Yard Debris)<sup>1</sup><br>
                     Free
                 </label>
             </div>
