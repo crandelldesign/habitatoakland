@@ -152,7 +152,8 @@ function company_team_building_form_shortcode()
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Matt Crandell <matt@crandelldesign.com>, Cheryl Henderson <cherylh@habitatoakland.org>, Leah Diedrichs <leahd@habitaoakland.org>, Elizabeth Wyss <elizabethh@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Cheryl Henderson <cherylh@habitatoakland.org>, Leah Diedrichs <leahd@habitaoakland.org>, Elizabeth Wyss <elizabethh@habitatoakland.org>', // Use comma for 2nd email
+                'bcc' => 'Matt Crandell <matt@crandelldesign.com>',
                 'subject' => 'New Form Entry: Company Team Building Form',
                 'text'    => 'Your mail does not support HTML',
                 'html'    => $htmlEmail

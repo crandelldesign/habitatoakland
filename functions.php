@@ -15,9 +15,6 @@ $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 // Load Contact Contact
 require_once __DIR__.'/vendor/constantcontact/constantcontact/src/Ctct/autoload.php';
-use Ctct\Components\Contacts\Contact;
-use Ctct\ConstantContact;
-use Ctct\Exceptions\CtctException;
 
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
@@ -259,10 +256,10 @@ function social_media_shortcode() {
     // Code
     return '<ul class="list-inline margin-bottom-25">
             <li><a href="https://www.facebook.com/HabitatforHumanityOC?ref=ts&fref=ts" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-            <li><a href="https://twitter.com/@buildhabitatoc" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href="https://twitter.com/HabitatOakldCty?lang=en" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
             <li><a href="https://www.linkedin.com/company/habitat-for-humanity-oakland-county" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
             <li><a href="https://plus.google.com/u/0/b/103131641179733973708/?pageId=103131641179733973708" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            <li><a href="https://www.instagram.com/habitatoakland/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+            <li><a href="https://www.instagram.com/habitatoaklandcty/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
             <li><a href="https://www.flickr.com/photos/132443299@N02/" target="_blank"><i class="fa fa-flickr fa-2x"></i></a></li>
             <li><a href="https://www.youtube.com/channel/UCushl9LrGy6mFhPjbEcXbpA" target="_blank"><i class="fa fa-youtube-square fa-2x" aria-hidden="true"></i></a></li>
         </ul>';
@@ -398,5 +395,20 @@ function verify_comment_captcha( $commentdata ) {
     }
 }
 add_filter("preprocess_comment", "verify_comment_captcha", 10, 2 );
+
+// Restore Event Buttons
+function event_buttons_restore_shortcode( $attr ) {
+    $restoreIdObj = get_category_by_slug('restores-of-oakland-county');
+    $restoreId = $restoreIdObj->term_id;
+    $eventsIdObj = get_category_by_slug('event');
+    $eventsId = $eventsIdObj->term_id;
+
+    // Get Events
+    query_posts( array( 'category__and' => array( $restoreId, $eventsId ) ) );
+    ob_start();
+    get_template_part( 'event-buttons' );
+    return ob_get_clean();
+}
+add_shortcode( 'event_buttons_restore', 'event_buttons_restore_shortcode' );
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

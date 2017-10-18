@@ -304,24 +304,30 @@ function homeownership_form_shortcode()
             </div>
         </div>
         <div class="form-group' . ((isset($has_error['military_service']) && $has_error['military_service']) ? ' has-error' : '') . '">
-            <label class="control-label">Military Service*</label>
-            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the military.</span>' : '') . '
-            <div class="radio">
+            <label class="control-label">Armed Forces Service*</label>
+            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the armed forces service.</span>' : '') . '
+            <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
-                    I am a military veteran
+                    <input type="radio" name="military_service" value="I am currently serving in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am currently serving in the Armed Forces') ? 'checked' : '').'>
+                    I am currently serving in the Armed Forces
                 </label>
             </div>
-            <div class="radio">
+            <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
-                    I am the surviving spouse of a military veteran
+                    <input type="radio" name="military_service" value="I previously served in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I previously served in the Armed Forces') ? 'checked' : '').'>
+                    I previously served in the Armed Forces
                 </label>
             </div>
-            <div class="radio">
+            <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
-                    I am NOT a military veteran
+                    <input type="radio" name="military_service" value="I am the surviving spouse of an Armed Forces Servicemember" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am the surviving spouse of an Armed Forces Servicemember') ? 'checked' : '').'>
+                    I am the surviving spouse of an Armed Forces Servicemember
+                </label>
+            </div>
+            <div class="radio military-service">
+                <label>
+                    <input type="radio" name="military_service" value="I have never served in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I have never served in the Armed Forces') ? 'checked' : '').'>
+                    I have never served in the Armed Forces
                 </label>
             </div>
         </div>
@@ -465,7 +471,7 @@ function homeownership_form_shortcode()
         </div>
         <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
             <div class="g-recaptcha" data-sitekey="'.getenv('RECAPTCHA_SITEKEY').'"></div>
-            ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">PCaptcha validation has failed.</span>' : '') . '
+            ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">ReCaptcha validation has failed.</span>' : '') . '
         </div>
         <div class="form-group">
             <button class="btn btn-lg btn-darkblue" type="submit">Next</button>

@@ -53,6 +53,9 @@ a {
         color: $cornflower;
         text-decoration: none;
     }
+    &[href^=tel] {
+        white-space: nowrap;
+    }
 }
 /* Default Styles */
 .btn {

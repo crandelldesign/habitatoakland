@@ -92,6 +92,13 @@
 
                 <section class="entry-content cf" itemprop="articleBody">
                   <?php
+                    if ( has_post_thumbnail() ) {
+                    ?>
+                        <div class="blog-featured-img">
+                        <?php the_post_thumbnail('medium'); ?>
+                        </div>
+                    <?php
+                    }
                     // the content (pretty self explanatory huh)
                     the_content();
 

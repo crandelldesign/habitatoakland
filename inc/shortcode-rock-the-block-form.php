@@ -291,7 +291,8 @@ function rock_the_block_form_shortcode($atts = array())
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Matt Crandell <matt@crandelldesign.com>, Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
+                'bcc' => 'Matt Crandell <matt@crandelldesign.com>',
                 'subject' => 'New Form Entry: Rock the Block Form',
                 'text'    => 'Your mail does not support HTML',
                 'html'    => $htmlEmail
@@ -444,24 +445,30 @@ function rock_the_block_form_shortcode($atts = array())
             </div>
         </div>
         <div class="form-group' . ((isset($has_error['military_service']) && $has_error['military_service']) ? ' has-error' : '') . '">
-            <label class="control-label">Military Service*</label>
-            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the military.</span>' : '') . '
+            <label class="control-label">Armed Forces Service*</label>
+            ' . ((isset($has_error['military_service']) && $has_error['military_service']) ? '<span class="help-block">Please check if you or your spouse served in the armed forces service.</span>' : '') . '
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am a military veteran') ? 'checked' : '').'>
-                    I am a military veteran
+                    <input type="radio" name="military_service" value="I am currently serving in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am currently serving in the Armed Forces') ? 'checked' : '').'>
+                    I am currently serving in the Armed Forces
                 </label>
             </div>
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am the surviving spouse of a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am the surviving spouse of a military veteran') ? 'checked' : '').'>
-                    I am the surviving spouse of a military veteran
+                    <input type="radio" name="military_service" value="I previously served in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I previously served in the Armed Forces') ? 'checked' : '').'>
+                    I previously served in the Armed Forces
                 </label>
             </div>
             <div class="radio military-service">
                 <label>
-                    <input type="radio" name="military_service" value="I am NOT a military veteran" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am NOT a military veteran') ? 'checked' : '').'>
-                    I am NOT a military veteran
+                    <input type="radio" name="military_service" value="I am the surviving spouse of an Armed Forces Servicemember" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I am the surviving spouse of an Armed Forces Servicemember') ? 'checked' : '').'>
+                    I am the surviving spouse of an Armed Forces Servicemember
+                </label>
+            </div>
+            <div class="radio military-service">
+                <label>
+                    <input type="radio" name="military_service" value="I have never served in the Armed Forces" '.(isset($form_data) && isset($form_data['military_service']) && ($form_data['military_service'] == 'I have never served in the Armed Forces') ? 'checked' : '').'>
+                    I have never served in the Armed Forces
                 </label>
             </div>
         </div>

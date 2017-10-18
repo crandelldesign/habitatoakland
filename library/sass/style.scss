@@ -150,11 +150,12 @@ be set to display none.
 
 }
 
-/* Import Third Part Sass Files */
+/* Import Third Party Sass Files */
 @import 'bootstrap';
 @import 'font-awesome';
 @import 'theme/datepicker';
 
+// Import Sass Partials
 @import 'theme/global';
 @import 'theme/header-nav';
 
@@ -331,6 +332,9 @@ article .byline {
 .details {
     color: $text-muted;
 }
+
+// Posts
+@import 'theme/posts';
 
 /* Total Donations */
 .mg_giving-text-perk {
@@ -679,7 +683,6 @@ label {
         vertical-align: middle;
     }
 }
-
 
 /* Panel */
 .panel-default {

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9d3457a447303c543f7d4c2d4c98f1c8",
-    "content-hash": "da565514cc9389157f5049f07add8d7d",
+    "hash": "fb58e4c7f021e07e010d81172b351655",
+    "content-hash": "84f38827247d57bb2a2da06df29931b6",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -325,16 +325,16 @@
         },
         {
             "name": "mailgun/mailgun-php",
-            "version": "v2.3.0",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailgun/mailgun-php.git",
-                "reference": "5df14eb6aab16367ae75b0d1f19868e3c5bddf53"
+                "reference": "f58c5914aefa16fa6ed2b5cf9ee84d40cbda1b3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/5df14eb6aab16367ae75b0d1f19868e3c5bddf53",
-                "reference": "5df14eb6aab16367ae75b0d1f19868e3c5bddf53",
+                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/f58c5914aefa16fa6ed2b5cf9ee84d40cbda1b3a",
+                "reference": "f58c5914aefa16fa6ed2b5cf9ee84d40cbda1b3a",
                 "shasum": ""
             },
             "require": {
@@ -343,7 +343,7 @@
                 "php-http/discovery": "^1.0",
                 "php-http/httplug": "^1.0",
                 "php-http/message": "^1.0",
-                "php-http/multipart-stream-builder": "^0.2",
+                "php-http/multipart-stream-builder": "^1.0",
                 "webmozart/assert": "^1.2"
             },
             "require-dev": {
@@ -368,7 +368,7 @@
                 }
             ],
             "description": "The Mailgun SDK provides methods for all API functions.",
-            "time": "2017-04-14 09:15:08"
+            "time": "2017-06-20 19:56:09"
         },
         {
             "name": "php-http/client-common",
@@ -607,16 +607,16 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "13df8c48f40ca7925303aa336f19be4b80984f01"
+                "reference": "2edd63bae5f52f79363c5f18904b05ce3a4b7253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/13df8c48f40ca7925303aa336f19be4b80984f01",
-                "reference": "13df8c48f40ca7925303aa336f19be4b80984f01",
+                "url": "https://api.github.com/repos/php-http/message/zipball/2edd63bae5f52f79363c5f18904b05ce3a4b7253",
+                "reference": "2edd63bae5f52f79363c5f18904b05ce3a4b7253",
                 "shasum": ""
             },
             "require": {
@@ -624,6 +624,9 @@
                 "php": ">=5.4",
                 "php-http/message-factory": "^1.0.2",
                 "psr/http-message": "^1.0"
+            },
+            "provide": {
+                "php-http/message-factory-implementation": "1.0"
             },
             "require-dev": {
                 "akeneo/phpspec-skip-example-extension": "^1.0",
@@ -672,7 +675,7 @@
                 "message",
                 "psr-7"
             ],
-            "time": "2017-02-14 08:58:37"
+            "time": "2017-07-05 06:40:53"
         },
         {
             "name": "php-http/message-factory",
@@ -726,16 +729,16 @@
         },
         {
             "name": "php-http/multipart-stream-builder",
-            "version": "0.2.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/multipart-stream-builder.git",
-                "reference": "8b3c05f587e2df7370f88579994593a07b0e9cf5"
+                "reference": "1fa3c623fc813a43b39494b2a1612174e36e0fb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/multipart-stream-builder/zipball/8b3c05f587e2df7370f88579994593a07b0e9cf5",
-                "reference": "8b3c05f587e2df7370f88579994593a07b0e9cf5",
+                "url": "https://api.github.com/repos/php-http/multipart-stream-builder/zipball/1fa3c623fc813a43b39494b2a1612174e36e0fb0",
+                "reference": "1fa3c623fc813a43b39494b2a1612174e36e0fb0",
                 "shasum": ""
             },
             "require": {
@@ -779,7 +782,7 @@
                 "multipart stream",
                 "stream"
             ],
-            "time": "2017-02-20 15:37:00"
+            "time": "2017-05-21 17:45:25"
         },
         {
             "name": "php-http/promise",
@@ -929,16 +932,16 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v3.2.7",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "6a19be85237fe8bbd4975f86942b4763bb0da6ca"
+                "reference": "ff48982d295bcac1fd861f934f041ebc73ae40f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/6a19be85237fe8bbd4975f86942b4763bb0da6ca",
-                "reference": "6a19be85237fe8bbd4975f86942b4763bb0da6ca",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/ff48982d295bcac1fd861f934f041ebc73ae40f0",
+                "reference": "ff48982d295bcac1fd861f934f041ebc73ae40f0",
                 "shasum": ""
             },
             "require": {
@@ -947,7 +950,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -979,7 +982,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2017-03-21 21:44:32"
+            "time": "2017-04-12 14:14:56"
         },
         {
             "name": "vlucas/phpdotenv",

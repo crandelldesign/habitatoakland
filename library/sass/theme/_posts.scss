@@ -1,0 +1,37 @@
+// Post Styles
+.hentry {
+    header {
+        padding: 30px 30px 15px 30px;
+    }
+    .entry-content {
+        padding: 15px 30px 15px 30px;
+        > h2:first-child {
+            margin-top: 0;
+        }
+    }
+    footer {
+        padding: 15px 30px 30px 30px;
+    }
+}
+
+// Posts Thumbnail and IMG
+article {
+    .blog-list-thumbnail {
+        img {
+            display: block;
+            margin: 0 auto 1em auto;
+            @include shadow-1();
+            @media (min-width: $screen-sm-min) {
+                float: left;
+                margin: 0 1em 1em 0;
+            }
+        }
+    }
+    .blog-featured-img {
+        img {
+            @extend .img-responsive;
+            @extend .center-block;
+            @include shadow-1();
+        }
+    }
+}
