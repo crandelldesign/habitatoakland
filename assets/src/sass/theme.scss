@@ -1,1 +1,11 @@
+// Variables
+@import "theme/variables";
+@import "theme/mixins";
+
+// 3rd Party
 @import "../../vendor/bootstrap/assets/stylesheets/bootstrap";
+@import "../../vendor/font-awesome/scss/font-awesome";
+
+// Theme
+@import "theme/global";
+@import "theme/header";

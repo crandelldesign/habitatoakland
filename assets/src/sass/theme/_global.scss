@@ -1,0 +1,57 @@
+// Global Styles
+
+/* Body Styles */
+html {
+}
+/* Typography and Colors */
+body {
+    color: $black;
+    @media (min-width: $screen-sm-min) {
+        font-size: 18px;
+    }
+}
+h1, .h1 {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: 400;
+    @media (min-width: $screen-sm-min) {
+        font-size: 40px;
+    }
+}
+h2, .h2, .gform_wrapper h2.gsection_title {
+    color: $apple;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 25px;
+    font-weight: 700;
+    @media (min-width: $screen-sm-min) {
+        font-size: 30px;
+    }
+}
+h3, .h3, .gform_wrapper .subsection h2.gsection_title {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 600;
+    @media (min-width: $screen-sm-min) {
+        font-size: 24px;
+    }
+}
+h4, .h4, .gform_wrapper .h4 h2.gsection_title {
+    color: $bahamablue;
+    //font-family: 'Crimson Text', "Times New Roman", Times, serif;
+    font-weight: 600;
+}
+.gform_wrapper .h4 h2.gsection_title {
+    font-size: 18px;
+}
+a {
+    color: $deepcerulean;
+    &:hover, &.hover {
+        color: $cornflower;
+        text-decoration: none;
+    }
+    &[href^=tel] {
+        white-space: nowrap;
+    }
+}

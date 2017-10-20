@@ -6,19 +6,15 @@
 */
 ?>
 
-<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-
-    <label>
-
-        <span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span>
-
-        <input type="search" class="search-field"
+<form role="search" method="get" id="searchform" class="searchform" action="<?php echo home_url( '/' ); ?>">
+    <span class="sr-only"><?php echo _x( 'Search for:', 'label' ) ?></span>
+    <div class="searchbar input-group">
+        <input class="form-control" type="search" id="s"
             placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>"
             value="<?php echo get_search_query() ?>" name="s"
             title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
-
-    </label>
-
-    <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
-    
+        <div class="input-group-btn">
+            <button class="btn btn-default search" type="button"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
 </form>

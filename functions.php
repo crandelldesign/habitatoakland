@@ -335,8 +335,11 @@ function template_scripts_and_styles() {
     // modernizr (without media query polyfill)
     //wp_register_script( 'template-modernizr', get_theme_file_uri() . '/library/js/libs/modernizr-custom.js', array(), '3.5.0', false );
 
+    // Register Google Fonts
+    wp_register_style( 'google-fonts-stylesheet', get_theme_file_uri() . '/assets/css/theme.css', array(), '', 'all' );
+
     // register main stylesheet
-    wp_register_style( 'template-stylesheet', get_theme_file_uri() . '/assets/css/theme.css', array(), '', 'all' );
+    wp_register_style( 'template-stylesheet', 'https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i|Roboto:400,400i', array(), '', 'all' );
 
     // ie-only style sheet
     //wp_register_style( 'template-ie-only', get_theme_file_uri() . '/library/css/ie.css', array(), '' );
@@ -353,9 +356,10 @@ function template_scripts_and_styles() {
     // wp_register_script( 'template-extra-js', get_stylesheet_directory_uri() . '/library/js/extras/extra-scripts.js', array( 'jquery' ), '', true );
 
     // enqueue styles and scripts
-    wp_enqueue_script( 'template-modernizr' );
+    //wp_enqueue_script( 'template-modernizr' );
+    wp_enqueue_style( 'google-fonts-stylesheet' );
     wp_enqueue_style( 'template-stylesheet' );
-    wp_enqueue_style( 'template-ie-only' );
+    //wp_enqueue_style( 'template-ie-only' );
 
     $wp_styles->add_data( 'template-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
