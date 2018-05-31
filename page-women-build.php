@@ -15,18 +15,7 @@
 		<div class="col-sm-12">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" role="article" itemscope itemtype="http://schema.org/BlogPosting">
-					<?php if( get_field('header') ): ?>
-						<div class="row">
-							<div class="col-sm-6">
-								<h1 class="page-title"><?php the_title(); ?></h1>
-							</div>
-							<div class="col-sm-6">
-								<?php the_field('header'); ?>
-							</div>
-						</div>
-					<?php else: ?>
-						<h1 class="page-title"><?php the_title(); ?></h1>
-					<?php endif; ?>
+					<h1 class="page-title hidden"><?php the_title(); ?></h1>
 					<section itemprop="articleBody">
 						<?php
 							// the content (pretty self explanatory huh)
@@ -78,7 +67,7 @@
 
 			<!-- Get Events -->
 			<?php query_posts( array( 'category__and' => array( $womenbuildId, $eventsId ) ) ); ?>
-    		<?php get_template_part('event-buttons'); ?>
+    		<?php // get_template_part('event-buttons'); ?>
 
 		</div>
 	</div>

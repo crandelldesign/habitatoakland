@@ -1,0 +1,16 @@
+.row-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-wrap: wrap;
+    margin-left: -0.8%;
+    margin-right: -0.8%;
+    [class*="col-"] {
+        margin-left: 0.8%;
+        margin-right: 0.8%;
+    }
+    .col-sm-4 {
+        width: 31.733%;
+    }
+}

@@ -35,12 +35,41 @@ jQuery(document).ready(function ($) {
             $('.date-home-purchased-form-group').hide();
         }
     });
+    $('.i-am-renting').on('click', function(event) {
+        if ($(this).find('input').val() == 'I am NOT the homeowner; I am currently renting the home' && $(this).find('input').is(':checked')) {
+            $('.landlord-info-form-group').show();
+        } else {
+            $('.landlord-info-form-group').hide();
+        }
+    })
     $('.energy-audit').on('click', function(event)
     {
         if ($(this).find('input').val() == 'Energy Audit to identify savings' && $(this).find('input').is(':checked')) {
             $('.consumers-energy-account-number-form-group').show();
         } else {
             $('.consumers-energy-account-number-form-group').hide();
+        }
+    });
+    $('.service-requested-other-click').on('click', function(event)
+    {
+        if ($(this).find('input').val() == 'Other' && $(this).find('input').is(':checked')) {
+            $('.service-requested-other').show();
+        } else {
+            $('.service-requested-other').hide();
+        }
+    });
+    $('select[name="race_national_origin"]').on('change', function (event) {
+        if ($(this).val() == 'Other') {
+            $('.race-national-origin-explaination-form-group').show();
+        } else {
+            $('.race-national-origin-explaination-form-group').hide();
+        }
+    });
+    $('select[name="gender_identity"]').on('change', function (event) {
+        if ($(this).val() == 'Other') {
+            $('.gender-identity-explaination-form-group').show();
+        } else {
+            $('.gender-identity-explaination-form-group').hide();
         }
     });
 });

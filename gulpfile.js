@@ -77,7 +77,7 @@ gulp.task('copy-bootstrap', function () {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('library/sass/*.scss', ['sass']);
-    gulp.watch('library/sass/**/.scss', ['sass']);
+    gulp.watch('library/sass/**/*.scss', ['sass']);
     gulp.watch('library/js/*.js', ['js']);
 });
 

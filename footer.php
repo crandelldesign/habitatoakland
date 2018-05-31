@@ -3,15 +3,15 @@
     	<footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-2 col-md-1 hidden-xs">
+                    <div class="col-sm-2 col-md-1 hidden-xs hidden">
                         <img src="<?php echo get_template_directory_uri(); ?>/library/images/eho-logo.jpg" class="img-responsive" alt="EHO">
                     </div>
 
                     <div class="col-sm-3 margin-bottom-10">
                         <p><strong>ReStore Pontiac</strong></p>
                         <p>Hours:<br>
-                        Thurs - Sat: 10 a.m. to 5:30 p.m.<br>
-                        Sun: 12 p.m. to 5 p.m.</p>
+                        <strong>Thurs - Sat: 10 a.m. to 5:30 p.m.<br>
+                        Sun: 12 p.m. to 5 p.m.</strong></p>
                         <meta itemprop="openingHours" content="Mo-Sa 10:00-17:30"/>
                         <meta itemprop="openingHours" content="Su 12:00-5:30"/>
 
@@ -24,8 +24,8 @@
                     <div class="col-sm-3 margin-bottom-10">
                         <p><strong>ReStore Farmington</strong></p>
                         <p>Hours:<br>
-                        Tues - Sat: 10 a.m. to 5:30 p.m.<br>
-                        Sun: 12 p.m. to 5 p.m.</p>
+                        <strong>Tues - Sat: 10 a.m. to 5:30 p.m.<br>
+                        Sun: 12 p.m. to 5 p.m.</strong></p>
                         <meta itemprop="openingHours" content="Mo-Sa 10:00-17:30"/>
                         <meta itemprop="openingHours" content="Su 12:00-5:30"/>
 

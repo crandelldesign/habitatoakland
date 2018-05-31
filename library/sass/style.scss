@@ -158,7 +158,7 @@ be set to display none.
 // Import Sass Partials
 @import 'theme/global';
 @import 'theme/header-nav';
-
+@import 'theme/flex-grid';
 @import 'theme/spacing';
 
 /* Page */
@@ -236,6 +236,14 @@ h1.page-title {
     }
     &.width-400 {
         max-width: 400px;
+    }
+}
+.feature-right {
+    @media (min-width: $screen-sm-min) {
+        float: right;
+        width: 50%;
+        margin-left: 15px;
+        margin-bottom: 15px;
     }
 }
 .event .event-info, article .byline {
@@ -732,17 +740,6 @@ body.page-restore {
         @media (min-width: $screen-sm-min) {
             //margin-top: -69px;
         }
-    }
-}
-
-/* Women Build Page */
-body.page-women-build {
-    h1.page-title {
-        background-image: url("../images/HFHOC-women-build-logo.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 109px;
-        @include text-hide();
     }
 }
 

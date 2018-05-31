@@ -62,6 +62,10 @@ a {
     border-radius: 2px;
     box-shadow: $z1-shadow;
     font-family: $sans-serif;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 .btn-lg {
     box-shadow: $z2-shadow;
@@ -107,6 +111,28 @@ a {
     &:hover {
         background-color: lighten($cornflower, 5);
         color: #FFF;
+    }
+}
+.btn-white-outline {
+    border: 1px solid #FFF;
+    color: #FFF;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: $black;
+    }
+}
+.btn-white {
+    color: $black;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    &:hover {
+        color: $black;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    &.disabled,
+    &:disabled {
+        color: $black;
+        background-color: #FFF;
     }
 }
 .large-green-btn {
@@ -160,11 +186,21 @@ a {
         background-position: center center;
     }
 }
+.btn-rock-the-block {
+    img {
+        width: 70px;
+        height: auto;
+    }
+}
 .input-group {
     .btn, .form-control {
         box-shadow: none;
         padding: 6px 12px 7px 12px;
     }
+}
+.form-control-inline {
+    display: inline-block;
+    width: auto;
 }
 .searchbar.input-group .btn {
     padding: 6px 12px 6px 12px;
@@ -175,4 +211,36 @@ hr {
         margin-top: 35px;
         margin-bottom: 35px;
     }
+}
+// Backgrounds Featured Boxes
+@mixin card() {
+    box-shadow: $z2-shadow;
+    padding: 15px;
+    color: #FFF;
+    h3 {
+        color: #FFF;
+    }
+    a:not(.btn) {
+        color: #FFF;
+    }
+}
+.card-bahamablue {
+    @include card();
+    background-color: $bahamablue;
+}
+.card-apple {
+    @include card();
+    background-color: $apple;
+}
+.card-jumbogray {
+    @include card();
+    background-color: $jumbogray;
+}
+.card-cornflower {
+    @include card();
+    background-color: $cornflower;
+}
+.card-deepcerulean {
+    @include card();
+    background-color: $deepcerulean;
 }

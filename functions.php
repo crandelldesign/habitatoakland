@@ -367,6 +367,9 @@ require get_template_directory() . '/inc/shortcode-golf-signup-form.php';
 // Rock the Block Form
 require get_template_directory() . '/inc/shortcode-rock-the-block-form.php';
 
+// My Habitat Clarkston – Home Repair Program Form
+require get_template_directory() . '/inc/shortcode-my-habitat-clarkston-home-repair-program.php';
+
 // Comment Customization
 function wpb_move_comment_field_to_bottom( $fields ) {
     $comment_field = $fields['comment'];

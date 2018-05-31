@@ -34,13 +34,16 @@
                                 if ($mem_date["start-iso"] !=="") { // show the event date
                                     echo '<span class="event-date">When: ';
                                     $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
-                                    echo date('l, F jS, Y g:i a',$start_date);
+                                    echo date('l, F jS, Y',$start_date);
+                                    echo (strlen(get_post_meta($post->ID, '_mem_start_date', true)) > 10)?date(' g:i a',$start_date):'';
                                     $end_date = get_post_meta($post->ID, '_mem_end_date', true);
                                     if ($end_date) {
                                       if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
                                         echo ' &mdash; ' . date('g:i a',strtotime($end_date));
                                       } else {
-                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                        echo ' through ';
+                                        echo date('l, F jS, Y',$end_date);
+                                        echo (strlen(get_post_meta($post->ID, '_mem_end_date', true)) > 10)?date(' g:i a',$end_date):'';
                                       }
                                     }
                                     echo '</span>';
@@ -74,8 +77,12 @@
                                         }
 
                                         $date = strtotime($date_repeat);
-
-                                        echo date('l, F jS, Y g:i a',$date);
+                                        // If date contains a time
+                                        if (strlen($date_repeat) > 10) {
+                                            echo date('l, F jS, Y g:i a',$date);
+                                        } else {
+                                            echo date('l, F jS, Y',$date);
+                                        }
 
                                         $repeat_counter++; // increment by one
                                         }
