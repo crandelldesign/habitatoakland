@@ -16,11 +16,20 @@ function rock_the_block_form_shortcode($atts = array())
     /* Notes: Set up day before cut off dates */
 
     switch ($event) {
-        case '2018-05-30':
+        case '2018-09-11':
+            // Bonnie Acres 2018
+            $event_name = 'Bonnie Acres Neighborhood';
+            $start_date = '2018-09-11';
+            $end_date = '2018-09-12';
+            $street_names = array('Brentwood St', 'Marshall St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Santa Rosa Ave', 'Wiltshire Blvd', 'Stuart', 'Glasgow', 'Pierce', 'Sutherland', 'Aberdeen', 'Catalpa');
+            $city = 'Southfield';
+            $zip_code = '48076';
+            break;
+        case '2018-08-01':
             // Southwest Evergreen 2018
             $event_name = 'Southwest Evergreen Neighborhood';
-            $start_date = '2018-06-13';
-            $end_date = '2018-06-14';
+            $start_date = '2018-08-01';
+            $end_date = '2018-08-02';
             $street_names = array('Anderson','Collingwood','Cottage','Edith','Going','Marshall','Osmun','Shirley','Wall','Willard');
             $city = 'Pontiac';
             $zip_code = '48342';
