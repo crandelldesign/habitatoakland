@@ -21,7 +21,7 @@ function rock_the_block_form_shortcode($atts = array())
             $event_name = 'Bonnie Acres Neighborhood';
             $start_date = '2018-09-11';
             $end_date = '2018-09-12';
-            $street_names = array('Brentwood St', 'Marshall St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Santa Rosa Ave', 'Wiltshire Blvd', 'Stuart', 'Glasgow', 'Pierce', 'Sutherland', 'Aberdeen', 'Catalpa');
+            $street_names = array('W 12 Mile Rd', 'Greenfield Rd', 'Brentwood St', 'Marshal St', 'Fairfax St', 'Everett St', 'Selkirk St', 'Aberdeen St', 'Sutherland St', 'Pierce St', 'Glasglow St', 'Stuart Ave', 'Red Leaf Ln', 'Wiltshire Blvd', 'San Rosa Ave', 'Roseland Blvd', 'Spring Arbor Dr', 'Avilla Blvd', 'Redwood Ave', 'Glenwood Blvd', 'E Goldengate Dr', 'Catalpa Dr', 'Lathrup Blvd', 'Lexington Pkwy', 'Shaqbark Dr', 'San Quentin Dr');
             $city = 'Southfield';
             $zip_code = '48076';
             break;
@@ -30,9 +30,9 @@ function rock_the_block_form_shortcode($atts = array())
             $event_name = 'Southwest Evergreen Neighborhood';
             $start_date = '2018-08-01';
             $end_date = '2018-08-02';
-            $street_names = array('Anderson','Collingwood','Cottage','Edith','Going','Marshall','Osmun','Shirley','Wall','Willard');
-            $city = 'Pontiac';
-            $zip_code = '48342';
+            $street_names = array('Prescott St', 'Mahon Dr', 'Wallace Rd', 'Frazer Ave', 'Lahser Rd', 'Mada Ave', 'Bentler St', '8 1/2 Mile Rd', 'Rose Hollow Dr', 'Tapert Dr', 'Secluded Ln', 'Melrose St', 'Westland Dr', 'Westover Ave', 'Westhampton Ave', 'Tapert Ave', 'Macauley St', 'Westhave Ave', '8 Mile Rd', 'Evergreen Rd');
+            $city = 'Southfield';
+            $zip_code = '48075';
             break;
         case '2018-06-13':
             // Pontiac 2018
@@ -547,57 +547,7 @@ function rock_the_block_form_shortcode($atts = array())
             <label class="control-label">Which Branch of Military?</label>
             <input type="text" name="military_branch" class="form-control" placeholder="Which Branch of Military?" value="' . (isset($form_data) ? $form_data['military_branch'] : '') . '">
         </div>
-        <h2>Information for Government Monitoring Purposes</h2>
-        <p>The following information is requested by the federal government for housing programs, in order to monitor the lender’s compliance fair housing laws. You are not required to furnish this information, but are encouraged to do so. The law provides that an organization may neither discriminate on the basis of this information, nor on whether you choose to furnish it or not. However, if you choose not to furnish it, under federal regulations this organization is required to note race and sex on the basis of visual observation or surname. If you do not wish to furnish the information below, please check the box below.</p>
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="government_opt_out" value="I do NOT wish to furnish this information" '.(isset($form_data) && isset($form_data['government_opt_out']) && ($form_data['government_opt_out'] == 'I do NOT wish to furnish this information') ? 'checked' : '').'>
-                    I do NOT wish to furnish this information
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Race/National Origin</label>
-            <select name="race_national_origin" id="race_national_origin" class="form-control">
-                <option value="">Choose One</option>
-                <option value="American Indian or Alaskan Native" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native') ? 'selected' : '').'>American Indian or Alaskan Native</option>
-                <option value="Native Hawaiian or Other Pacific Islander" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Native Hawaiian or Other Pacific Islander') ? 'selected' : '').'>Native Hawaiian or Other Pacific Islander</option>
-                <option value="Black/African American" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Black/African American') ? 'selected' : '').'>Black/African American</option><option value="Caucasian">Caucasian</option>
-                <option value="Asian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Asian') ? 'selected' : '').'>Asian</option>
-                <option value="American Indian or Alaskan Native AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native AND Caucasian') ? 'selected' : '').'>American Indian or Alaskan Native AND Caucasian</option>
-                <option value="Asian AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Asian AND Caucasian') ? 'selected' : '').'>Asian AND Caucasian</option>
-                <option value="Black/African American AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Black/African American AND Caucasian') ? 'selected' : '').'>Black/African American AND Caucasian</option>
-                <option value="American Indian or Alaskan Native AND Black/African American" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native AND Black/African American') ? 'selected' : '').'>American Indian or Alaskan Native AND Black/African American</option>
-                <option value="Other" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Other') ? 'selected' : '').'>Other (specify)</option>
-            </select>
-        </div>
-        <div class="form-group race-national-origin-explaination-form-group" style="display:none">
-            <label class="control-label">Race/National Origin Explanation</label>
-            <input type="text" name="race_national_origin_explaination" class="form-control" placeholder="Please explain" value="' . (isset($form_data) ? $form_data['race_national_origin_explaination'] : '') . '">
-        </div>
-        <div class="form-group">
-            <label>Ethnicity</label>
-            <select name="ethnicity" id="ethnicity" class="form-control">
-                <option value="">Choose One</option>
-                <option value="Hispanic" '.(isset($form_data) && ($form_data['ethnicity'] == 'Hispanic') ? 'selected' : '').'>Hispanic</option>
-                <option value="Non-Hispanic" '.(isset($form_data) && ($form_data['ethnicity'] == 'Non-Hispanic') ? 'selected' : '').'>Non-Hispanic</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Gender Identity</label>
-            <select name="gender_identity" id="gender_identity" class="form-control">
-                <option value="">Choose One</option>
-                <option value="Female" '.(isset($form_data) && ($form_data['gender_identity'] == 'Female') ? 'selected' : '').'>Female</option>
-                <option value="Male" '.(isset($form_data) && ($form_data['gender_identity'] == 'Male') ? 'selected' : '').'>Male</option>
-                <option value="Non-Binary" '.(isset($form_data) && ($form_data['gender_identity'] == 'Non-Binary') ? 'selected' : '').'>Non-Binary</option>
-                <option value="Other" '.(isset($form_data) && ($form_data['gender_identity'] == 'Other') ? 'selected' : '').'>Other (Specify)</option></select>
-            </select>
-        </div>
-        <div class="form-group gender-identity-explaination-form-group" style="display:none">
-            <label class="control-label">Gender Identity Explanation</label>
-            <input type="text" name="gender_identity_explaination" class="form-control" placeholder="Please explain" value="' . (isset($form_data) ? $form_data['gender_identity_explaination'] : '') . '">
-        </div>
+        
         <h2>Household Information</h2>
         <div class="form-group' . ((isset($has_error['years_in_home']) && $has_error['years_in_home']) ? ' has-error' : '') . '">
             <label class="control-label">How Long Have You Lived in Your Home?*</label>
@@ -1087,6 +1037,149 @@ function rock_the_block_form_shortcode($atts = array())
             <label class="control-label">Please Fill Out Your Name as a Signature*</label>
             <input type="text" name="signature" class="form-control" placeholder="Your Full Name" value="' . (isset($form_data) ? $form_data['signature'] : '') . '">
             ' . ((isset($has_error['signature']) && $has_error['signature']) ? '<span class="help-block">Please fill out your name.</span>' : '') . '
+        </div>
+        <h2>Additional Demographic Information<br><small>For government monitoring purposes</small></h2>
+        <p>The following information is requested by the federal government for loans related to the purchase of homes, in order to monitor the lender’s compliance with equal credit opportunity and fair housing laws. You are not required to furnish this information, but you are encouraged to do so.</p>
+        <p>The law provides that a lender may neither discriminate on the basis of this information, nor on whether you choose to furnish it or not. However, if you choose not to furnish it, under federal regulation, this lender is required to note race and sex on the basis of visual observation or surname. If you do not wish to furnish the information below, please check the box below.</p>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="government_opt_out" value="I do NOT wish to furnish this information" '.(isset($form_data) && isset($form_data['government_opt_out']) && ($form_data['government_opt_out'] == 'I do NOT wish to furnish this information') ? 'checked' : '').'>
+                    I do NOT wish to furnish this information
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>What race do you identify with? <small>(check all that apply)</small></label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="American Indian or Alaskan Native" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'American Indian or Alaskan Native') !== false) ? 'checked' : '').'>
+                    American Indian or Alaskan Native
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Native Hawaiian or Other Pacific Islander" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Native Hawaiian or Other Pacific Islander') !== false) ? 'checked' : '').'>
+                    Native Hawaiian or Other Pacific Islander
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Black / African American" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Black / African American') !== false) ? 'checked' : '').'>
+                    Black / African American
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="White / Caucasian" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'White / Caucasian') !== false) ? 'checked' : '').'>
+                    White / Caucasian
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Asian" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Asian') !== false) ? 'checked' : '').'>
+                    Asian
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="American Indian or Alaskan Native AND Caucasian" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'American Indian or Alaskan Native AND Caucasian') !== false) ? 'checked' : '').'>
+                    American Indian or Alaskan Native AND Caucasian
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Asian AND Caucasian" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Asian AND Caucasian') !== false) ? 'checked' : '').'>
+                    Asian AND Caucasian
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Black/African American AND Caucasian" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Black/African American AND Caucasian') !== false) ? 'checked' : '').'>
+                    Black/African American AND Caucasian
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="American Indian or Alaskan Native AND Black/African American" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'American Indian or Alaskan Native AND Black/African American') !== false) ? 'checked' : '').'>
+                    American Indian or Alaskan Native AND Black/African American
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="race_national_origin[]" value="Other" class="race-national-origin-other" '.(isset($form_data) && isset($form_data['race_national_origin']) && (strpos($form_data['race_national_origin'],'Other') !== false) ? 'checked' : '').'>
+                    Other (please specify)
+                </label>
+            </div>
+            <!--<select name="race_national_origin" id="race_national_origin" class="form-control">
+                <option value="">Choose One</option>
+                <option value="American Indian or Alaskan Native" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native') ? 'selected' : '').'>American Indian or Alaskan Native</option>
+                <option value="Native Hawaiian or Other Pacific Islander" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Native Hawaiian or Other Pacific Islander') ? 'selected' : '').'>Native Hawaiian or Other Pacific Islander</option>
+                <option value="Black/African American" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Black/African American') ? 'selected' : '').'>Black/African American</option><option value="Caucasian">Caucasian</option>
+                <option value="Asian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Asian') ? 'selected' : '').'>Asian</option>
+                <option value="American Indian or Alaskan Native AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native AND Caucasian') ? 'selected' : '').'>American Indian or Alaskan Native AND Caucasian</option>
+                <option value="Asian AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Asian AND Caucasian') ? 'selected' : '').'>Asian AND Caucasian</option>
+                <option value="Black/African American AND Caucasian" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Black/African American AND Caucasian') ? 'selected' : '').'>Black/African American AND Caucasian</option>
+                <option value="American Indian or Alaskan Native AND Black/African American" '.(isset($form_data) && ($form_data['race_national_origin'] == 'American Indian or Alaskan Native AND Black/African American') ? 'selected' : '').'>American Indian or Alaskan Native AND Black/African American</option>
+                <option value="Other" '.(isset($form_data) && ($form_data['race_national_origin'] == 'Other') ? 'selected' : '').'>Other (specify)</option>
+            </select>-->
+        </div>
+        <div class="form-group race-national-origin-explaination-form-group" style="display:none">
+            <label class="control-label">Race/National Origin Explanation</label>
+            <input type="text" name="race_national_origin_explaination" class="form-control" placeholder="Please explain" value="' . (isset($form_data) ? $form_data['race_national_origin_explaination'] : '') . '">
+        </div>
+        <div class="form-group">
+            <label>Do you consider yourself Hispanic, Latino, Latina, or of Spanish Origin?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="ethnicity" value="Yes, I consider myself as Hispanic, Latino, Latina, or of Spanish Origin" '.(isset($form_data) && ($form_data['ethnicity'] == 'Yes, I consider myself as Hispanic, Latino, Latina, or of Spanish Origin') ? 'checked' : '').'>
+                    Yes, I consider myself as Hispanic, Latino, Latina, or of Spanish Origin
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="ethnicity" value="No, I do not consider myself as Hispanic, Latino, Latina, or of Spanish Origin" '.(isset($form_data) && ($form_data['ethnicity'] == 'No, I do not consider myself as Hispanic, Latino, Latina, or of Spanish Origin') ? 'checked' : '').'>
+                    No, I do not consider myself as Hispanic, Latino, Latina, or of Spanish Origin
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>What gender do you identify with?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender_identity" value="Female" '.(isset($form_data) && ($form_data['gender_identity'] == 'Female') ? 'checked' : '').'>
+                    Female
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender_identity" value="Male" '.(isset($form_data) && ($form_data['gender_identity'] == 'Male') ? 'checked' : '').'>
+                    Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender_identity" value="Non-Binary" '.(isset($form_data) && ($form_data['gender_identity'] == 'Non-Binary') ? 'checked' : '').'>
+                    Non-Binary
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender_identity" value="Other" '.(isset($form_data) && ($form_data['gender_identity'] == 'Other') ? 'checked' : '').' class="gender-identity-other">
+                    Other
+                </label>
+            </div>
+            <!--<select name="gender_identity" id="gender_identity" class="form-control">
+                <option value="">Choose One</option>
+                <option value="Female" '.(isset($form_data) && ($form_data['gender_identity'] == 'Female') ? 'selected' : '').'>Female</option>
+                <option value="Male" '.(isset($form_data) && ($form_data['gender_identity'] == 'Male') ? 'selected' : '').'>Male</option>
+                <option value="Non-Binary" '.(isset($form_data) && ($form_data['gender_identity'] == 'Non-Binary') ? 'selected' : '').'>Non-Binary</option>
+                <option value="Other" '.(isset($form_data) && ($form_data['gender_identity'] == 'Other') ? 'selected' : '').'>Other (Specify)</option></select>
+            </select>-->
+        </div>
+        <div class="form-group gender-identity-explaination-form-group" style="display:none">
+            <label class="control-label">Gender Identity Explanation</label>
+            <input type="text" name="gender_identity_explaination" class="form-control" placeholder="Please explain" value="' . (isset($form_data) ? $form_data['gender_identity_explaination'] : '') . '">
         </div>
         <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
             <div class="g-recaptcha" data-sitekey="'.getenv('RECAPTCHA_SITEKEY').'"></div>
