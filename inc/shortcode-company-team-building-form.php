@@ -152,7 +152,7 @@ function company_team_building_form_shortcode()
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Cheryl Henderson <cherylh@habitatoakland.org>, Leah Diedrichs <leahd@habitaoakland.org>, Elizabeth Wyss <elizabethh@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Brandon <brandenr@habitatoakland.org>', // Use comma for 2nd email
                 'bcc' => 'Matt Crandell <matt@crandelldesign.com>',
                 'subject' => 'New Form Entry: Company Team Building Form',
                 'text'    => 'Your mail does not support HTML',
@@ -178,7 +178,7 @@ function company_team_building_form_shortcode()
                 </table>';
             $htmlEmail = str_replace('!*data*!', $formDataEmail, $htmlEmail);
             $message = $mgClient->sendMessage($domain, array(
-                'from'    => 'Cheryl Henderson <cherylh@habitatoakland.org>',
+                'from'    => 'Brandon <brandenr@habitatoakland.org>',
                 'to'      => $form_data['contact_name'].' <'.$form_data['email'].'>', // Use comma for 2nd email
                 'subject' => 'Thank You for Submitting Your Application for Company Team Building!',
                 'text'    => 'Your mail does not support HTML',

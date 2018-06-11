@@ -30,7 +30,7 @@ function rock_the_block_form_shortcode($atts = array())
             $event_name = 'Southwest Evergreen Neighborhood';
             $start_date = '2018-08-01';
             $end_date = '2018-08-02';
-            $street_names = array('Prescott St', 'Mahon Dr', 'Wallace Rd', 'Frazer Ave', 'Lahser Rd', 'Mada Ave', 'Bentler St', '8 1/2 Mile Rd', 'Rose Hollow Dr', 'Tapert Dr', 'Secluded Ln', 'Melrose St', 'Westland Dr', 'Westover Ave', 'Westhampton Ave', 'Tapert Ave', 'Macauley St', 'Westhave Ave', '8 Mile Rd', 'Evergreen Rd');
+            $street_names = array('Prescott St', 'Mahon Dr', 'Wallace Rd', 'Frazer Ave', 'Lahser Rd', 'Mada Ave', 'Bentler St', '8 1/2 Mile Rd', 'Rose Hollow Dr', 'Tapert Dr', 'Secluded Ln', 'Melrose St', 'Westland Dr', 'Westover Ave', 'Westhampton Ave', 'Tapert Ave', 'Macauley St', 'Westhave Ave', '8 Mile Rd', 'Evergreen Rd', 'Midway Ave');
             $city = 'Southfield';
             $zip_code = '48075';
             break;
@@ -91,7 +91,7 @@ function rock_the_block_form_shortcode($atts = array())
     $result  = '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $required_fields = array(
-            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'years_in_home', 'how_did_you_hear', 'income_source_1', 'income_frequency_1', 'amount_per_check_1', 'adults_in_household', 'children_in_household'
+            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'years_in_home', 'how_did_you_hear', 'income_source_1', 'income_frequency_1', 'amount_per_check_1', 'additional_agreements'
         );
 
         // Fetches everything that has been POSTed, sanitizes them and lets us use them as $form_data['field']
@@ -121,8 +121,16 @@ function rock_the_block_form_shortcode($atts = array())
                 $has_error[$required_field] = true;
             }
         }
+        //error_log( print_r( count($_POST['additional_agreements']), true ) );
+
+        // Check if all 3 checkboxes were checked
+        if (count($_POST['additional_agreements']) < 3) {
+            $error = true;
+            $has_error['additional_agreements'] = true;
+        }
+
         // and if the e-mail is not valid, switch $error to TRUE and set the result text to the shortcode attribute named 'error_noemail'
-        if (!is_email($form_data['email']) && $error == false) {
+        if (!is_email($form_data['email']) && !empty($form_data['email'])) {
             $error = true;
             $has_error['email'] = true;
         }
@@ -361,7 +369,7 @@ function rock_the_block_form_shortcode($atts = array())
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>, Samantha Olson <samo@habitatoakland.org>', // Use comma for 2nd email
                 'bcc' => 'Matt Crandell <matt@crandelldesign.com>',
                 'subject' => 'New Form Entry: Rock the Block Form',
                 'text'    => 'Your mail does not support HTML',
@@ -484,7 +492,7 @@ function rock_the_block_form_shortcode($atts = array())
                 <div class="col-sm-6">
                     <div class="form-group' . ((isset($has_error['zip']) && $has_error['zip']) ? ' has-error' : '') . '">
                         <label class="sub-label control-label">Zip Code*</label>
-                        <input type="text" name="zip" class="form-control" placeholder="Zip Code" value="48341" readonly>
+                        <input type="text" name="zip" class="form-control" placeholder="Zip Code" value="'.$zip_code.'" readonly>
                         ' . ((isset($has_error['zip']) && $has_error['zip']) ? '<span class="help-block">Please fill out your zip code.</span>' : '') . '
                     </div>
                 </div>
@@ -1031,6 +1039,24 @@ function rock_the_block_form_shortcode($atts = array())
                     <input type="checkbox" name="authorization_and_release" value="Agree" '.(isset($form_data) && isset($form_data['authorization_and_release']) && (strpos($form_data['authorization_and_release'],'Agree') !== false) ? 'checked' : '').'>
                     I Agree
                 </label>
+            </div>
+            <div class="form-group' . ((isset($has_error['additional_agreements']) && $has_error['additional_agreements']) ? ' has-error' : '') . '">
+                <p>I understand that:</p>
+                ' . ((isset($has_error['additional_agreements']) && $has_error['additional_agreements']) ? '<span class="help-block">Please check all 3 checkboxes below.</span>' : '') . '
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="additional_agreements[]" value="Only projects that can be completed in 2 days will be approved" '.(isset($form_data) && isset($form_data['additional_agreements']) && (strpos($form_data['additional_agreements'],'Only projects that can be completed in 2 days will be approved') !== false) ? 'checked' : '').'>
+                        Only projects that can be completed in 2 days will be approved.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="additional_agreements[]" value="The requested services and completion of my project is dependent on the number of volunteers that register for the event" '.(isset($form_data) && isset($form_data['additional_agreements']) && (strpos($form_data['additional_agreements'],'The requested services and completion of my project is dependent on the number of volunteers that register for the event') !== false) ? 'checked' : '').'>
+                        The requested services and completion of my project is dependent on the number of volunteers that register for the event.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="additional_agreements[]" value="Services must meet volunteer safety requirements and those that do not will not be completed" '.(isset($form_data) && isset($form_data['additional_agreements']) && (strpos($form_data['additional_agreements'],'Services must meet volunteer safety requirements and those that do not will not be completed') !== false) ? 'checked' : '').'>
+                        Services must meet volunteer safety requirements and those that do not will not be completed.
+                    </label>
+                </div>
             </div>
         </div>
         <div class="form-group' . ((isset($has_error['signature']) && $has_error['signature']) ? ' has-error' : '') . '">
