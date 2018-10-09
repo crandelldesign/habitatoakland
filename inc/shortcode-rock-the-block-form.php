@@ -165,7 +165,8 @@ function rock_the_block_form_shortcode($atts = array())
             $form_data['dependent_dob'] = explode(', ', $form_data['dependent_dob']);
 
             // Add Data from Form
-            $formDataEmail = '<br><table style="color: #636466; font-family: \'Helvetica\' \'Arial\', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px;">
+            $formDataEmail = '<br><table style="color: #636466; font-family: \'Helvetica\' \'Arial\', sans-serif; font-weight: normal; text-align: left; line-height: 19px; font-size: 14px;">';
+            $formDataEmail .= '
                     <tr>
                         <th valign="top" align="left">First Name: </th>
                         <td>' . $form_data['fname'] . '</td>
@@ -369,7 +370,7 @@ function rock_the_block_form_shortcode($atts = array())
             // Send the Email
             $message = $mgClient->sendMessage($domain, array(
                 'from'    => 'Habitat for Humanity of Oakland County Website <postmaster@mailgun.habitatoakland.org>',
-                'to'      => 'Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>, Samantha Olson <samo@habitatoakland.org>', // Use comma for 2nd email
+                'to'      => 'Stephanie Osterland <stephanieo@habitatoakland.org>, Micah Jordan <micahj@habitatoakland.org>, Victoria Cantarella <victoriac@habitatoakland.org>', // Use comma for 2nd email
                 'bcc' => 'Matt Crandell <matt@crandelldesign.com>',
                 'subject' => 'New Form Entry: Rock the Block Form',
                 'text'    => 'Your mail does not support HTML',
@@ -413,21 +414,45 @@ function rock_the_block_form_shortcode($atts = array())
     }
 
 
-
-    $intro = '
+    $email_form = '<div id="rock-the-block-form">';
+    $email_form .= '
         <p>Please complete the form below if you are interested in participating in our Rock the Block program and having repairs completed on your home. Some services are still available for renters.</p>
-        <p>Applications are currently being accepted for the '.date('F jS',strtotime($start_date)).' and '.date('jS',strtotime($end_date)).' Rock the Block event in the '.$event_name.', '.$city.'. If you live outside of this area and the identified street boundaries of '.join(' or ', array_filter(array_merge(array(join(', ', array_slice($street_names, 0, -1))), array_slice($street_names, -1)), 'strlen')).' you will need to wait to apply at a later time if your neighborhood has been selected for a Rock the Block event.</p>
+        <p>Applications are currently being accepted for the '.date('F jS',strtotime($start_date)).' and '.date('jS',strtotime($end_date)).' Rock the Block event in the '.$event_name.', '.$city.'. If you live outside of this area and the identified street boundaries of '.join(' or ', array_filter(array_merge(array(join(', ', array_slice($street_names, 0, -1))), array_slice($street_names, -1)), 'strlen')).' you will need to wait to apply at a later time if your neighborhood has been selected for a Rock the Block event.</p>';
+    $email_form .= '<form class="rock-the-block-form" action="' . get_permalink() . '" method="post">';
+/* 
+    if ($event_name == 'Southwest Evergreen Neighborhood') {
+        $email_form .= '
+        <hr>
+        <p>Join Habitat Oakland for a Community Meet & Eat event! Join us for lunch and to meet Habitat Oakland staff, learn about Habitat programs and opportunities in your neighborhood.<br>
+        <small>*lunch provided for those that RSVP</small></p>
+        <p><strong>Date:</strong> Saturday June 23rd 12pm – 2pm<br>
+            <strong>Location:</strong> St. Mary the Protectress Ukrainian Church<br>
+            &nbsp;&nbsp;&nbsp;21931 Evergreen Rd, Southfield, MI 48075</p>
+        <div class="form-group' . ((isset($has_error['event_rsvp']) && $has_error['event_rsvp']) ? ' has-error' : '') . '">
+            <label class="control-label">RSVP</label>&nbsp;&nbsp;&nbsp;
+            <label class="radio-inline">
+                <input type="radio" name="event_rsvp" value="Yes" '.(isset($form_data) && isset($form_data['event_rsvp']) && ($form_data['event_rsvp'] == 'Yes') ? 'checked' : '').'> Yes
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="event_rsvp" value="No" '.(isset($form_data) && isset($form_data['event_rsvp']) && ($form_data['event_rsvp'] == 'No') ? 'checked' : '').'> No
+            </label>
+            ' . ((isset($has_error['event_rsvp']) && $has_error['event_rsvp']) ? '<span class="help-block">Please RSVP yes or no.</span>' : '') . '
+        </div>
+        
+        ';
+        
+    } */
+
+    $email_form .= '
         <h2>'.$event_name.'</h2>
         <h3>'.date('l, F jS, Y',strtotime($start_date)).' - '.date('l, F jS, Y',strtotime($end_date)).'</h3>
         ';
-    $start_div = '<div id="rock-the-block-form">';
-    $info = '';
 
     if ($error == true) {
-        $info = '<div class="alert alert-danger">Please correct the errors in red on the form.</div>';
+        $email_form .= '<div class="alert alert-danger">Please correct the errors in red on the form.</div>';
     }
-
-    $email_form = '<form class="rock-the-block-form" action="' . get_permalink() . '" method="post">
+    
+    $email_form .= '
         <h2>Contact Information</h2>
         <div class="form-section">
             <label>Name</label>
@@ -1216,7 +1241,7 @@ function rock_the_block_form_shortcode($atts = array())
             <button class="btn btn-lg btn-darkblue" type="submit">Submit</button>
         </div>
     </form>';
-    $close_div = '</div>';
-    return $result . $start_div . $intro . $info . $email_form . $close_div;
+    $email_form .= '</div>';
+    return $email_form;
 }
 add_shortcode('rock_the_block_form', 'rock_the_block_form_shortcode');

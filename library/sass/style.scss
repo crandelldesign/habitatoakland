@@ -160,6 +160,7 @@ be set to display none.
 @import 'theme/header-nav';
 @import 'theme/flex-grid';
 @import 'theme/spacing';
+@import 'theme/pages/staff-calendar';
 
 /* Page */
 .page-content {
@@ -269,8 +270,11 @@ article .byline {
         @include page-width();
         padding: 15px;
     }
-    p {
-        margin-bottom: 2px;
+    p, address {
+        margin-bottom: 5px;
+    }
+    h4 {
+        color: $text-muted;
     }
     @media (min-width: $screen-sm-min) {
         font-size: 14px;
@@ -278,6 +282,13 @@ article .byline {
     .social-icons {
         @media (min-width: $screen-sm-min) {
             text-align: right;
+        }
+    }
+    .footer-links {
+        list-style: none;
+        padding-left: 0;
+        li {
+            margin-bottom: 5px;
         }
     }
 }
@@ -346,7 +357,8 @@ article .byline {
 
 /* Total Donations */
 .mg_giving-text-perk {
-    display: none;
+    //display: none;
+    font-weight: bold;
 }
 
 /* Staff Page */

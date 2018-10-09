@@ -65,20 +65,20 @@ jQuery(document).ready(function ($) {
             $('.race-national-origin-explaination-form-group').hide();
         }
     });
-    $('select[name="race_national_origin"]').on('change', function (event) {
+    /*$('select[name="race_national_origin"]').on('change', function (event) {
         if ($(this).val() == 'Other') {
             $('.race-national-origin-explaination-form-group').show();
         } else {
             $('.race-national-origin-explaination-form-group').hide();
         }
-    });
-    $('select[name="gender_identity"]').on('change', function (event) {
+    });*/
+    /*$('select[name="gender_identity"]').on('change', function (event) {
         if ($(this).val() == 'Other') {
             $('.gender-identity-explaination-form-group').show();
         } else {
             $('.gender-identity-explaination-form-group').hide();
         }
-    });
+    });*/
     $('.gender-identity-other').on('click', function (event) {
         if ($(this).val() == 'Other' && $(this).is(':checked')) {
             $('.gender-identity-explaination-form-group').show();

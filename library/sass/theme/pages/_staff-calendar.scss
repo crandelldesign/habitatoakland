@@ -1,0 +1,19 @@
+body.page-staff-calendar {
+    .arve-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .arve-embed-container {
+        position: relative;
+        height: 0;
+        width: 100%;
+        padding-bottom: 100%;
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
