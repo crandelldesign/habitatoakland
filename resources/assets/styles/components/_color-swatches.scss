@@ -1,0 +1,32 @@
+// Color Swatches
+.color-swatch {
+    min-height: 100px;
+    @include box_shadow(3);
+    font-size: 1rem;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 5px solid #FFF;
+    color: #FFF;
+    background-color: #eee;
+    &.swatch1 {
+        background-color: $bright-blue;
+    }
+    &.swatch2 {
+        background-color: $bright-green;
+    }
+    &.swatch3 {
+        background-color: $gray;
+    }
+    &.swatch4 {
+        background-color: $habitat-blue;
+    }
+    &.swatch5 {
+        background-color: $habitat-green;
+    }
+    &.swatch6 {
+        background-color: $orange;
+    }
+    &.swatch7 {
+        background-color: $brick;
+    }
+  }

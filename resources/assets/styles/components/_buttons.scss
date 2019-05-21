@@ -1,0 +1,41 @@
+// Buttons
+.btn {
+    border: 1px solid #FFF;
+    font-family: $sans-serif;
+    @include box_shadow(1);
+    &:hover, &:focus {
+        border: 1px solid #FFF;
+    }
+}
+.btn-green {
+    background-color: $bright-green;
+    //color: color-yiq($bright-green);
+    color: #FFF;
+    &:hover, &:focus {
+        //background-color: darken($habitat-green, 7.5%);
+        background-color: $habitat-green;
+        //border-color: darken($bright-green, 7.5%);
+        color: #FFF;
+        border: 1px solid #FFF;
+    }
+}
+.btn-outline-white {
+    background-color: transparent;
+    //color: color-yiq($bright-green);
+    color: #FFF;
+    border: 1px solid #FFF;
+    &:hover, &:focus {
+        background-color: #FFF;
+        //border-color: darken($bright-green, 7.5%);
+        color: $primary;
+        border: 1px solid #FFF;
+    }
+}
+.btn-invisible {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+    &:hover, &:focus {
+        border-color: transparent;
+    }
+}

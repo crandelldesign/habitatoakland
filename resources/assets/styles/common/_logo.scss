@@ -1,0 +1,13 @@
+// Logos
+.logo-full, .logo-simple {
+    .habitat-green, .habitat-blue {
+        fill-rule: evenodd;
+        clip-rule: evenodd;
+    }
+    .habitat-green {
+        fill: $habitat-green;
+    }
+    .habitat-blue {
+        fill: $habitat-blue;
+    }
+}

@@ -1,0 +1,20 @@
+body.restore {
+    .page-header {
+        display: none;
+    }
+    .content {
+        max-width: none;
+        padding: 0;
+        .wp-block-webfactory-map {
+            margin-bottom: $spacer;
+        }
+        .social-media-icons {
+            text-align: center;
+        }
+        > main.main > .row {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 1rem 1rem 1rem;
+        }
+    }
+}

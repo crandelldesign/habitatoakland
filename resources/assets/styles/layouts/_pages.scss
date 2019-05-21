@@ -1,0 +1,41 @@
+// Homepage
+@import "pages/home";
+// ReStore
+@import "pages/restore";
+
+// Page Title Block
+.page-title-block {
+    .kt-row-column-wrap {
+        @include media-breakpoint-up(md) {
+            min-height: 325px;
+        }
+    }
+    .wp-block-image {
+        margin-bottom: 0;
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+    }
+    .wp-block-kadence-column .kt-inside-inner-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .wp-block-kadence-advancedbtn, .kt-btn-wrap, .kt-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+// Staff
+.img-staff {
+    border: 3px solid $gray;
+    margin: 0 10px;
+    @include box_shadow(1);
+    max-width: 140px;
+}
+.img-staff-full {
+    border: 3px solid $gray;
+    @include box_shadow(1);
+}
