@@ -1,0 +1,23 @@
+// Step List
+.step-list {
+    display: flex;
+    > div {
+        &:first-child {
+            //min-width: 200px;
+            position: relative;
+            display: flex;
+            &:after {
+                content: '\f105';
+                font-family: FontAwesome;
+                margin: 0 35px;
+                font-weight: normal;
+                position: relative;
+                right: 0;
+                top: -5px;
+            }
+        }
+        &:last-child {
+            
+        }
+    }
+}

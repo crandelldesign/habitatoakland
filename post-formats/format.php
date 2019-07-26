@@ -26,67 +26,70 @@
                                 // First, check if date fields are present.
                                 // This will return an array with formatted dates.
                                 $mem_date = mem_date_processing(
-                                    get_post_meta($post->ID, '_mem_start_date', true) ,
-                                    get_post_meta($post->ID, '_mem_end_date', true)
-                                );
-
-                                // Second step: display the date
-                                if ($mem_date["start-iso"] !=="") { // show the event date
-                                    echo '<span class="event-date">When: ';
-                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
-                                    echo date('l, F jS, Y',$start_date);
-                                    echo (strlen(get_post_meta($post->ID, '_mem_start_date', true)) > 10)?date(' g:i a',$start_date):'';
-                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
-                                    if ($end_date) {
-                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
-                                        echo ' &mdash; ' . date('g:i a',strtotime($end_date));
-                                      } else {
-                                        echo ' through ';
-                                        echo date('l, F jS, Y',$end_date);
-                                        echo (strlen(get_post_meta($post->ID, '_mem_end_date', true)) > 10)?date(' g:i a',$end_date):'';
+                                  get_post_meta($post->ID, '_mem_start_date', true) ,
+                                  get_post_meta($post->ID, '_mem_end_date', true)
+                              );
+                              
+                              // Second step: display the date
+                              if ($mem_date["start-iso"] !=="") { // show the event date
+                                  echo '<span class="event-date">When: ';
+                                  $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                  echo date('l, F jS, Y',$start_date);
+                                  if (strlen(get_post_meta($post->ID, '_mem_start_date', true)) > 10) {
+                                    echo date(' g:i a',$start_date);
+                                  }
+                                  
+                                  $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                  if ($end_date) {
+                                    if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                      echo ' &mdash; ' . date('g:i a',strtotime($end_date));
+                                    } else {
+                                      echo ' through ' . date('l, F jS, Y',strtotime($end_date));
+                                      if (strlen($end_date) > 10) {
+                                        echo date(' g:i a',$end_date);
                                       }
                                     }
-                                    echo '</span>';
-                                }
-
-                                // Get Repeat Dates
-                                $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
-                                if ($mem_repeats) {
-                                    ?><br><span class="event-date date-repeats">
-                                      &nbsp;&nbsp;&nbsp;<?php
-
-                                      $nr_of_repeats = count($mem_repeats);
-                                      $repeat_counter = 1;
-                                      sort($mem_repeats);
-
-                                      foreach($mem_repeats as $date_repeat) {
-
-                                        if ($nr_of_repeats == 1) {
+                                  }
+                                  echo '</span>';
+                              }
+                        
+                              // Get Repeat Dates
+                              $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
+                              if ($mem_repeats) {
+                                  ?><br><span class="event-date date-repeats">
+                                  &nbsp;&nbsp;&nbsp;<?php
+                        
+                                    $nr_of_repeats = count($mem_repeats);
+                                    $repeat_counter = 1;
+                                    sort($mem_repeats);
+                        
+                                    foreach($mem_repeats as $date_repeat) {
+                        
+                                      if ($nr_of_repeats == 1) {
+                                        //echo 'on: ';
+                                      } else if ($nr_of_repeats > 1) {
+                        
+                                        if ($repeat_counter == 1) {
+                                          // the first item
                                           //echo 'on: ';
-                                        } else if ($nr_of_repeats > 1) {
-
-                                          if ($repeat_counter == 1) {
-                                            // the first item
-                                            //echo 'on: ';
-                                          } else if ($repeat_counter == $nr_of_repeats ) {
-                                            // the last item
-                                            echo '<br>&nbsp;&nbsp;&nbsp;';
-                                          } else {
-                                            echo '<br>&nbsp;&nbsp;&nbsp;';
-                                          }
-                                        }
-
-                                        $date = strtotime($date_repeat);
-                                        // If date contains a time
-                                        if (strlen($date_repeat) > 10) {
-                                            echo date('l, F jS, Y g:i a',$date);
+                                        } else if ($repeat_counter == $nr_of_repeats ) {
+                                          // the last item
+                                          echo '<br>&nbsp;&nbsp;&nbsp;';
                                         } else {
-                                            echo date('l, F jS, Y',$date);
+                                          echo '<br>&nbsp;&nbsp;&nbsp;';
                                         }
+                                      }
+                        
+                                      $date = strtotime($date_repeat);
 
-                                        $repeat_counter++; // increment by one
-                                        }
-                                      ?></span><?php
+                                      echo date('l, F jS, Y',$date);
+                                      if (strlen($date_repeat) > 10) {
+                                        echo date(' g:i a',$date);
+                                      }
+                        
+                                      $repeat_counter++; // increment by one
+                                      }
+                                  ?></span><?php
                                 }
                             } else {
                                 echo 'Posted: ';

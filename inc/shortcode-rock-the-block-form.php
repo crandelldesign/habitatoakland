@@ -91,7 +91,7 @@ function rock_the_block_form_shortcode($atts = array())
     $result  = '';
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $required_fields = array(
-            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'years_in_home', 'how_did_you_hear', 'income_source_1', 'income_frequency_1', 'amount_per_check_1', 'additional_agreements'
+            'fname', 'lname', 'street_number', 'street', 'city', 'state', 'zip', 'phone', 'military_service', 'homeownership', 'ability_to_pay', 'willingness_to_partner', 'authorization_and_release', 'g-recaptcha-response', 'signature', 'dob', 'years_in_home', 'how_did_you_hear', 'income_source_1', 'income_frequency_1', 'amount_per_check_1', 'additional_agreements', 'privacy_policy'
         );
 
         // Fetches everything that has been POSTed, sanitizes them and lets us use them as $form_data['field']
@@ -1232,6 +1232,16 @@ function rock_the_block_form_shortcode($atts = array())
             <label class="control-label">Gender Identity Explanation</label>
             <input type="text" name="gender_identity_explaination" class="form-control" placeholder="Please explain" value="' . (isset($form_data) ? $form_data['gender_identity_explaination'] : '') . '">
         </div>
+        <div class="form-group margin-top-25' . ((isset($has_error['privacy_policy']) && $has_error['privacy_policy']) ? ' has-error' : '') . '">
+            <label class="control-label">I have read Habitat for Humanity of Oakland County\'s <a href="/privacy-policy/" target="_blank">Privacy Policy</a></label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="privacy_policy" value="I agree" '.(isset($form_data) && ($form_data['privacy_policy'] == 'I agree') ? 'checked' : '').'>
+                    I agree
+                </label>
+            </div>
+            ' . ((isset($has_error['privacy_policy']) && $has_error['privacy_policy']) ? '<span class="help-block">Please agree if you understand and agree with the privacy policy.</span>' : '') . '
+        </div>
         <div class="form-group' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? ' has-error' : '') . '">
             <div class="g-recaptcha" data-sitekey="'.getenv('RECAPTCHA_SITEKEY').'"></div>
             ' . ((isset($has_error['recaptcha']) && $has_error['recaptcha']) ? '<span class="help-block">ReCaptcha validation has failed.</span>' : '') . '
@@ -1244,4 +1254,4 @@ function rock_the_block_form_shortcode($atts = array())
     $email_form .= '</div>';
     return $email_form;
 }
-add_shortcode('rock_the_block_form', 'rock_the_block_form_shortcode');
+add_shortcode('rock_the_block_form_old', 'rock_the_block_form_shortcode');

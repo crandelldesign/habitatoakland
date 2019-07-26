@@ -53,6 +53,51 @@
                         </div>
                     </div>-->
                 </div>
+                <h2>New Colors</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch6">
+                            Bright Blue<br>
+                            #00AFD7
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch7">
+                            Bright Green<br>
+                            #C4D600
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch8">
+                            Gray<br>
+                            #888B8D
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch9">
+                            Habitat Blue<br>
+                            #385988
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch10">
+                            Habitat Green<br>
+                            #43B02A
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch11">
+                            Orange<br>
+                            #FF671F
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="color-swatch swatch12">
+                            Brick<br>
+                            #A4343A
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <h1>Buttons</h1>
 

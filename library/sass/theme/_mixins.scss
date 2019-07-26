@@ -35,3 +35,24 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+@mixin box-bg ($color) {
+    background-color: $color;
+    color: #FFF;
+    > h2 {
+        color: #FFF;
+        margin-top: 0;
+    }
+    a:not(.btn) {
+        color: #FFF;
+        text-decoration: underline;
+        &:hover {
+            color: lighten($color,40%);
+        }
+    }
+    .btn-outline-white {
+        &:hover {
+            color: $color;
+        }
+    }
+}

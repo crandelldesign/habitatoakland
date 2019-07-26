@@ -20,6 +20,7 @@
                     <a href="<?php echo home_url(); ?>/donate/" class="btn btn-lg btn-block btn-lightblue margin-bottom-10">Donate</a>
                     <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-lg btn-block btn-darkblue margin-bottom-10">Volunteer</a>
                     <a href="<?php echo home_url(); ?>/restore/" class="btn btn-lg btn-block btn-green margin-bottom-10">ReStore</a>
+                    <a href="<?php echo home_url(); ?>/housingprograms-information/rock-the-block/" class="btn btn-lg btn-block btn-blue margin-bottom-10 btn-rock-the-block">Rock the Block - APPLY NOW</a>
                 </div>
                 <div class="main-search-mobile margin-bottom-10 visible-xs-block">
                     <?php get_search_form(); ?>
@@ -94,11 +95,11 @@
                     $the_query = new WP_Query( $args );
 				?>
 
-				<hr>
+				<!--<hr>-->
 
 				<!-- Get Events -->
 				<?php //query_posts('cat='.$eventsId.'&posts_per_page=3'); ?>
-				<h2>Events &nbsp;&nbsp;&nbsp;<a href="<?php echo home_url(); ?>/events/" class="btn btn-gray">View All Events &raquo;</a></h2>
+				<!--<h2>Events &nbsp;&nbsp;&nbsp;<a href="<?php echo home_url(); ?>/events/" class="btn btn-gray">View All Events &raquo;</a></h2>
         		<div class="row margin-bottom-10">
 				<?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
 					<div class="col-md-4 event">
@@ -112,56 +113,57 @@
                                 get_post_meta($post->ID, '_mem_start_date', true) ,
                                 get_post_meta($post->ID, '_mem_end_date', true)
                             );
-
+                            
                             // Second step: display the date
                             if ($mem_date["start-iso"] !=="") { // show the event date
-                                    echo '<span class="event-date">';
-                                    $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
-                                    echo date('l, F jS, Y g:i a',$start_date);
-                                    $end_date = get_post_meta($post->ID, '_mem_end_date', true);
-                                    if ($end_date) {
-                                      if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
-                                        echo ' - ' . date('g:i a',strtotime($end_date));
-                                      } else {
-                                        echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
-                                      }
-                                    }
-                                    echo '</span>';
+                                echo '<span class="event-date">When: ';
+                                $start_date = strtotime(get_post_meta($post->ID, '_mem_start_date', true));
+                                echo date('l, F jS, Y g:i a',$start_date);
+                                $end_date = get_post_meta($post->ID, '_mem_end_date', true);
+                                if ($end_date) {
+                                  if (date('Y-m-d',$start_date) == date('Y-m-d',strtotime($end_date))) {
+                                    echo ' &mdash; ' . date('g:i a',strtotime($end_date));
+                                  } else {
+                                    echo ' through ' . date('l, F jS, Y g:i a',strtotime($end_date));
+                                  }
                                 }
+                                echo '</span>';
+                            }
+                      
                             // Get Repeat Dates
                             $mem_repeats = get_post_meta($post->ID, '_mem_repeat_date', false);
                             if ($mem_repeats) {
                                 ?><br><span class="event-date date-repeats">
-                                  <?php
-
+                                &nbsp;&nbsp;&nbsp;<?php
+                      
                                   $nr_of_repeats = count($mem_repeats);
                                   $repeat_counter = 1;
                                   sort($mem_repeats);
-
+                      
                                   foreach($mem_repeats as $date_repeat) {
-
+                      
                                     if ($nr_of_repeats == 1) {
                                       //echo 'on: ';
                                     } else if ($nr_of_repeats > 1) {
-
+                      
                                       if ($repeat_counter == 1) {
                                         // the first item
                                         //echo 'on: ';
                                       } else if ($repeat_counter == $nr_of_repeats ) {
                                         // the last item
-                                        echo '<br>';
+                                        echo '<br>&nbsp;&nbsp;&nbsp;';
                                       } else {
-                                        echo '<br>';
+                                        echo '<br>&nbsp;&nbsp;&nbsp;';
                                       }
                                     }
-
+                      
                                     $date = strtotime($date_repeat);
-
-                                    echo date('l, F jS, Y g:i a',$date);
-
+                      
+                                    echo date('l, F jS, Y h:i a',$date);
+                      
                                     $repeat_counter++; // increment by one
                                     }
-                                  ?></span><?php
+                                ?></span><?php
                             }
                             ?>
                         </p>
@@ -173,7 +175,7 @@
                     </div>
                 <?php endif; ?>
 				<?php wp_reset_query(); ?>
-				</div>
+				</div> -->
 
     		</div>
     		<div class="col-sm-4">
@@ -184,7 +186,7 @@
                     <a href="<?php echo home_url(); ?>/donate/" class="btn btn-block btn-lightblue margin-bottom-10">Donate</a>
                     <a href="<?php echo home_url(); ?>/volunteer/" class="btn btn-block btn-darkblue margin-bottom-10">Volunteer</a>
                     <a href="<?php echo home_url(); ?>/restore/" class="btn btn-block btn-green margin-bottom-10">ReStore<br><small>Donate/Pick-Up Call: 248-365-4090</small></a>
-                    <a href="<?php echo home_url(); ?>/housingprograms-information/rock-the-block/" class="btn btn-lg btn-block btn-blue margin-bottom-10 btn-rock-the-block">Rock the Block</a>
+                    <a href="<?php echo home_url(); ?>/housingprograms-information/rock-the-block/" class="btn btn-lg btn-block btn-blue margin-bottom-10 btn-rock-the-block">Rock the Block - APPLY NOW</a>
                 </div>
 
                 <div class="recent-news margin-bottom-35">

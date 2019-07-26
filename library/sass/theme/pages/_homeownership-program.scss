@@ -1,0 +1,197 @@
+// Homeownership Program
+.homeownership-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1px;
+    margin-right: -1px;
+    > [class*="col-"] {
+        @media (max-width: $screen-sm-min) {
+            width: 100%;
+        }
+        border: 1px solid #FFF;
+        padding: 30px;
+        &.slideshow-container, &.img-container {
+            padding: 0;
+            .slideshow_content {
+                box-shadow: none;
+            }
+            img {
+                box-shadow: none;
+            }
+        }
+        &.img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            img {
+                flex-shrink: 0;
+                min-width: 100%;
+                min-height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .step-list {
+        margin: 5px 0 15px 0;
+        font-size: 30px;
+        > div {
+            &:first-child {
+                text-transform: uppercase;
+                font-weight: bold; 
+                font-size: 35px;
+            }
+            &:last-child {
+                line-height: 1.3;
+            }
+        }
+    }
+    .step-list-follow-up {
+        margin-left: 20px;
+    }
+    .habitat-table th, .habitat-table td {
+        font-size: 22px;
+    } 
+    .bright-blue-bg {
+        @include box-bg ($bright-blue);
+    }
+    .green-bg {
+        @include box-bg ($habitat-green);
+    }
+    .habitat-blue-bg {
+        @include box-bg ($habitat-blue);
+    }
+    .orange-bg {
+        @include box-bg ($orange);
+    }
+    .brick-bg {
+        @include box-bg ($brick);
+    }
+    .icon-house-bg {
+        overflow: hidden;
+        @media (min-width: $screen-sm-min) {
+            padding-left: 50px;
+        }
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        &::after {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="34.5 39 131 122" xmlns="http://www.w3.org/2000/svg" data-type="color"><path d="M165.5 97.233L99.098 39 34.5 97.514l5.661 6.214 7.969-7.218V161h103.79V96.504l8.02 7.033 5.56-6.304zm-75.476 53.68v-31.208h20.006v31.208H90.024zm53.479 1.694h-25.054v-41.298H81.605v41.298H56.549V88.883L99.19 50.258l44.313 38.864v63.485z" fill="#FFFFFF" data-color="1"/></svg>');
+            background-repeat: no-repeat;
+            width: 300px;
+            height: 300px;
+            display: block;
+            position: absolute;
+            left: -25%;
+            top: -25%;
+            opacity: .25;
+            z-index: 1;
+        }
+    }
+    .icon-cash-bg {
+        overflow: hidden;
+        @media (min-width: $screen-sm-min) {
+            padding-left: 50px;
+        }
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        &::after {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="10 26 180.001 148.001" xmlns="http://www.w3.org/2000/svg" data-type="color"><g fill="#FFFFFF"><path d="M182.084 46.746c-3.238-2.511-7.016-4.036-10.975-4.305-.99-5.022-3.868-9.506-8.096-12.555-5.757-4.125-13.043-5.022-19.7-2.421L24.573 76.34C15.937 78.94 10 86.742 10 95.89v57.664a20.336 20.336 0 0 0 7.826 16.053c3.688 2.87 8.096 4.394 12.684 4.394a22.39 22.39 0 0 0 4.858-.538l138.801-33.002c9.265-2.242 15.832-10.403 15.832-19.909V62.888c-.091-6.367-2.97-12.197-7.917-16.142zM146.98 36.401c3.51-1.346 7.29-.897 10.35 1.256 2.07 1.525 3.51 3.589 4.14 5.922L85.24 61.793l61.74-25.392zm33.93 84.034c0 5.025-3.43 9.331-8.393 10.498L33.348 163.951c-3.249.808-6.679 0-9.296-2.064-2.617-2.064-4.152-5.114-4.152-8.524V95.761c0-3.948 2.076-7.447 5.415-9.331l2.709-1.167.269-.089 139.26-33.019a12.127 12.127 0 0 1 2.527-.269c2.437 0 4.783.808 6.769 2.333 2.617 2.064 4.152 5.114 4.152 8.524v57.692h-.091z" data-color="1"/><path d="M109.18 104.591c-.9-.269-1.8-.538-2.88-.808V88.351c2.7-.09 4.59.09 4.77.179 2.61.359 5.13-1.436 5.49-4.038.36-2.602-1.44-5.114-4.05-5.473-1.62-.269-5.31-.269-5.31-.269v-2.153s-1.26-1.615-2.16-1.615-1.62.718-1.44 1.615v2.423c-7.02.987-14.31 4.307-16.2 12.651-2.97 12.831 5.85 17.855 16.2 21.265v15.791c-2.7.538-5.49.538-8.46-.179-2.61-.628-5.22.987-5.85 3.589-.63 2.602.99 5.204 3.6 5.832 2.34.538 4.59.808 6.75.808 1.26 0 2.52-.09 3.96-.269v2.961c-.18.897.54 1.615 1.44 1.615s2.16-1.615 2.16-1.615v-3.589s13.86-7.806 15.57-14.176c1.62-6.372-.9-15.165-13.59-19.113zM97.03 93.734c.72-3.051 3.6-4.396 6.57-5.025v13.817c-7.92-3.049-7.38-5.382-6.57-8.792zm16.02 27.366c-.63 2.423-3.15 5.025-6.75 6.55v-13.728c3.06.987 7.83 3.23 6.75 7.178z" data-color="1"/></g></svg>');
+            background-repeat: no-repeat;
+            width: 300px;
+            height: 300px;
+            display: block;
+            position: absolute;
+            left: -25%;
+            top: -25%;
+            opacity: .25;
+            z-index: 1;
+        }
+    }
+    .icon-calendar-bg {
+        overflow: hidden;
+        @media (min-width: $screen-sm-min) {
+            padding-right: 50px;
+        }
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        &::after {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="38.5 38.5 123 123" xmlns="http://www.w3.org/2000/svg" data-type="color"><g fill="#FFFFFF"><path d="M158.572 82.429v5.857H41.429v-5.857h117.143zM123.428 53.143V59H76.571v-5.857h46.857z" data-color="1"/><path d="M152.714 161.5H47.286c-4.845 0-8.786-3.941-8.786-8.786V61.929c0-4.845 3.941-8.786 8.786-8.786H59V59H47.286a2.931 2.931 0 0 0-2.929 2.929v90.786a2.931 2.931 0 0 0 2.929 2.929h105.429a2.931 2.931 0 0 0 2.929-2.929V61.929A2.931 2.931 0 0 0 152.715 59H141v-5.857h11.714c4.845 0 8.786 3.941 8.786 8.786v90.786c0 4.844-3.941 8.785-8.786 8.785z" data-color="1"/><path d="M143.929 67.786H120.5V44.357a5.864 5.864 0 0 1 5.857-5.857h11.714a5.864 5.864 0 0 1 5.857 5.857v23.429zm-17.572-5.857h11.714V44.357h-11.714v17.572zM79.5 67.786H56.071V44.357a5.864 5.864 0 0 1 5.857-5.857h11.714a5.864 5.864 0 0 1 5.857 5.857v23.429zm-17.571-5.857h11.714V44.357H61.929v17.572zM94.143 102.929v5.857H82.429v-5.857h11.714zM117.571 102.929v5.857h-11.714v-5.857h11.714zM141 102.929v5.857h-11.714v-5.857H141zM70.714 117.571v5.857H59v-5.857h11.714zM94.143 117.571v5.857H82.429v-5.857h11.714zM117.571 117.571v5.857h-11.714v-5.857h11.714zM141 117.571v5.857h-11.714v-5.857H141zM70.714 132.214v5.857H59v-5.857h11.714zM94.143 132.214v5.857H82.429v-5.857h11.714zM117.571 132.214v5.857h-11.714v-5.857h11.714z" data-color="1"/></g></svg>');
+            background-repeat: no-repeat;
+            width: 300px;
+            height: 300px;
+            display: block;
+            position: absolute;
+            right: -25%;
+            top: -25%;
+            opacity: .25;
+            z-index: 1;
+        }
+    }
+    .icon-question-bg {
+        overflow: hidden;
+        @media (min-width: $screen-md-min) {
+            padding-left: 125px;
+            text-align: center;
+        }
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        &::after {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="26 26 148 148" xmlns="http://www.w3.org/2000/svg" data-type="color"><g fill="#FFFFFF"><path d="M92.3 127.5v-3.1c0-4.8.7-8.6 2.2-11.9 1.5-3.3 3.4-5.6 5.6-7.3 2.1-1.6 4.3-3.1 6.5-4.6 2.2-1.5 4.2-3.3 5.6-5.5 1.5-2.2 2.2-4.9 2.2-8.2v-4c0-4.2-1.3-6.8-4-8.2-2.7-1.3-6.8-1.9-12.6-1.9-6.1 0-14.6.9-25.1 2.8V66c9.1-1.6 18.3-2.5 27.6-2.5s16.2 1.3 20.4 4.2c4.2 2.8 6.2 7.6 6.2 14.3v6.5c0 3.3-.6 6.2-1.8 8.9-1.2 2.5-2.7 4.6-4.5 6.2-1.8 1.6-3.7 3.1-5.8 4.5-1.9 1.3-3.9 2.7-5.8 3.9-1.8 1-3.3 2.5-4.5 4.2-1.2 1.6-1.8 3.7-1.8 5.6v5.6l-10.4.1zm13 22.4H90v-14.1h15.3v14.1z" data-color="1"/><path d="M100 174c-40.9 0-74-33.1-74-74s33.1-74 74-74 74 33.1 74 74-33.3 74-74 74zm0-136.1c-34.2 0-62.1 27.8-62.1 62.1s27.8 62.1 62.1 62.1 62.1-27.8 62.1-62.1-27.9-62.1-62.1-62.1z" data-color="1"/></g></svg>');
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
+            display: block;
+            position: absolute;
+            left: -10%;
+            top: -15%;
+            opacity: .25;
+            z-index: 1;
+        }
+    }
+    .icon-gavel-bg {
+        overflow: hidden;
+        @media (min-width: $screen-sm-min) {
+            padding-right: 125px;
+            text-align: center;
+        }
+        > * {
+            position: relative;
+            z-index: 2;
+        }
+        &::after {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="17 17.1 165.988 165.8" xmlns="http://www.w3.org/2000/svg" data-type="color"><g fill="#FFFFFF"><path d="M178.8 158.6s0-.1 0 0l-59.3-54s-.1-.1-.1-.2l-9.8-9.8 6-6c1 .5 2.1.7 3.2.7 2 0 3.9-.8 5.4-2.3 3-3 3-7.9 0-10.9L98.1 50c-1.4-1.4-3.4-2.2-5.4-2.2s-4 .8-5.4 2.2c-2.7 2.7-3 6.9-.8 9.9L59.9 86.4c-3-2.1-7.2-1.9-9.9.8-1.4 1.4-2.2 3.4-2.2 5.4 0 2.1.8 4 2.2 5.4l26.2 26.2c1.4 1.4 3.4 2.2 5.4 2.2 2.1 0 4-.8 5.4-2.2 2.3-2.3 2.9-5.8 1.5-8.7l6-6 9.4 9.4.2.2 54.3 59.5.1.1c2.8 2.8 6.5 4.2 10.1 4.2 3.7 0 7.3-1.4 10.1-4.2 5.7-5.5 5.7-14.5.1-20.1zm-93.4-46.9L63.5 89.9l26.3-26.3 21.9 21.9-26.3 26.2zm5.4-58.1c.5-.5 1.2-.8 1.9-.8s1.4.3 1.9.8l26.2 26.2c1 1 1 2.7 0 3.8-1 1-2.7 1-3.8 0L90.8 57.4c-1.1-1.1-1.1-2.8 0-3.8zm-7.3 67.1c-1 1-2.8 1-3.8 0L53.6 94.5c-.5-.5-.8-1.2-.8-1.9a2.732 2.732 0 0 1 2.7-2.7c.7 0 1.4.3 1.9.8L83.5 117c1.1 1 1.1 2.7 0 3.7zm22.6-22.5l8 8-7.9 7.9-8-8 7.9-7.9zm69.2 77.1c-3.6 3.6-9.5 3.6-13.1 0l-52.5-57.5 8.1-8.1 57.6 52.5c3.5 3.6 3.5 9.5-.1 13.1z" data-color="1"/><path d="M134.7 116.2c1.2.7 2.7.2 3.4-1 4.6-8.4 7-17.9 7-27.4 0-31.6-25.7-57.3-57.3-57.3-31.6 0-57.3 25.7-57.3 57.3s25.7 57.3 57.3 57.3c8.8 0 17.3-2 25.3-5.9 1.2-.6 1.8-2.1 1.1-3.4-.6-1.2-2.1-1.8-3.4-1.1-7.2 3.6-15 5.4-23 5.4-28.8 0-52.3-23.5-52.3-52.3S59 35.5 87.8 35.5c28.8 0 52.3 23.5 52.3 52.3 0 8.7-2.2 17.4-6.4 25-.6 1.3-.2 2.8 1 3.4z" data-color="1"/><path d="M120 145.2c-9.8 5.5-20.9 8.4-32.2 8.4-36.3 0-65.8-29.5-65.8-65.8 0-17.6 6.8-34.1 19.3-46.5S70.2 22 87.8 22c36.3 0 65.8 29.5 65.8 65.8 0 12.1-3.3 23.9-9.6 34.2-.7 1.2-.3 2.7.8 3.5 1.2.7 2.7.4 3.5-.8 6.8-11.1 10.3-23.8 10.3-36.8 0-39-31.8-70.8-70.8-70.8-18.9 0-36.7 7.4-50.1 20.7C24.4 51.1 17 68.9 17 87.8c0 39 31.8 70.8 70.8 70.8 12.2 0 24.2-3.1 34.7-9.1.2-.1.4-.3.6-.4 1-1 1-2.5.1-3.5-.9-.9-2.2-1-3.2-.4z" data-color="1"/></g></svg>');
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 200px;
+            display: block;
+            position: absolute;
+            right: -10%;
+            top: -15%;
+            opacity: .25;
+            z-index: 1;
+        }
+    }
+    .get-started-banner {
+        text-align: center;
+        span {
+            display: inline-block;
+            margin: 0 10px;
+            &:first-child {
+                font-size: 21px;
+            }
+        }
+    }
+}

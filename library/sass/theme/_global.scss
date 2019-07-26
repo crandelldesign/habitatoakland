@@ -135,6 +135,15 @@ a {
         background-color: #FFF;
     }
 }
+.btn-outline-white {
+    background: transparent;
+    border: 1px solid #FFF;
+    color: #FFF;
+    &:hover {
+        background-color: #FFF;
+        color: $black;
+    }
+}
 .large-green-btn {
     padding: 15px 25px;
     white-space: normal;
@@ -243,4 +252,10 @@ hr {
 .card-deepcerulean {
     @include card();
     background-color: $deepcerulean;
+}
+
+// Survey Monkey
+.page-content article section .smcx-widget.smcx-embed {
+    margin-left: auto;
+    margin-right: auto;
 }

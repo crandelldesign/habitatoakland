@@ -25,10 +25,10 @@
                     <div class="col-sm-6 col-lg-3 margin-bottom-10">
                         <h3>ReStore Farmington</h3>
                         <h4>Hours</h4>
-                        <p><strong>Tues - Sat</strong> 10 AM to 5:30 PM.<br>
+                        <p><strong>Mon - Sat</strong> 10 AM to 6 PM.<br>
                         <strong>Sun</strong> 12 PM to 5 PM</p>
-                        <meta itemprop="openingHours" content="Mo-Sa 10:00-17:30"/>
-                        <meta itemprop="openingHours" content="Su 12:00-5:30"/>
+                        <meta itemprop="openingHours" content="Mo-Sa 10:00-18:00"/>
+                        <meta itemprop="openingHours" content="Su 12:00-17:00"/>
 
                         <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">28575 Grand River Ave.</span><br>
                         <span itemprop="addressLocality">Farmington</span>, <span itemprop="addressRegion">MI</span> <span itemprop="postalCode">48336</span><br>
@@ -70,8 +70,8 @@
                         <?php echo do_shortcode('[social_media]'); ?>
                     </div>
                 </div>
-                <div class="visible-xs-block row">
-                    <div class="col-xs-6 col-xs-offset-3"><img src="<?php echo get_template_directory_uri(); ?>/library/images/ehl-logo.gif" class="img-responsive" alt="EHL"></div>
+                <div class="row">
+                    <div class="col-xs-12"><img src="<?php echo get_template_directory_uri(); ?>/library/images/eho-logo.png" class="img-responsive center-block" alt="Equal Housing Opportunity"></div>
                 </div>
             </div>
         </footer>

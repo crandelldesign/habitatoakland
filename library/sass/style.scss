@@ -159,8 +159,12 @@ be set to display none.
 @import 'theme/global';
 @import 'theme/header-nav';
 @import 'theme/flex-grid';
+@import 'theme/tables';
 @import 'theme/spacing';
+@import 'theme/step-list';
+@import 'theme/image-video';
 @import 'theme/pages/staff-calendar';
+@import 'theme/pages/homeownership-program';
 
 /* Page */
 .page-content {
@@ -347,6 +351,27 @@ article .byline {
     &.swatch5 {
         background-color: $deepcerulean;
     }
+    &.swatch6 {
+        background-color: $bright-blue;
+    }
+    &.swatch7 {
+        background-color: $bright-green;
+    }
+    &.swatch8 {
+        background-color: $gray;
+    }
+    &.swatch9 {
+        background-color: $habitat-blue;
+    }
+    &.swatch10 {
+        background-color: $habitat-green;
+    }
+    &.swatch11 {
+        background-color: $orange;
+    }
+    &.swatch12 {
+        background-color: $brick;
+    }
 }
 .details {
     color: $text-muted;
@@ -378,6 +403,11 @@ label {
     margin-bottom: 0;
     &.sub-label {
         font-size: 80%;
+    }
+}
+.form-agreement {
+    label.gfield_label {
+        display: none;
     }
 }
 .bootstrap-form {

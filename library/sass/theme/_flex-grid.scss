@@ -20,3 +20,21 @@
     }
     
 }
+
+// Form Flex Row
+.golf-attendees-row-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -15px;
+    margin-right: -15px;
+    > div {
+      padding-right: 15px;
+      padding-left: 15px;
+      .form-control {
+        @media (min-width: $screen-md-min) {
+          min-width: 175px;
+        }
+      }
+    }
+}
