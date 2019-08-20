@@ -103,11 +103,9 @@
         width: 100%;
         @extend .h3;
         .give-donation-total-label {
-            //@extend .input-group-text;
             padding: 0.375rem 0.75rem 0.375rem 0;
         }
         .give-final-total-amount {
-            //@extend .form-control;
             padding: 0.375rem 0 0.375rem 0.75rem;
             flex: 1 1 auto;
             width: 1%;
