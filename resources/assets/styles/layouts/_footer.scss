@@ -7,6 +7,13 @@ footer.footer {
             color: $gray;
         }
     }
+    .footer-menu {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem; // 16px
+        border-bottom: 1px solid #FFF;
+        font-size: 1rem;
+    }
     .widget-area {
         display: flex;
         flex-wrap: wrap;
@@ -25,6 +32,10 @@ footer.footer {
             img {
                 max-width: 100%;
                 height: auto;
+                // Target last img (EHO logo)
+                &:last-child {
+                    max-width: 100px;
+                }
             }
             &:last-child {
                 text-align: center;

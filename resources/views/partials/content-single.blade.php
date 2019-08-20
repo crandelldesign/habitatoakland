@@ -8,7 +8,11 @@
   <header class="article-header">
     <h1 class="entry-title">{!! get_the_title() !!}</h1>
     <div class="article-meta">
-      @include('partials/entry-meta')
+      @if (!in_category('event'))
+        @include('partials/entry-meta')
+      @else
+        @include('partials/event-meta')
+      @endif
     </div>
   </header>
   <div class="entry-content">

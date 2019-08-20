@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header')
-
-  @if (!have_posts())
-    <div class="alert alert-warning">
-      {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
+  <div class="page-title-block bg-primary search-title-block">
+    <div class="row no-gutters">
+      <div class="col-sm-8">
+        <img src="<?= \App\asset_path('images/not-found.jpg'); ?>" alt="{{ App::title() }}" class="d-none">
+      </div>
+      <div class="col-sm-4">
+        @include('partials.page-header')
+      </div>
     </div>
-    {!! get_search_form(false) !!}
-  @endif
+
+    <div class="alert alert-primary">
+      {{ __('We\'re sorry, but we couldn\'t find that page.', 'sage') }}
+    </div>
+  </div>
+  {!! get_search_form(false) !!}
+  
 @endsection

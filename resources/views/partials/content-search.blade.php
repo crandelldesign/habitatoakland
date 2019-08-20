@@ -11,7 +11,7 @@
     </header>
     <div class="card-body entry-summary">
       @php
-      $content = get_the_content();
+      $content = get_the_excerpt();
       @endphp
       <p>{!! wp_trim_words( $content , '25' ) !!}</p>
       <div class="btn-container"><a class="btn btn-primary" href="{{ get_permalink() }}">Read More</a></div>
@@ -20,9 +20,9 @@
       @if (get_post_type() === 'post')
       <div class="text-muted">
         @if (!in_category('event'))
-        @include('partials/entry-meta')
+          @include('partials/entry-meta')
         @else
-        @include('partials/event-meta')
+          @include('partials/event-meta')
         @endif
       </div>
       @endif

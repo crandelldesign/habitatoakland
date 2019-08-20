@@ -18,12 +18,21 @@ $habitat-blue: #385988;
 $habitat-green: #43B02A;
 $orange: #FF671F;
 $brick: #A4343A;
+$firebrick: #BF211E;
+$daffodil: #FFF31E;
 
 $primary: $bright-blue;
 $secondary: $orange;
 $body-color: $black;
 $link-color: $bright-blue;
 $link-hover-color: $habitat-blue;
+
+// Bootstrap Overrides
+$success: $bright-green;
+$info: $bright-blue;
+$warning: $daffodil;
+$danger: $firebrick;
+$dark: $gray;
 
 /* Typography */
 $sans-serif: 'Roboto', 'Univers', Helvetica, sans-serif;
@@ -47,3 +56,8 @@ $navbar-padding-y: 0.375rem;
 $border-radius: 0;
 $border-radius-lg: 0;
 $border-radius-sm: 0;
+
+// Alerts
+$alert-border-width: 0;
+$alert-bg-level: -5;
+$alert-color-level: 10;

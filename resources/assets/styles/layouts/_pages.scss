@@ -26,6 +26,13 @@
         width: 100%;
         text-align: center;
     }
+    > .page-header, > div > div > .page-header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #FFF;
+    }
 }
 
 // Staff
@@ -38,4 +45,26 @@
 .img-staff-full {
     border: 3px solid $gray;
     @include box_shadow(1);
+}
+
+// 404, Search
+body.search, body.error404 {
+    .search-form .input-group {
+        width: 80%;
+        margin: 0 auto 2rem auto;
+    }
+    .search-title-block {
+        .col-sm-8 {
+            background-image: url('../images/not-found.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+        }
+        .col-sm-4 {
+            @include media-breakpoint-up(md) {
+                min-height: 325px;
+            }
+        }
+    }
 }

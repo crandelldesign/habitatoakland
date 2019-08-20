@@ -11,6 +11,9 @@ use Roots\Sage\Template\BladeProvider;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style( 'migla-front-end' );
+    wp_deregister_style( 'migla-front-end' );
+
     wp_enqueue_style( 'google_roboto', '//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic', false, null );
     wp_enqueue_style( 'google_crimson_text', '//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700italic,700', false, null );
 
@@ -48,7 +51,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'footer_navigation' => __('Footer Navigation', 'sage')
     ]);
 
     /**
@@ -74,6 +78,9 @@ add_action('after_setup_theme', function () {
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
     add_editor_style(asset_path('styles/main.css'));
+
+    // Add Excerpts to Page
+    add_post_type_support( 'page', 'excerpt' );
 }, 20);
 
 /**

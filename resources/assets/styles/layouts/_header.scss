@@ -216,8 +216,8 @@ nav.main-nav {
       font-family: $sans-serif;
       > .nav-item {
         display: flex !important;
-        //flex-wrap: wrap;
         justify-content: flex-end;
+        flex-wrap: wrap;
         > .nav-link {
           color: $black;
           text-transform: uppercase;

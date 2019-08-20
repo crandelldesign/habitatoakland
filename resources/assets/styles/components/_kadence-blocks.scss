@@ -2,7 +2,7 @@
 .wp-block-kadence-column {
     .kt-inside-inner-col {
         height: 100%;
-        .wp-block-kadence-infobox {
+        .wp-block-kadence-infobox:first-child {
             height: 100%;
             > a {
                 text-decoration: none;

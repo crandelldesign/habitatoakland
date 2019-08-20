@@ -1,0 +1,121 @@
+// Give WP
+[id*=give-form] {
+    .give-hidden {
+        display: none;
+    }
+    .give-text-input {
+        @extend .form-control;
+    }
+    .give-btn {
+        @extend .btn;
+    }
+    legend {
+        @extend .h3;
+        padding: 0 0 5px;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid $gray;
+    }
+    input[type=radio] {
+        margin: 0 .5em 0 0;
+    }
+    .give-donation-amount {
+        margin: 0 0 1rem;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+        .give-currency-symbol.give-currency-position-before {
+            @extend .input-group-text;
+            margin-right: -1px;
+        }
+        .give-text-input {
+            flex: 1 1 auto;
+            width: 1%;
+        }
+    }
+    .give-donation-levels-wrap {
+        padding-left: 0;
+        list-style: none;
+        li {
+            display: inline-flex;
+            margin: 0 5px 5px 0;
+            .give-btn {
+                @extend .btn-light;
+                &.give-default-level {
+                    @extend .btn-primary;
+                }
+            }
+        }
+    }
+    ul#give-gateway-radio-list {
+        padding-left: 0;
+        list-style: none;
+        > li {
+            display: inline-block;
+            &:not(:last-child) {
+                margin-right: .5rem;
+            }
+            input[type=radio] {
+                margin: 0 .25em 0 0;
+                outline: none;
+                width: auto;
+                display: inline;
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+    fieldset#give_checkout_user_info {
+        .form-row {
+            position: relative;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            &.form-row-responsive {
+                @include media-breakpoint-up(sm) {
+                    float: left;
+                    width: 48.5%;
+                    &.form-row-first {
+                        margin-right: 2.5%;
+                    }
+                    &.form-row-last {
+                        float: right;
+                    }
+                }
+            }
+            
+            input {
+                @extend .form-control;
+            }
+        }
+        .form-row-wide {
+            clear: both;
+        }
+        
+    }
+    #give-final-total-wrap {
+        margin: 0 0 1rem;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+        @extend .h3;
+        .give-donation-total-label {
+            //@extend .input-group-text;
+            padding: 0.375rem 0.75rem 0.375rem 0;
+        }
+        .give-final-total-amount {
+            //@extend .form-control;
+            padding: 0.375rem 0 0.375rem 0.75rem;
+            flex: 1 1 auto;
+            width: 1%;
+            color: $primary;
+        }
+    }
+    .give-submit.give-btn {
+        @extend .btn-lg;
+        @extend .btn-primary;
+    }
+}
