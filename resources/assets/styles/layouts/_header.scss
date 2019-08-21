@@ -313,8 +313,6 @@ nav.main-nav {
   }
   &.simple {
     background-color: rgba(255,255,255,0.80);
-    //top: 0;
-    //@include admin-sticky-fix;
     @include media-breakpoint-up(lg) {
       padding-top: 0.375rem;
       padding-bottom: 0.375rem;
