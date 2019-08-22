@@ -3,7 +3,7 @@
     .give-hidden {
         display: none;
     }
-    .give-text-input {
+    .give-text-input, textarea.give-input {
         @extend .form-control;
     }
     .give-btn {
@@ -15,7 +15,7 @@
         margin-bottom: 1rem;
         border-bottom: 1px solid $gray;
     }
-    input[type=radio] {
+    input[type=radio], input[type=checkbox] {
         margin: 0 .5em 0 0;
     }
     .give-donation-amount {
@@ -56,7 +56,7 @@
             &:not(:last-child) {
                 margin-right: .5rem;
             }
-            input[type=radio] {
+            input[type=radio], input[type=checkbox] {
                 margin: 0 .25em 0 0;
                 outline: none;
                 width: auto;
@@ -66,7 +66,7 @@
             }
         }
     }
-    fieldset#give_checkout_user_info {
+    fieldset#give_checkout_user_info, fieldset#give_cc_fields {
         .form-row {
             position: relative;
             width: 100%;
@@ -74,18 +74,34 @@
             margin-right: 0;
             &.form-row-responsive {
                 @include media-breakpoint-up(sm) {
-                    float: left;
-                    width: 48.5%;
                     &.form-row-first {
+                        width: 48.5%;
                         margin-right: 2.5%;
+                        float: left;
                     }
                     &.form-row-last {
+                        width: 48.5%;
                         float: right;
+                    }
+                    &.form-row-two-thirds {
+                        float: left;
+                        width: 65.75%;
+                    }
+                    &.form-row-two-thirds {
+                        float: left;
+                        width: 65.75%;
+                    }
+                    &.form-row-one-third {
+                        float: left;
+                        width: 31.25%;
+                        margin-left: 3%;
                     }
                 }
             }
-            
-            input {
+            > div {
+                width: 100%;
+            }
+            input:not([type='checkbox']) {
                 @extend .form-control;
             }
         }
