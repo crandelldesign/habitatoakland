@@ -17,6 +17,8 @@
     }
     input[type=radio], input[type=checkbox] {
         margin: 0 .5em 0 0;
+        position: relative;
+        top: -2px;
     }
     .give-donation-amount {
         margin: 0 0 1rem;
@@ -61,8 +63,6 @@
                 outline: none;
                 width: auto;
                 display: inline;
-                position: relative;
-                top: -2px;
             }
         }
     }
@@ -72,6 +72,7 @@
             width: 100%;
             margin-left: 0;
             margin-right: 0;
+            margin-bottom: 1rem;
             &.form-row-responsive {
                 @include media-breakpoint-up(sm) {
                     &.form-row-first {
@@ -101,7 +102,7 @@
             > div {
                 width: 100%;
             }
-            input:not([type='checkbox']) {
+            input:not([type='checkbox']), .give-stripe-cc-field {
                 @extend .form-control;
             }
         }
