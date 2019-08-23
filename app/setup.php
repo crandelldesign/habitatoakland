@@ -15,8 +15,8 @@ add_action('wp_enqueue_scripts', function () {
     wp_deregister_style( 'migla-front-end' );
     wp_dequeue_style( 'my_block-video-style-css-custom' );
     wp_deregister_style( 'my_block-video-style-css-custom' );
-    wp_dequeue_script( 'clock-script' );
-    wp_deregister_style( 'clock-script' );
+    //wp_dequeue_script( 'clock-script' );
+    //wp_deregister_style( 'clock-script' );
 
     wp_enqueue_style( 'google_roboto', '//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic', false, null );
     wp_enqueue_style( 'google_crimson_text', '//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700italic,700', false, null );
