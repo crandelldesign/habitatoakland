@@ -13,8 +13,8 @@ use Roots\Sage\Template\BladeProvider;
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style( 'migla-front-end' );
     wp_deregister_style( 'migla-front-end' );
-    wp_dequeue_style( 'my_block-video-style-css-custom' );
-    wp_deregister_style( 'my_block-video-style-css-custom' );
+    //wp_dequeue_style( 'my_block-video-style-css-custom' );
+    //wp_deregister_style( 'my_block-video-style-css-custom' );
     //wp_dequeue_script( 'clock-script' );
     //wp_deregister_style( 'clock-script' );
 
