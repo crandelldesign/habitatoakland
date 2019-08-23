@@ -6,6 +6,10 @@
     .give-text-input, textarea.give-input, select.give-recurring-donors-choice-period, .form-row select {
         @extend .form-control;
     }
+    select.give-recurring-donors-choice-period, .form-row select {
+        display: inline-block;
+        width: auto;
+    }
     .give-btn {
         @extend .btn;
     }
