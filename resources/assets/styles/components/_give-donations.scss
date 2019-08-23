@@ -3,7 +3,7 @@
     .give-hidden {
         display: none;
     }
-    .give-text-input, textarea.give-input, select.give-recurring-donors-choice-period {
+    .give-text-input, textarea.give-input, select.give-recurring-donors-choice-period, .form-row select {
         @extend .form-control;
     }
     .give-btn {
