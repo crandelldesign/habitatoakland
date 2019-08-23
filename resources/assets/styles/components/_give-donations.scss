@@ -111,6 +111,24 @@
         }
         
     }
+    [id*=give_secure_site_wrapper] {
+        padding: 4px 4px 15px 0;
+        font-size: 16px;
+        line-height: 20px;
+        span.padlock {
+            content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTcgOS43NjF2LTQuNzYxYzAtMi43NjEtMi4yMzgtNS01LTUtMi43NjMgMC01IDIuMjM5LTUgNXY0Ljc2MWMtMS44MjcgMS40NjYtMyAzLjcxNC0zIDYuMjM5IDAgNC40MTggMy41ODIgOCA4IDhzOC0zLjU4MiA4LThjMC0yLjUyNS0xLjE3My00Ljc3My0zLTYuMjM5em0tOC00Ljc2MWMwLTEuNjU0IDEuMzQ2LTMgMy0zczMgMS4zNDYgMyAzdjMuNTg3Yy0uOTI3LS4zNzYtMS45MzgtLjU4Ny0zLS41ODdzLTIuMDczLjIxMS0zIC41ODd2LTMuNTg3em00IDExLjcyM3YyLjI3N2gtMnYtMi4yNzdjLS41OTYtLjM0Ny0xLS45ODQtMS0xLjcyMyAwLTEuMTA0Ljg5Ni0yIDItMnMyIC44OTYgMiAyYzAgLjczOC0uNDA0IDEuMzc2LTEgMS43MjN6Ii8+PC9zdmc+');
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
     #give-final-total-wrap {
         margin: 0 0 1rem;
         position: relative;
