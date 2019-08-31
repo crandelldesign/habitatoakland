@@ -33,7 +33,7 @@ footer.footer {
                 max-width: 100%;
                 height: auto;
                 // Target last img (EHO logo)
-                &:last-child {
+                .eho-logo, &:last-child {
                     max-width: 100px;
                 }
             }
