@@ -354,3 +354,20 @@ label {
     text-decoration: none;
   }
 }
+
+// Rock the Block Updates
+.rock-the-block-newsletter-updates-container {
+  form {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-flow: wrap;
+      margin: 0 -15px;
+    }
+    > div {   
+      @include media-breakpoint-up(md) {
+        padding: 0 15px;
+        width: calc(100% / 3);
+      }
+    }
+  }
+}
