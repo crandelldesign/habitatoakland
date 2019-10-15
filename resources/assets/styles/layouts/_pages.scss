@@ -17,7 +17,7 @@
             min-height: 325px;
         }
     }
-    .wp-block-kadence-column:first-child .wp-block-image {
+    .wp-block-kadence-column.inner-column-1 .wp-block-image {
         margin-bottom: 0;
         @include media-breakpoint-up(md) {
             display: none;
