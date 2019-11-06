@@ -7,5 +7,11 @@ body.homeownership-program {
     .wp-block-kadence-iconlist ul.kt-svg-icon-list .kt-svg-icon-list-item-wrap .kt-svg-icon-list-single {
         padding: 0;
     }
+    ul.kt-svg-icon-list .kt-svg-icon-list-item-wrap a {
+        text-decoration: underline;
+        &:hover, &:focus {
+            text-decoration-color: darken($primary, 15%);
+        }
+    }
 }
 
