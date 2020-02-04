@@ -28,3 +28,16 @@ a {
   margin: 0 auto;
   padding: 0 1rem 2rem 1rem;
 }
+
+// Modals
+.img-modal {
+  .modal-body {
+    padding: 0;
+    text-align: center;
+    .close {
+      position: absolute;
+      right: 1rem;
+      font-size: 2rem; // 32px
+    }
+  }
+}

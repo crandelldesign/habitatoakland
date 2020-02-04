@@ -32,6 +32,14 @@ select.form-control {
   padding: .5em;
   padding-right: 1.5em;
 }
+.form-group.has-error {
+  .form-control {
+    @extend .is-invalid;
+  }
+  .help-block {
+    @extend .invalid-feedback;
+  }
+}
 
 // Input Groups
 .input-group {
