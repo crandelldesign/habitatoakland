@@ -7,6 +7,10 @@
         border: 1px solid #FFF;
     }
 }
+.btn-link {
+    border: 0;
+    box-shadow: none;
+}
 .btn-green {
     background-color: $bright-green;
     color: #FFF;

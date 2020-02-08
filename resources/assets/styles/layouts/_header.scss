@@ -327,5 +327,8 @@ nav.main-nav {
         }
       }
     }
-  } 
+  }
+  body.a11y-dialog__body-locked & {
+    position: relative;
+  }
 }
