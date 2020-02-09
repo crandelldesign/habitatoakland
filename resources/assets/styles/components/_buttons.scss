@@ -10,6 +10,10 @@
 .btn-link {
     border: 0;
     box-shadow: none;
+    &:hover, &:focus {
+        border: 0;
+        box-shadow: none;
+    }
 }
 .btn-green {
     background-color: $bright-green;
