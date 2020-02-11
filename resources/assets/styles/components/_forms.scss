@@ -38,6 +38,10 @@ select.form-control {
   }
   .help-block {
     @extend .invalid-feedback;
+    display: block;
+  }
+  .invalid-feedback {
+    display: block;
   }
 }
 
