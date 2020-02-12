@@ -73,7 +73,7 @@
 
 // Blog Page
 body:not(.single), .recent-post-list {
-    article.post:not(.featured-post), article.page {
+    article.post:not(.featured-post), article.tribe_events, article.page {
         @extend .card;
         //margin-bottom: ($spacer * 2);
         display: flex;
