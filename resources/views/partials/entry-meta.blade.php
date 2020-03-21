@@ -4,7 +4,7 @@
     <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;
     <?= (tribe_event_is_all_day())?tribe_get_start_date(null, true, 'F jS, Y'):tribe_get_start_date(null, true, 'F jS, Y g:i a') ?>
   <?php else: // If not an event ?>
-    <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;
+    <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
     <?php printf( '<time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> ', get_the_time('Y-m-j', get_the_ID()), get_the_time(get_option('date_format'), get_the_ID())) ?>
   <?php endif; ?>
 </span>
