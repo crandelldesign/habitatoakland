@@ -77,6 +77,16 @@ export default {
       } // End if
     });
 
+    // Custom Give WP Form Content
+    var homebuyerSavingsDeposit = $('#give-form-3546-1, #give-form-6511-1');
+    if (homebuyerSavingsDeposit.length > 0) {
+      homebuyerSavingsDeposit.find('#give_cc_fields legend').text('Debit Card Info');
+      homebuyerSavingsDeposit.find('.give-recurring-donors-choice label').html(function(index, html) {
+        return html.replace('donation', 'deposit');
+      });
+      homebuyerSavingsDeposit.find('.give-donation-total-label').text('Deposit Total');
+    }
+    
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
