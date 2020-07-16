@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12"><img src="<?php echo get_template_directory_uri(); ?>/library/images/eho-logo.png" class="img-responsive center-block" alt="Equal Housing Opportunity"></div>
+                    <div class="col-xs-12"><img src="<?php echo get_template_directory_uri(); ?>/library/images/eho-logo.svg" class="img-responsive center-block" alt="Equal Housing Opportunity"></div>
                 </div>
             </div>
         </footer>
