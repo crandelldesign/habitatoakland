@@ -1,0 +1,44 @@
+// Buttons
+.btn {
+    border: 1px solid #FFF;
+    font-family: $sans-serif;
+    @include box_shadow(1);
+    &:hover, &:focus {
+        border: 1px solid #FFF;
+    }
+}
+.btn-link {
+    border: 0;
+    box-shadow: none;
+    &:hover, &:focus {
+        border: 0;
+        box-shadow: none;
+    }
+}
+.btn-green {
+    background-color: $bright-green;
+    color: #FFF;
+    &:hover, &:focus {
+        background-color: $habitat-green;
+        color: #FFF;
+        border: 1px solid #FFF;
+    }
+}
+.btn-outline-white {
+    background-color: transparent;
+    color: #FFF;
+    border: 1px solid #FFF;
+    &:hover, &:focus {
+        background-color: #FFF;
+        color: $primary;
+        border: 1px solid #FFF;
+    }
+}
+.btn-invisible {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+    &:hover, &:focus {
+        border-color: transparent;
+    }
+}

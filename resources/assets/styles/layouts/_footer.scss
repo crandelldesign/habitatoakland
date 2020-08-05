@@ -1,0 +1,86 @@
+footer.footer {
+    background-color: #000000;
+    color: #ffffff;
+    a {
+        color: #FFF;
+        &:hover, &:focus {
+            color: $gray;
+        }
+    }
+    .footer-menu {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem; // 16px
+        border-bottom: 1px solid #FFF;
+        font-size: 1rem;
+    }
+    .widget-area {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.875rem 1rem 3.75rem; // 30px 16px 60px
+        border-bottom: 1px solid #FFF;
+        .widget {
+            padding: 1rem;
+            font-size: 1rem;
+            h3 {
+                font-size: 1rem;
+                text-transform: uppercase;
+                line-height: 1.5;
+                font-weight: normal;
+                margin-bottom: 1.25rem // 20px
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                // Target last img (EHO logo)
+                &.eho-logo, &:last-child {
+                    max-width: 100px;
+                }
+            }
+            &:last-child {
+                text-align: center;
+            }
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+            @include media-breakpoint-up(lg) {
+                width: 25%;
+            }
+            
+        }
+    }
+    .copyright-area {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.25rem 2rem; // 20px 32px
+        font-size: 0.75rem; // 12px
+        font-family: $font-family-sans-serif;
+        > div {
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+        }
+        .copyright {
+
+        }
+        .social-media-icons {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 0;
+            text-align: center;
+            @include media-breakpoint-up(md) {
+                text-align: right;
+                }
+                li {
+                    display: inline-block;
+                a {
+                    display: block;
+                    padding: 0 0 0 5px;
+                    @include media-breakpoint-up(lg) {
+                        padding: 0 0 0 15px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,182 @@
+// Events
+#tribe-events-content-wrapper {
+    // Month Heading
+    .tribe-events-list-separator-month {
+        text-transform: none;
+        font-size: 1.5rem; // 24 px
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        position: relative;
+        background-color: transparent;
+        z-index: 1;
+        span {
+            background-color: #fff;
+            padding: 0 7.5%;
+        }
+        &::after {
+            content: "";
+            border-bottom: 1px solid #c2c2c2;
+            height: 1px;
+            width: 100%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: -1;
+        }
+    }
+    // Event List
+    .type-tribe_events {
+        @extend .card;
+        padding: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .tribe-events-list-event-title {
+            width: 100%;
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            //background-color: rgba(51,51,51,.03);
+            border-bottom: 1px solid rgba(51,51,51,.125);
+        }
+        .tribe-events-event-meta {
+            width: 100%;
+            padding: .75rem 1.25rem;
+            background-color: rgba(51,51,51,.03);
+            border-bottom: 1px solid rgba(51,51,51,.125);
+            color: $text-muted;
+            margin: 0;
+            font-weight: normal;
+            font-size: 1rem;
+            .tribe-events-venue-details {
+                margin-bottom: 0;
+            }
+        }
+        .tribe-events-event-cost {
+            width: 100%;
+            padding: .75rem 1.25rem;
+        }
+        .tribe-events-event-image {
+            padding-left: 1.25rem;
+            padding-bottom: .75rem;
+            margin: 0;
+        }
+        .tribe-events-list-event-description {
+            width: 0;
+            padding: 0 1.25rem .75rem 1.25rem;
+            min-width: 0;
+            flex-grow: 1;
+            .tribe-events-read-more {
+                @extend .btn;
+                @extend .btn-primary;
+            }
+        }
+    }
+}
+// Event Page
+#tribe-events, .page-tribe-attendee-registration, .woocommerce-checkout {
+    // Tickets
+    .tribe-tickets__item__quantity {
+        button {
+            @extend .btn;
+            @extend .btn-outline-primary;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    // Modal
+    .tribe-modal__close-button {
+        @extend .close;
+        &:before {
+            content: "×";
+        }
+    }
+    // Buttons
+    .tribe-common {
+        .tribe-common-c-btn {
+            @extend .btn;
+            @extend .btn-primary;
+            &:disabled {
+                opacity: .65;
+            }
+        }
+        .tribe-common-c-btn-link {
+            @extend .btn;
+            @extend .btn-link;
+        }
+    }
+    .tribe-checkout-backlinks {
+        margin-bottom: .5rem; // 8px
+        .tribe-checkout-backlink:not(:first-child) {
+            margin-left: 1rem;
+        }
+    }
+    // Forms
+    .tribe-tickets__item__attendee__fields .tribe-ticket {
+        border-color: $jumbogray;
+        &::before, &::after {
+            background: $jumbogray;
+        }
+        &.tribe-ticket-item__has-focus {
+            border-color: $primary;
+            &::before, &::after {
+                background: $primary;
+            }
+        }
+    }
+    .tribe-common-form-control-text__input[type="text"] {
+        @extend .form-control;
+    }
+    .select2-container--default .select2-selection--single {
+        height: 40px;
+        .select2-selection__rendered {
+            line-height: 40px;
+        }
+        .select2-selection__arrow {
+            height: 38px;
+        }
+    } 
+}
+// Woocommerce
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button {
+    @extend .btn;
+    @extend .btn-lg;
+    @extend .btn-block;
+    @extend .btn-primary;
+
+    &:disabled {
+        opacity: .65;
+    }
+}
+.woocommerce .place-order {
+    button.button {
+        @extend .btn;
+        @extend .btn-lg;
+        @extend .btn-primary;
+    }
+}
+// Woocommerce Column Fixes
+.woocommerce-billing-fields .form-row, .woocommerce-shipping-fields .form-row,.woocommerce form .form-row {
+    display: block;
+}
+.woocommerce, .woocommerce-page {
+    .col2-set {
+        @extend .row;
+        margin-bottom: 1rem;
+    }
+    .col2-set .col-1, .col2-set .col-2 {
+        max-width: unset;
+        flex-grow: 1;
+    }
+    form .form-row input.input-text, form .form-row textarea {
+        @extend .form-control;
+    }
+}
+// Woocommerce Order Summary
+.woocommerce .woocommerce-order ul.order_details {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}

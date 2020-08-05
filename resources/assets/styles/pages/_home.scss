@@ -1,0 +1,43 @@
+body.home {
+    .content {
+        max-width: none;
+        padding: 0;
+    }
+    .newsletter-row {
+        h2 {
+            font-size: 1.5rem; // 24px
+        }
+    }
+    .newsletter-signup-full form {
+        display: flex;
+        > div {
+            padding: 0 10px;
+            @include media-breakpoint-up(md) {
+                width: calc(100% / 3);
+            }
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            box-shadow: none;
+            border-color: transparent;
+        }
+    }
+    .latest-news {
+        color: #FFF;
+        .post-title a, .post-meta a {
+            color: #FFF;
+        }
+        .row > .col-md-6 {
+            margin-bottom: 1rem;
+        }
+    }
+    .restore-block {
+        h4 {
+            font-weight: bolder;
+            font-family: $font-family-serif;
+            font-size: 1.125rem;
+            margin-bottom: 0;
+        }
+    }
+}

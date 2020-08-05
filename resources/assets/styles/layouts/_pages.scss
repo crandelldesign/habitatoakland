@@ -1,0 +1,77 @@
+// Homepage
+@import "pages/home";
+// ReStore
+@import "pages/restore";
+// Homeownership Pages
+@import "pages/homeownership";
+
+// Page Title 
+.page-header {
+    margin-bottom: 2rem;
+}
+
+// Page Title Block
+.page-title-block {
+    .kt-row-column-wrap {
+        @include media-breakpoint-up(md) {
+            min-height: 375px;
+        }
+    }
+    .wp-block-kadence-column.inner-column-1 .wp-block-image {
+        margin-bottom: 0;
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+    }
+    .wp-block-kadence-column .kt-inside-inner-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .wp-block-kadence-advancedbtn, .kt-btn-wrap, .kt-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    > .page-header, > div > div > .page-header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #FFF;
+    }
+}
+
+// Staff
+.img-staff {
+    border: 3px solid $gray;
+    margin: 0 10px;
+    @include box_shadow(1);
+    max-width: 140px;
+}
+.img-staff-full {
+    border: 3px solid $gray;
+    @include box_shadow(1);
+}
+
+// 404, Search
+body.search, body.error404 {
+    .search-form .input-group {
+        width: 80%;
+        margin: 0 auto 2rem auto;
+    }
+    .search-title-block {
+        .col-sm-8 {
+            background-image: url('../images/not-found.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+        }
+        .col-sm-4 {
+            @include media-breakpoint-up(md) {
+                min-height: 325px;
+            }
+        }
+    }
+}

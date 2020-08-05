@@ -1,0 +1,17 @@
+body.homeownership-program {
+    @media (max-width: 1024px) and (min-width: 768px) {
+        .kt-gutter-default.kt-row-layout-left-golden>.wp-block-kadence-column.inner-column-1 {
+            flex-basis: auto;
+        }
+    }
+    .wp-block-kadence-iconlist ul.kt-svg-icon-list .kt-svg-icon-list-item-wrap .kt-svg-icon-list-single {
+        padding: 0;
+    }
+    ul.kt-svg-icon-list .kt-svg-icon-list-item-wrap a {
+        text-decoration: underline;
+        &:hover, &:focus {
+            text-decoration-color: darken($primary, 15%);
+        }
+    }
+}
+

@@ -1,0 +1,158 @@
+// Give WP
+[id*=give-form] {
+    .give-hidden {
+        display: none;
+    }
+    .give-text-input, textarea.give-input, select.give-recurring-donors-choice-period, .form-row select {
+        @extend .form-control;
+    }
+    select.give-recurring-donors-choice-period {
+        display: inline-block;
+        width: auto;
+    }
+    .give-btn {
+        @extend .btn;
+    }
+    legend {
+        @extend .h3;
+        padding: 0 0 5px;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid $gray;
+    }
+    input[type=radio], input[type=checkbox] {
+        margin: 0 .5em 0 0;
+        position: relative;
+        top: -2px;
+    }
+    .give-donation-amount {
+        margin: 0 0 1rem;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+        .give-currency-symbol.give-currency-position-before {
+            @extend .input-group-text;
+            margin-right: -1px;
+        }
+        .give-text-input {
+            flex: 1 1 auto;
+            width: 1%;
+        }
+    }
+    .give-donation-levels-wrap {
+        padding-left: 0;
+        list-style: none;
+        li {
+            display: inline-flex;
+            margin: 0 5px 5px 0;
+            .give-btn {
+                @extend .btn-light;
+                &.give-default-level {
+                    @extend .btn-primary;
+                }
+            }
+        }
+    }
+    ul#give-gateway-radio-list {
+        padding-left: 0;
+        list-style: none;
+        > li {
+            display: inline-block;
+            &:not(:last-child) {
+                margin-right: .5rem;
+            }
+            input[type=radio], input[type=checkbox] {
+                margin: 0 .25em 0 0;
+                outline: none;
+                width: auto;
+                display: inline;
+            }
+        }
+    }
+    fieldset#give_checkout_user_info, fieldset#give_cc_fields, fieldset#give-ffm-section {
+        .form-row {
+            position: relative;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 1rem;
+            &.form-row-responsive {
+                @include media-breakpoint-up(sm) {
+                    &.form-row-first {
+                        width: 48.5%;
+                        margin-right: 2.5%;
+                        float: left;
+                    }
+                    &.form-row-last {
+                        width: 48.5%;
+                        float: right;
+                    }
+                    &.form-row-two-thirds {
+                        float: left;
+                        width: 65.75%;
+                    }
+                    &.form-row-two-thirds {
+                        float: left;
+                        width: 65.75%;
+                    }
+                    &.form-row-one-third {
+                        float: left;
+                        width: 31.25%;
+                        margin-left: 3%;
+                    }
+                }
+            }
+            > div {
+                width: 100%;
+            }
+            input:not([type='checkbox']), .give-stripe-cc-field {
+                @extend .form-control;
+            }
+        }
+        .form-row-wide {
+            clear: both;
+        }
+        
+    }
+    [id*=give_secure_site_wrapper] {
+        padding: 4px 4px 15px 0;
+        font-size: 16px;
+        line-height: 20px;
+        span.padlock {
+            content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTcgOS43NjF2LTQuNzYxYzAtMi43NjEtMi4yMzgtNS01LTUtMi43NjMgMC01IDIuMjM5LTUgNXY0Ljc2MWMtMS44MjcgMS40NjYtMyAzLjcxNC0zIDYuMjM5IDAgNC40MTggMy41ODIgOCA4IDhzOC0zLjU4MiA4LThjMC0yLjUyNS0xLjE3My00Ljc3My0zLTYuMjM5em0tOC00Ljc2MWMwLTEuNjU0IDEuMzQ2LTMgMy0zczMgMS4zNDYgMyAzdjMuNTg3Yy0uOTI3LS4zNzYtMS45MzgtLjU4Ny0zLS41ODdzLTIuMDczLjIxMS0zIC41ODd2LTMuNTg3em00IDExLjcyM3YyLjI3N2gtMnYtMi4yNzdjLS41OTYtLjM0Ny0xLS45ODQtMS0xLjcyMyAwLTEuMTA0Ljg5Ni0yIDItMnMyIC44OTYgMiAyYzAgLjczOC0uNDA0IDEuMzc2LTEgMS43MjN6Ii8+PC9zdmc+');
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+    #give-final-total-wrap {
+        margin: 0 0 1rem;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+        @extend .h3;
+        .give-donation-total-label {
+            padding: 0.375rem 0.75rem 0.375rem 0;
+        }
+        .give-final-total-amount {
+            padding: 0.375rem 0 0.375rem 0.75rem;
+            flex: 1 1 auto;
+            width: 1%;
+            color: $primary;
+        }
+    }
+    .give-submit.give-btn {
+        @extend .btn-lg;
+        @extend .btn-primary;
+    }
+}

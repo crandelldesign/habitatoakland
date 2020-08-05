@@ -1,0 +1,30 @@
+@mixin box_shadow ($level) {
+
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level == 4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level == 5 {
+        box-shadow: 0px 30px 30px 0px rgba(0,0,0,0.25);
+    }
+  
+}
+
+@mixin admin-sticky-fix( $offset: 0 ) {
+    $narrow-offset: 46px;
+    $wide-offset: 32px;
+    @if $offset != 0 and type-of($offset) == 'number' {
+        $narrow-offset: $narrow-offset + $offset;
+        $wide-offset: $wide-offset + $offset;
+    }
+    .admin-bar & {
+        top: $narrow-offset;
+        @media screen and (min-width: 783px) {
+            top: $wide-offset;
+        }
+    }
+}

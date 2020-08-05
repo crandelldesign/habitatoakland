@@ -1,0 +1,79 @@
+.panel {
+    margin-bottom: .5rem;
+    .panel-heading {
+        position: relative;
+        
+        .panel-title {
+            color: $black;
+            position: relative;
+            margin-bottom: 0;
+            font-weight: 300;
+            a {
+                color: $black;
+                display: flex;
+                background-color: #FFF;
+                padding: 1.25rem 2.5rem; //20px 50px
+                @include box_shadow(3);
+                &:hover {
+                    text-decoration: none;
+                }
+                &.accordion-toggle {
+                    padding-left: 65px;
+                    &:before, &:after {
+                        transition: all .25s ease-in-out;
+                        transform: translateY(-50%) rotate(270deg);
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 40px;
+                        //right: 1.25rem;
+                        width: 5px;
+                        height: 20px;
+                        background-color: $gray;
+                        transform-origin: center center;
+                    }
+                    &.collapsed {
+                        &:hover {
+                            text-decoration: none;
+                            background-color: $gray;
+                            color: #FFF;
+                            &:before, &:after {
+                                background-color: #FFF;
+                            }
+                        }
+                        &:after {
+                            transform: translateY(-50%) rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .panel-body {
+        padding: 1.875rem; // 30px
+    }
+}
+.panel-group {
+    margin-bottom: 1rem;
+}
+
+// Kadence
+.wp-block-kadence-accordion {
+    .kt-accordion-header-wrap {
+        position: relative;
+        background-color: #FFF;
+        font-family: $font-family-sans-serif;
+        @include box_shadow(3);
+        .kt-blocks-accordion-header {
+            padding: 1.25rem 2.5rem; //20px 50px
+            font-size: 1.5rem; // 24px
+            font-weight: 300;
+            .kt-blocks-accordion-icon-trigger {
+                margin-left: -8px;
+                &:before, &:after {
+                    background-color: $gray;
+                }
+            }
+        }
+    }
+}
